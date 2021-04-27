@@ -27,8 +27,9 @@
               <div class="login-box">
                 <button type="button" class="register" onclick="location.href='signup.html'">로그인</button>
               </div>
-              <button type="button" class="register" onclick="location.href='signup.html'">ID/PW 찾기</button>
-              <button type="button" class="register" onclick="location.href='signup.html'">회원가입</button>
+            <button type="button" class="register" onclick="location.href='signup.html'">ID/PW 찾기</button>
+            <button type="button" class="register" onclick="location.href='signup.html'">회원가입</button>
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt="" height="30px"></a>
             </div>
         </div>
     </div>
@@ -43,7 +44,6 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
@@ -122,57 +122,19 @@
             <!-- content-->
             <div id="content">
                 <!-- ID -->
-                <div>
-                	<br>
-                	<br>
-                	<br>
-                    <h3 class="join_title">
-                        <label for="id">아이디</label>
-                    </h3>
-                    <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                <!-- PW1 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20">
-                        <span id="alertTxt">사용불가</span>
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                <!-- PW2 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                <!-- NAME -->
-                <div>
-                    <h3 class="join_title"><label for="name">이름</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                <!-- MOBILE -->
-                <div>
-                    <h3 class="join_title"><label for="phoneNo">E-mail</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="E-mail 입력">
-                    </span>
-                    <span class="error_next_box"></span>    
-                </div>
-                <!-- JOIN BTN-->
-                <div class="btn_area">
-                    <button type="button" id="btnJoin" onclick="alert('가입되었습니다');"/>
-                        <span> 가입하기</span>
-                    </button>
-                </div>
+            <form name="회원가입" action="" method="post">
+                <h1>아이디/ID</h1>
+                <input type="text" name='id' required>
+                <h1>비밀번호/PassWord</h1>
+                <input type="text" name="password" required>
+                <h1>비밀번호 재확인</h1>
+                <input type="text" name="repassword" required>
+                <h1>E-mail</h1>
+                <input type="text" name="email" required>
+                <br>
+                <br>
+                <input type='submit' value='입력'>
+            </form>
             </div> 
             <!-- content-->
         </div> 
@@ -185,79 +147,31 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
-							<h3>Business Time</h3>
+							<h3>사업자 정보</h3>
 							<ul class="list-time">
-								<li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+								<li>주소지: 노원구 공릉로 232 서울과학기술대학교</li> <li>대표자:이현주,배진환,권찬미,홍성웅</li>
+								<li>고객 센터:010-5239-7894</li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
-							<h3>Newsletter</h3>
-							<form class="newsletter-box">
-								<div class="form-group">
-									<input class="" type="email" name="Email" placeholder="Email Address*" />
-									<i class="fa fa-envelope"></i>
-								</div>
-								<button class="btn hvr-hover" type="submit">Submit</button>
-							</form>
+							<h3>이용약관</h3>
+							<ul class="list-time">
+							<li><a href="이용약관.html">More</a></li>
+							<li>
+						</ul>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
-							<h3>Social Media</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							<ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-                            </ul>
+							<h3>개인정보 처리 방침</h3>
+							<ul class="list-time">
+								<li><a href="개인정보.html">More</a></li>
 						</div>
 					</div>
 				</div>
 				<hr>
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-widget">
-                            <h4>About Freshshop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link">
-                            <h4>Information</h4>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link-contact">
-                            <h4>Contact Us</h4>
-                            <ul>
-                                <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>
