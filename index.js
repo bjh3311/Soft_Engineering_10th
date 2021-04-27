@@ -1,5 +1,9 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
+var flash = require('connect-flash'); 
+var session = require('express-session'); 
+var passport = require('./config/passport');
 var app = express();
 
 
@@ -17,10 +21,23 @@ db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
 
+// Passport 
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Custom Middlewares
+app.use(function(req,res,next){
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // setting
 app.set('view engine','ejs'); // 1
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method'));
+app.use(flash()); // 2
+app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
 
 // routes setting
