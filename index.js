@@ -42,7 +42,7 @@ app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
 // routes setting
 app.get('/', function(req,res){ // 2
-  res.render('index');
+  res.render('test');
 });
 
 
