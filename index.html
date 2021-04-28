@@ -4,10 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Site Metas -->
     <title>아모아모 메인화면</title>
     <meta name="keywords" content="">
@@ -39,17 +37,6 @@
     <div class="main-top">
         <div class="container-fluid">
             <div class="row" float="right">
-              <div class="login">
-                <form>
-                  ID <input type="text" name="id">
-                  PASSWORD <input type="text" name="pw">
-                </form>
-              </div>
-              <div class="login-box">
-                 <button type="button" class="register" onclick="location.href='signup.html'">로그인</button>
-              </div>
-            <button type="button" class="register" onclick="location.href='signup.html'">ID/PW 찾기</button>
-            <button type="button" class="register" onclick="location.href='signup.html'">회원가입</button>
             <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt="" height="30px"></a>
               </div> 
             </div>
@@ -61,16 +48,31 @@
     <header class="main-header">
         <!-- Start Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+             <div class="container-fluid">
+            <div class="row" float="right">
+              <div class="login">
+                <form>
+                  ID <input type="text" name="id">
+                  PASSWORD <input type="text" name="pw">
+                </form>
+              </div>
+              <div class="login-box">
+                 <button type="button" class="register" onclick="location.href='signup.html'">로그인</button>
+              </div>
+            <button type="button" class="register" onclick="location.href='signup.html'">ID/PW 찾기</button>
+            <button type="button" class="register" onclick="location.href='signup.html'">회원가입</button>
+              </div> 
+            </div>
+        </div>
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
-                </button>    
-                </div>
+                </button>
+            </div>
                 <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!--, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
