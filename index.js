@@ -43,6 +43,7 @@ app.use(function(req,res,next){
 });
 // routes setting
 app.use('/', require('./routes/main'));
+app.use('/admin', require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 
 
