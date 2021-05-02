@@ -6,24 +6,26 @@ var User = require('../models/User');
 var util = require('../util');
 
 // New
-router.get('/new', function(req, res){
+router.get('/signup', function(req, res){
   var user = req.flash('user')[0] || {};
   var errors = req.flash('errors')[0] || {};
-  res.render('users/new', { user:user, errors:errors });
+  res.render('users/signup', { user:user, errors:errors });
 });
 
 // create
 router.post('/', function(req, res){
+  console.log(req.body);
   User.create(req.body, function(err, user){
     if(err){
       req.flash('user', req.body);
       req.flash('errors', util.parseError(err));
-      return res.redirect('/users/new');
+      return res.redirect('/users/signup');
     }
-    res.redirect('/users');
+    res.redirect('/');
   });
 });
 
+/*
 // show
 router.get('/:username', util.isLoggedin, checkPermission, function(req, res){
   User.findOne({username:req.params.username}, function(err, user){
@@ -72,7 +74,7 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
       });
   });
 });
-
+*/
 module.exports = router;
 
 // functions

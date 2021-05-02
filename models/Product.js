@@ -8,6 +8,8 @@ var productSchema = mongoose.Schema({
   name:{type:String, required:[true, 'Name is required!']},
   price:{type:Number, required:[true, 'Price is required!']},
   manufacturer:{type:String},
+  categoty:{type:String},
+  body:{type: String},
   taste:{type:String},
   weight:{type:String, required:[true, 'Weight is reqired!']},
   origin:{type:String},

@@ -4,23 +4,25 @@ var express = require('express');
 var router = express.Router();
 var passport = require('../config/passport');
 
-// Home
+// Main
 router.get('/', function(req, res){
-  res.render('home/welcome');
-});
-router.get('/about', function(req, res){
-  res.render('home/about');
-});
-
-// Login // 2
-router.get('/login', function (req,res) {
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  res.render('home/login', {
+  res.render('main/index', {
     username:username,
     errors:errors
   });
 });
+
+//개인정보
+router.get('/privacy', function(req, res){
+  res.render('main/privacy');
+});
+// 이용약관
+router.get('/policy', function(req, res){
+  res.render('main/policy');
+});
+
 
 // Post Login // 3
 router.post('/login',
@@ -42,12 +44,12 @@ router.post('/login',
     }
     else {
       req.flash('errors',errors);
-      res.redirect('/login');
+      res.redirect('/');
     }
   },
   passport.authenticate('local-login', {
     successRedirect : '/',
-    failureRedirect : '/login'
+    failureRedirect : '/'
   }
 ));
 

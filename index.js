@@ -1,11 +1,12 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var flash = require('connect-flash'); 
 var session = require('express-session'); 
 var passport = require('./config/passport');
+var util = require('./util');
 var app = express();
-
 
 // DB setting
 mongoose.set('useNewUrlParser', true);
@@ -21,6 +22,15 @@ db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
 
+// setting
+app.set('view engine','ejs'); // 1
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
+app.use(flash()); // 2
+app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+
 // Passport 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -31,19 +41,9 @@ app.use(function(req,res,next){
   res.locals.currentUser = req.user;
   next();
 });
-
-// setting
-app.set('view engine','ejs'); // 1
-app.use(express.static(__dirname + '/public'));
-app.use(methodOverride('_method'));
-app.use(flash()); // 2
-app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
-
-
 // routes setting
-app.get('/', function(req,res){ // 2
-  res.render('test');
-});
+app.use('/', require('./routes/main'));
+app.use('/users', require('./routes/users'));
 
 
 // port setting

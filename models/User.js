@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 // schema // 1
 var userSchema = mongoose.Schema({
-  id:{
+  username:{
     type:String,
     required:[true,'Username is required!'],
     match:[/^.{4,12}$/,'Should be 4-12 characters!'],
@@ -16,8 +16,6 @@ var userSchema = mongoose.Schema({
   },
   name:{
     type:String,
-    required:[true,'Name is required!'],
-    match:[/^.{4,12}$/,'Should be 4-12 characters!'],
     trim:true
   },
   email:{
@@ -28,6 +26,9 @@ var userSchema = mongoose.Schema({
   right:{
       type:Boolean,
       default:false
+  },
+  address:{
+    type:[String]
   }
 },{
   toObject:{virtuals:true}
