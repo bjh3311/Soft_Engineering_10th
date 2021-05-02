@@ -22,6 +22,9 @@ router.get('/register', function(req, res){
     res.render('admin/register');
 });
 
+router.get('/detail', function(req, res){
+  res.render('admin/detail');
+});
 router.get('/modify', function(req, res){
     res.render('admin/modify');
 });
