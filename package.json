@@ -1,0 +1,39 @@
+{
+  "name": "aws-ec2-nodejs-server-deployment-demo",
+  "version": "1.0.0",
+  "description": "A simple node.js server deployment demo on AWS EC2.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rheey90/aws-ec2-nodejs-server-deployment-demo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "aws",
+    "ec2"
+  ],
+  "author": "Damagedcase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rheey90/aws-ec2-nodejs-server-deployment-demo/issues"
+  },
+  "homepage": "https://github.com/rheey90/aws-ec2-nodejs-server-deployment-demo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
