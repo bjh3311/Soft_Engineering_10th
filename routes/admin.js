@@ -15,7 +15,7 @@ router.get('/table', function(req, res){
   });
 
 router.get('/form', function(req, res){
-    res.render('admin/table');
+    res.render('admin/form');
 });
 
 router.get('/register', function(req, res){
