@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/Product');
 
-// Index 
+// Index
 router.get('/', async function(req, res){
     products = await Product.find();
     res.render('admin/index', {
@@ -28,6 +28,12 @@ router.get('/detail', function(req, res){
 });
 router.get('/modify', function(req, res){
     res.render('admin/modify');
+});
+
+// 상품 관리
+
+router.get('/shop',function(req,res){
+  res.render('admin/shop');
 });
 
   module.exports = router;
