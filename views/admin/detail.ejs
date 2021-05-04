@@ -217,13 +217,13 @@
                     <div class="single-product-details">
                         <h2><%= product.name %></h2>
                         <h5> <%= product.price %></h5>
-                        <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span><p>
+                        <p class="available-stock"><span> More than 20 available / <a href="#"><%= product.stock %> </a></span><p>
 						<h4>Short Description:</h4>
 						<p><%= product.body %> </p>
 
 						<div class="price-box-bar">
 							<div class="cart-and-bay-btn">
-								<a class="btn hvr-hover" data-fancybox-close="" href="/admin/modify">상품 수정</a>
+								<a class="btn hvr-hover" data-fancybox-close="" href="/product/<%= product._id %>/edit">상품 수정</a>
 								<a class="btn hvr-hover" data-fancybox-close="" href="#">상품 삭제</a>
 							</div>
 						</div>
