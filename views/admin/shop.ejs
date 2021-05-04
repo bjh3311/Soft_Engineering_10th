@@ -206,40 +206,6 @@
                                                 <span class="caret"></span>
                                             </span>
                                         </button>
-                                        <div class="dropdown-menu open show" role="combobox" x-placement="bottom-start" style="max-height : 435.047px; overflow: hidden; min-height:62px; position:absolute; will-change: transform;top: 0px; left:0px; transform: translated3d(0px, 42px, 0px);">
-                                            <div class="dropdown-menu inner" role="listbox" aria-expanded="false" style="max-height: 435.047px; overflow-y : auto; min-height:62px; display:none;">
-                                                <a tabindex="0" class="dropdown-item" data-original-index="0">
-                                                    <span class="dropdown-item-inner" data-tokens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text"> Nothing</span>
-                                                        <span clas="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item selected" data-original-index="1">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="true">
-                                                        <span class="text"> Popularity</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="2">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">High Price -> High Price</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="3">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">Low Price -> High Price</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="4">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">Best Selling</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
                                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD" tabindex="-98">
                                         <option data-display="Select">Nothing</option>
                                         <option value="1">Popularity</option>
@@ -280,19 +246,21 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <a href="/admin/detail" data-toggle="tooltip" data-placement="right" title="View">
-                                                    <img src="/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                                    </a>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> $9.79</h5>
+                                        <%  products.forEach(function(product) {  %>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
+                                                        <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="why-text">
+                                                        <h4><%= product.name %></h4>
+                                                        <h5> <%= product.price %>won</h5>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <% }) %>
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">

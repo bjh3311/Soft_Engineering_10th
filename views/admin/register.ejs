@@ -175,7 +175,7 @@
                                                 <strong>상품 등록</strong> 형식
                                             </div>
                                             <div class="card-body card-block">
-                                                <form action="/products" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                <form action="/products" method="post" class="form-horizontal">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
                                                             <label for="name"class=" form-control-label">상품 이름</label>
@@ -280,19 +280,17 @@
                                                             <small class="help-block form-text">상품 재고 입력</small>
                                                         </div>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-dot-circle-o"></i> 상품 등록
+                                                        </button>
+                                                      <a href="/admin/shop">
+                                                          <button type="reset" class="btn btn-danger btn-sm">
+                                                          <i class="fa fa-ban"></i> 상품 등록 안함
+                                                      </button>
+                                                      </a>
+                                                  </div>
                                                 </form>
-                                            </div>
-                                            <div class="card-footer">
-                                                <a href="/admin/shop">
-                                                  <button type="submit" class="btn btn-primary btn-sm">
-                                                      <i class="fa fa-dot-circle-o"></i> 상품 등록
-                                                  </button>
-                                                </a>
-                                                <a href="/admin/shop">
-                                                    <button type="reset" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-ban"></i> 상품 등록 안함
-                                                </button>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

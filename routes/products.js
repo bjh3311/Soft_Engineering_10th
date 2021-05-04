@@ -16,14 +16,14 @@ var storage  = multer.diskStorage({ // 2
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
-    Product.create(req.body, function(err, post){
+    Product.create(req.body, function(err, product){
       if(err){
         req.flash('producuts', req.body);
         req.flash('errors', util.parseError(err));
         console.log(err);
         return res.redirect('/admin/register');
       }
-      res.redirect('/admin');
+      res.redirect('/admin/shop');
     });
   });
   
@@ -41,7 +41,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     var product = req.flash('product')[0];
     var errors = req.flash('errors')[0] || {};
     if(!product){
-      Product.findOne({_id:req.params.id}, function(err, post){
+      Product.findOne({_id:req.params.id}, function(err, product){
           if(err) return res.json(err);
           res.render('admin/modify', { product:product, errors:errors });
         });
@@ -54,13 +54,13 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   
   // update
   router.put('/:id',function(req, res){
-    Product.findOneAndUpdate({_id:req.params.id}, req.body, {runValidators:true}, function(err, post){
+    Product.findOneAndUpdate({_id:req.params.id}, req.body, function(err, product){
       if(err){
-        req.flash('prduct', req.body);
+        req.flash('product', req.body);
         req.flash('errors', util.parseError(err));
-        return res.redirect('/admin/'+req.params.id+'/edit');
+        return res.redirect('/products/'+req.params.id+'/edit');
       }
-      res.redirect('/admin');
+      res.redirect('/products/'+req.params.id);
     });
   });
   
@@ -68,7 +68,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
-      res.redirect('/admin');
+      res.redirect('/admin/shop');
     });
   });
 module.exports = router;

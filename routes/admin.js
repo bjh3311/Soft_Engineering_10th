@@ -5,11 +5,8 @@ var router = express.Router();
 var Product = require('../models/Product');
 
 // Index
-router.get('/', async function(req, res){
-    products = await Product.find();
-    res.render('admin/index', {
-    products:products
-  });
+router.get('/', function(req, res){
+    res.render('admin/index');
 });
 router.get('/table', function(req, res){
     res.render('admin/table');
@@ -32,8 +29,11 @@ router.get('/modify', function(req, res){
 
 // 상품 관리
 
-router.get('/shop',function(req,res){
-  res.render('admin/shop');
+router.get('/shop', async function(req,res){
+  products = await Product.find();
+    res.render('admin/shop', {
+    products:products
+  });
 });
 
   module.exports = router;
