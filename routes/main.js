@@ -23,6 +23,46 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
+//about us -- 찬미 추가
+router.get('/about',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  res.render('main/about',{
+    username:username,
+    errors:errors
+  });
+});
+
+
+//contact하기 -- 찬미 추가
+router.get('/contact-us',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  res.render('main/contact-us',{
+    username:username,
+    errors:errors
+  });
+});
+
+// cart -- 찬미
+router.get('/cart',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  res.render('main/cart',{
+    username:username,
+    errors:errors
+  });
+})
+
+// gallery -- 찬미
+router.get('/gallery',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  res.render('main/gallery',{
+    username:username,
+    errors:errors
+  });
+})
 
 // Post Login // 3
 router.post('/login',
