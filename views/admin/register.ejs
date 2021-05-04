@@ -175,30 +175,30 @@
                                                 <strong>상품 등록</strong> 형식
                                             </div>
                                             <div class="card-body card-block">
-                                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                <form action="/products" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label class=" form-control-label">상품 이름</label>
+                                                            <label for="name"class=" form-control-label">상품 이름</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="text" id="text-input" name="text-input" placeholder="상품 이름 작성" class="form-control">
+                                                            <input type="text" id="name" name="name" placeholder="상품 이름 작성" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="text-input" class=" form-control-label">가격</label>
+                                                            <label for="price" class=" form-control-label">가격</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="text" id="text-input" name="text-input" placeholder="상품 가격 입력" class="form-control">
+                                                            <input type="number" id="price" name="price" placeholder="상품 가격 입력" class="form-control">
                                                             <small class="form-text text-muted">상품 가격 입력하세요.</small>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 제조사</label>
+                                                            <label for="manufacturer" class=" form-control-label">상품 제조사</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="manufacturer" id="manufacturer" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">제조사1</option>
                                                                 <option value="2">제조사2</option>
@@ -208,10 +208,10 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 맛</label>
+                                                            <label for="taste" class=" form-control-label">상품 맛</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="taste" id="taste" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">맛1</option>
                                                                 <option value="2">맛2</option>
@@ -221,34 +221,23 @@
                                                     </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label">상품 중량</label>
+                                                    <label for="weight" class=" form-control-label">상품 중량</label>
                                                 </div>
-                                                <div class="col col-md-9">
-                                                    <div class="form-check">
-                                                        <div class="radio">
-                                                            <label for="radio1" class="form-check-label ">
-                                                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">200g
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label for="radio2" class="form-check-label ">
-                                                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">600g
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label for="radio3" class="form-check-label ">
-                                                                <input type="radio" id="radio3" name="radios" value="option3" class="form-check-input">1.2kg
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="weight" id="weight" class="form-control">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">200g</option>
+                                                        <option value="2">600g</option>
+                                                        <option value="3">1.2kg</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                                    <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 원산지</label>
+                                                            <label for="origin" class=" form-control-label">상품 원산지</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="origin" id="origin" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">에티오피아</option>
                                                                 <option value="2">콜롬비아</option>
@@ -259,21 +248,22 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="textarea-input" class=" form-control-label">상품 상세 정보</label>
+                                                            <label for="body" class=" form-control-label">상품 상세 정보</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"></textarea>
+                                                            <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="file-input" class=" form-control-label">상품 대표 이미지 등록</label>
+                                                            <label for="file" class=" form-control-label">상품 대표 이미지 등록</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                                            <input type="file" id="file" name="attachment" class="form-control-file">
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="row form-group">
+                                                    <!--
+                                                    <div class="row form-group">
                                                         <div class="col col-md-3">
                                                             <label for="file-multiple-input" class=" form-control-label">여러 상품 이미지 등록</label>
                                                         </div>
@@ -283,10 +273,10 @@
                                                     </div> -->
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="password-input" class=" form-control-label">재고</label>
+                                                            <label for="stock" class=" form-control-label">재고</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="stock" id="stock-input" name="stock-input" placeholder="0" class="form-control">
+                                                            <input type="number" id="stock" name="stock" placeholder="0" class="form-control">
                                                             <small class="help-block form-text">상품 재고 입력</small>
                                                         </div>
                                                     </div>
