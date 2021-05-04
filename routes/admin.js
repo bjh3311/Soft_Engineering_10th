@@ -29,4 +29,10 @@ router.get('/modify', function(req, res){
     res.render('admin/modify');
 });
 
+// 상품 관리
+
+router.get('/shop',function(req,res){
+  res.render('admin/shop');
+});
+
   module.exports = router;
