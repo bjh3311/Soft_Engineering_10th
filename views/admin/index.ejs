@@ -14,12 +14,12 @@
 
     <!-- Fontfaces CSS-->
     <link href="/css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -29,13 +29,13 @@
     <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="/css/theme.css" rel="stylesheet" media="all">
@@ -91,7 +91,7 @@
                                 <i class="fas fa-table"></i>공지 이벤트</a>
                         </li>
                         <li>
-                            <a href="/admin/form">
+                            <a href="/">
                                 <i class="far fa-check-square"></i>로그아웃</a>
                         </li>
                         <li class="has-sub">
@@ -206,40 +206,6 @@
                                                 <span class="caret"></span>
                                             </span>
                                         </button>
-                                        <div class="dropdown-menu open show" role="combobox" x-placement="bottom-start" style="max-height : 435.047px; overflow: hidden; min-height:62px; position:absolute; will-change: transform;top: 0px; left:0px; transform: translated3d(0px, 42px, 0px);">
-                                            <div class="dropdown-menu inner" role="listbox" aria-expanded="false" style="max-height: 435.047px; overflow-y : auto; min-height:62px; display:none;">
-                                                <a tabindex="0" class="dropdown-item" data-original-index="0">
-                                                    <span class="dropdown-item-inner" data-tokens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text"> Nothing</span>
-                                                        <span clas="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item selected" data-original-index="1">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="true">
-                                                        <span class="text"> Popularity</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="2">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">High Price -> High Price</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="3">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">Low Price -> High Price</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                                <a tabindex="0" class="dropdown-item" data-original-index="4">
-                                                    <span class="dropdown-item-inner" data-tockens="null" role="option" tabindex="0" aria-disabled="false" aria-selected="false">
-                                                        <span class="text">Best Selling</span>
-                                                        <span class="fa fa-check check-mark"></span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
                                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD" tabindex="-98">
                                         <option data-display="Select">Nothing</option>
                                         <option value="1">Popularity</option>
@@ -280,19 +246,21 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
+                                        <%  products.forEach(function(product) {  %>
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
-                                                    <a href="/admin/detail" data-toggle="tooltip" data-placement="right" title="View">
-                                                    <img src="/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                                    <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
+                                                    <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
                                                     </a>
                                                 </div>
                                                 <div class="why-text">
-                                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> $9.79</h5>
+                                                    <h4><%= product.name %></h4>
+                                                    <h5> <%= product.price %>won</h5>
                                                 </div>
                                             </div>
                                         </div>
+                                        <% }) %>
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
@@ -568,24 +536,24 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="/vendor/slick/slick.min.js">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/vendor/animsition/animsition.min.js"></script>
+    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
+    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/vendor/select2/select2.min.js">
     </script>
 
     <!-- Main JS-->

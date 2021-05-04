@@ -14,12 +14,12 @@
 
     <!-- Fontfaces CSS-->
     <link href="/css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/cssmaterial-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/mdi-font/cssmaterial-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -29,13 +29,13 @@
     <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="/css/theme.css" rel="stylesheet" media="all">
@@ -214,30 +214,30 @@
                                                 <strong>상품 등록</strong> 형식
                                             </div>
                                             <div class="card-body card-block">
-                                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                <form action="/products" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label class=" form-control-label">상품 이름</label>
+                                                            <label for="name"class=" form-control-label">상품 이름</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="text" id="text-input" name="text-input" placeholder="상품 이름 작성" class="form-control">
+                                                            <input type="text" id="name" name="name" placeholder="상품 이름 작성" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="text-input" class=" form-control-label">가격</label>
+                                                            <label for="price" class=" form-control-label">가격</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="text" id="text-input" name="text-input" placeholder="상품 가격 입력" class="form-control">
+                                                            <input type="number" id="price" name="price" placeholder="상품 가격 입력" class="form-control">
                                                             <small class="form-text text-muted">상품 가격 입력하세요.</small>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 제조사</label>
+                                                            <label for="manufacturer" class=" form-control-label">상품 제조사</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="manufacturer" id="manufacturer" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">제조사1</option>
                                                                 <option value="2">제조사2</option>
@@ -247,10 +247,10 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 맛</label>
+                                                            <label for="taste" class=" form-control-label">상품 맛</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="taste" id="taste" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">맛1</option>
                                                                 <option value="2">맛2</option>
@@ -260,34 +260,23 @@
                                                     </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label class=" form-control-label">상품 중량</label>
+                                                    <label for="weight" class=" form-control-label">상품 중량</label>
                                                 </div>
-                                                <div class="col col-md-9">
-                                                    <div class="form-check">
-                                                        <div class="radio">
-                                                            <label for="radio1" class="form-check-label ">
-                                                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">200g
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label for="radio2" class="form-check-label ">
-                                                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">600g
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label for="radio3" class="form-check-label ">
-                                                                <input type="radio" id="radio3" name="radios" value="option3" class="form-check-input">1.2kg
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="weight" id="weight" class="form-control">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">200g</option>
+                                                        <option value="2">600g</option>
+                                                        <option value="3">1.2kg</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                                    <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="select" class=" form-control-label">상품 원산지</label>
+                                                            <label for="origin" class=" form-control-label">상품 원산지</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select name="origin" id="origin" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="1">에티오피아</option>
                                                                 <option value="2">콜롬비아</option>
@@ -298,20 +287,21 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="textarea-input" class=" form-control-label">상품 상세 정보</label>
+                                                            <label for="body" class=" form-control-label">상품 상세 정보</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"></textarea>
+                                                            <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="file-input" class=" form-control-label">상품 대표 이미지 등록</label>
+                                                            <label for="file" class=" form-control-label">상품 대표 이미지 등록</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                                            <input type="file" id="file" name="attachment" class="form-control-file">
                                                         </div>
                                                     </div>
+                                                    <!--
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
                                                             <label for="file-multiple-input" class=" form-control-label">여러 상품 이미지 등록</label>
@@ -319,125 +309,27 @@
                                                         <div class="col-12 col-md-9">
                                                             <input type="file" id="file-multiple-input" name="file-multiple-input" multiple="" class="form-control-file">
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="password-input" class=" form-control-label">재고</label>
+                                                            <label for="stock" class=" form-control-label">재고</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <input type="stock" id="stock-input" name="stock-input" placeholder="0" class="form-control">
+                                                            <input type="number" id="stock" name="stock" placeholder="0" class="form-control">
                                                             <small class="help-block form-text">상품 재고 입력</small>
                                                         </div>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-dot-circle-o"></i> 상품 등록
+                                                        </button>
+                                                        <a href="/admin">
+                                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-ban"></i> 상품 등록 안함
+                                                        </button>
+                                                        </a>
+                                                    </div>
                                                 </form>
-                                            </div>
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-dot-circle-o"></i> 상품 등록
-                                                </button>
-                                                <a href="/admin">
-                                                    <button type="reset" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-ban"></i> 상품 등록 안함
-                                                </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="new">New</p>
-                                                        </div>
-                                                        <img src="/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width">
-                                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> <del>$ 60.00</del> $40.79</h5>
-                                                    <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                        sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                        Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">Sale</p>
-                                                        </div>
-                                                        <img src="/images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width">
-                                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> <del>$ 60.00</del> $40.79</h5>
-                                                    <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                        sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                        Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">Sale</p>
-                                                        </div>
-                                                        <img src="/images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width">
-                                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> <del>$ 60.00</del> $40.79</h5>
-                                                    <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                        sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                        Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -456,24 +348,24 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="/vendor/slick/slick.min.js">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/vendor/animsition/animsition.min.js"></script>
+    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
+    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/vendor/select2/select2.min.js">
     </script>
 
     <!-- Main JS-->
