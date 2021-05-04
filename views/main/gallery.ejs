@@ -53,7 +53,7 @@
            <div class="container-fluid">
           <div class="row" float="right">
           <% if(isAuthenticated){ %>
-              <span><%= currentUser.username %> 접속중입니다.</span>
+              <span><%= currentUser.username %> 환영합니다.</span>
               <button type="button" onclick="location.href='/logout'">Logout</button>
           <% } else { %>
               <div class="login">

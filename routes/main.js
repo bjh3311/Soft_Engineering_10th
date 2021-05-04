@@ -79,6 +79,18 @@ router.post('/login',
       errors.password = 'Password is required!';
     }
 
+
+// 찬미 추가
+    if(!req.body.name){
+      isValid=false;
+      errors.name=' name is required!';
+    }
+
+    if(!req.body.email){
+      isValid=false;
+      erros.email='email is required!';
+    }
+
     if(isValid){
       next();
     }
