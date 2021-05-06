@@ -61,6 +61,7 @@
  h1 {
      font-size: 24px 
 }
+}
  h2 {
      font-size: 22px 
 }
@@ -188,6 +189,7 @@
 }
  .dropdown-toggle::after{
      margin-left: -24px;
+}
 }
  .custom-select-box .dropdown-toggle::after {
      display: inline-block;
@@ -925,6 +927,9 @@
      margin: 0 auto;
      text-align: center;
      display: block;
+     width: 300px;
+     height: 250px
+     
 }
  .type-lb{
      position: absolute;
@@ -2460,11 +2465,19 @@
      background-image: none;
      top: 40%;
 }
+.single-product-slider .carousel-inner .carousel-item{
+    height:400px;
+    width:420px;
+ }
  .single-product-slider .carousel-indicators li img {
      opacity: 0.5;
+     height:80px;
+}
+
 }
  .single-product-slider .carousel-indicators li.active img {
      opacity: 1;
+     height:80px;
 }
  .carousel-indicators{
      position: relative;
