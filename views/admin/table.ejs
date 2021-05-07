@@ -20,6 +20,13 @@
 
     <!-- Bootstrap CSS-->
     <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Vendor CSS-->
     <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -33,97 +40,126 @@
     <!-- Main CSS-->
     <link href="/css/theme.css" rel="stylesheet" media="all">
 
-    <!--header footer css-->
-        <link rel="stylesheet" href="/css/style.css">
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <!-- <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content=""> -->
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
 
 </head>
 
-<b class="animsition">
+<body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="/index">
-                            <img src="/images/logo.png" alt="AmoAmo" />
+      <!-- HEADER MOBILE-->
+      <header class="header-mobile d-block d-lg-none">
+          <div class="header-mobile__bar">
+              <div class="container-fluid">
+                  <div class="header-mobile-inner">
+                      <a class="logo" href="/index">
+                          <img src="/images/logo.png" alt="AmoAmo" />
+                      </a>
+                      <button class="hamburger hamburger--slider" type="button">
+                          <span class="hamburger-box">
+                              <span class="hamburger-inner"></span>
+                          </span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <nav class="navbar-mobile">
+              <div class="container-fluid">
+                  <ul class="navbar-mobile__list list-unstyled">
+                      <li>
+                        <a href="/admin/">
+                            <i class="fas fa-desktop"></i>관리자 메인 화면</a>
+                      </li>
+                      <li>
+                          <a href="/admin/shop">
+                              <i class="fas fa-chart-bar"></i>상품 관리</a>
+                      </li>
+                      <li>
+                          <a href="/admin/table">
+                              <i class="fas fa-table"></i>공지 이벤트</a>
+                      </li>
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리</a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              <li>
+                                  <a href="/admin/sales_statistics">주문 내역 확인</a>
+                              </li>
+                              <li>
+                                  <a href="/admin/sales_statistics">판매 정보 통계</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="/">
+                              <i class="zmdi zmdi-power"></i>로그아웃</a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+      <!-- END HEADER MOBILE-->
+
+      <!-- MENU SIDEBAR-->
+      <aside class="menu-sidebar d-none d-lg-block">
+          <div class="logo">
+              <a href="#">
+                  <img src="/images/logo.png" alt="AmoAmo" />
+              </a>
+          </div>
+          <div class="menu-sidebar__content js-scrollbar1">
+              <nav class="navbar-sidebar">
+                  <ul class="list-unstyled navbar__list">
+                      <li>
+                         <a href ="/admin/">
+                             <i class="fas fa-desktop"></i>관리자 메인 화면</a>
+                      </li>
+                      <li>
+                          <a href="/admin/shop">
+                              <i class="fas fa-chart-bar"></i>상품 관리</a>
+                      </li>
+                      <li class="active">
+                          <a href="/admin/table">
+                              <i class="fas fa-table"></i>공지 이벤트</a>
+                      </li>
+                      <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                          <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리
                         </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
-
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo">
-                <a href="#">
-                    <img src="/images/logo.png" alt="AmoAmo" />
-                </a>
-            </div>
-            <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-
-                        <li>
-                           <a href ="/admin">
-                               <i class="fas fa-desktop"></i>관리자 메인 화면</a>
-                        </li>
-                        <li>
-                            <a href="/admin/shop">
-                                <i class="fas fa-chart-bar"></i>상품 관리</a>
-                        </li>
-                        <li class="active">
-                            <a href="/admin/table">
-                                <i class="fas fa-table"></i>공지 이벤트</a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                <i class="zmdi zmdi-power"></i>로그아웃</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <!-- END MENU SIDEBAR-->
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                          <li>
+                            <a href="/admin/sales_statistics">
+                              <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
+                          </li>
+                          <li>
+                            <a href="/admin/sales_statistics">
+                              <i class="fas fa-tachometer-alt"></i>판매 정보 통계</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                          <a href="/">
+                              <i class="zmdi zmdi-power"></i>로그아웃</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </aside>
+      <!-- END MENU SIDEBAR-->
 
         <!--PAGE CONTAINER-->
         <div class="page-container">
@@ -132,351 +168,350 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-
                         </div>
                     </div>
                 </div>
             </header>
-            <!-- END HEADER DESKTOP
+            <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
+              <div class="main-content">
+                  <div class="section__content section__content--p30">
+                      <div class="container-fluid">
+                          <div class="row">
 
-                        <div class="row">
-                            <div class="col-lg-6">
+                          <div class="row">
+                              <div class="col-lg-6">
 
-                                <!-- END USER DATA-->
-                            </div>
-                            <div class="col-lg-6">
+                                  <!-- END USER DATA-->
+                              </div>
+                              <div class="col-lg-6">
 
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-xl-auto">
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">data table</h3>
-                                <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-                                        <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <div class="rs-select2--light rs-select2--sm">
-                                            <select class="js-select2" name="time">
-                                                <option selected="selected">Today</option>
-                                                <option value="">3 Days</option>
-                                                <option value="">1 Week</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
-                                    </div>
-                                    <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="location.href='/admin/form'">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
-                                                <option selected="selected">Export</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-auto">
+                              </div>
+                          </div>
+                          <div class="col-md-12">
+                              <div class="col-xl-auto">
+                                  <!-- DATA TABLE -->
+                                  <h3 class="title-5 m-b-35">data table</h3>
                                   <div class="table-data__tool">
                                       <div class="table-data__tool-left">
                                           <div class="rs-select2--light rs-select2--md">
-                                            <form class="form-header" action="" method="POST">
-                                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                                <button class="au-btn--submit" type="submit">
-                                                    <i class="zmdi zmdi-search"></i>
-                                                </button>
-                                            </form>
+                                              <select class="js-select2" name="property">
+                                                  <option selected="selected">All Properties</option>
+                                                  <option value="">Option 1</option>
+                                                  <option value="">Option 2</option>
+                                              </select>
+                                              <div class="dropDownSelect2"></div>
+                                          </div>
+                                          <div class="rs-select2--light rs-select2--sm">
+                                              <select class="js-select2" name="time">
+                                                  <option selected="selected">Today</option>
+                                                  <option value="">3 Days</option>
+                                                  <option value="">1 Week</option>
+                                              </select>
+                                              <div class="dropDownSelect2"></div>
+                                          </div>
+                                          <button class="au-btn-filter">
+                                              <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                      </div>
+                                      <div class="table-data__tool-right">
+                                          <button class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="location.href='/admin/form'">
+                                              <i class="zmdi zmdi-plus"></i>add item</button>
+                                          <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                              <select class="js-select2" name="type">
+                                                  <option selected="selected">Export</option>
+                                                  <option value="">Option 1</option>
+                                                  <option value="">Option 2</option>
+                                              </select>
+                                              <div class="dropDownSelect2"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-xl-auto">
+                                    <div class="table-data__tool">
+                                        <div class="table-data__tool-left">
+                                            <div class="rs-select2--light rs-select2--md">
+                                              <form class="form-header" action="" method="POST">
+                                                  <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                                  <button class="au-btn--submit" type="submit">
+                                                      <i class="zmdi zmdi-search"></i>
+                                                  </button>
+                                              </form>
+                                            </div>
                                           </div>
                                         </div>
-                                      </div>
-                                </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </th>
-                                                <th>제목</th>
-                                                <!-- <th>email</th> -->
-                                                <th>상세 내용</th>
-                                                <th>진행기간</th>
-                                                <th>상태</th>
-                                                <!-- <th>price</th> -->
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>오픈 이벤트</td>
-                                                <!-- <td>
-                                                    <span class="block-email">lori@example.com</span>
-                                                </td> -->
-                                                <td class="desc">Samsung S8 Black</td>
-                                                <td>2018-09-27 02:12</td>
-                                                <td>
-                                                  <div class="rs-select2--trans rs-select2--sm">
-                                                      <select class="js-select2" name="property">
-                                                          <option value="">비활성</option>
-                                                          <option value="" selected="selected">활성화</option>
-                                                      </select>
-                                                      <div class="dropDownSelect2"></div>
-                                                  </div>
-                                                    <!-- <span class="status--process">Processed</span> -->
-                                                </td>
-                                                <!-- <td>$679.00</td> -->
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form'">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
+                                  </div>
+                                  <div class="table-responsive table-responsive-data2">
+                                      <table class="table table-data2">
+                                          <thead>
+                                              <tr>
+                                                  <th>
+                                                      <label class="au-checkbox">
+                                                          <input type="checkbox">
+                                                          <span class="au-checkmark"></span>
+                                                      </label>
+                                                  </th>
+                                                  <th>제목</th>
+                                                  <!-- <th>email</th> -->
+                                                  <th>상세 내용</th>
+                                                  <th>진행기간</th>
+                                                  <th>상태</th>
+                                                  <!-- <th>price</th> -->
+                                                  <th></th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr class="tr-shadow">
+                                                  <td>
+                                                      <label class="au-checkbox">
+                                                          <input type="checkbox">
+                                                          <span class="au-checkmark"></span>
+                                                      </label>
+                                                  </td>
+                                                  <td>오픈 이벤트</td>
+                                                  <!-- <td>
+                                                      <span class="block-email">lori@example.com</span>
+                                                  </td> -->
+                                                  <td class="desc">Samsung S8 Black</td>
+                                                  <td>2018-09-27 02:12</td>
+                                                  <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">비활성</option>
+                                                            <option value="" selected="selected">활성화</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Lori Lynch</td>
-                                                <!-- <td>
-                                                    <span class="block-email">john@example.com</span>
-                                                </td> -->
-                                                <td class="desc">iPhone X 64Gb Grey</td>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>
-                                                  <div class="rs-select2--trans rs-select2--sm">
-                                                      <select class="js-select2" name="property">
-                                                          <option value="">비활성</option>
-                                                          <option value="" selected="selected">활성화</option>
-                                                      </select>
-                                                      <div class="dropDownSelect2"></div>
-                                                  </div>
-                                                </td>
-                                                <!-- <td>$999.00</td> -->
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form'">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
+                                                      <!-- <span class="status--process">Processed</span> -->
+                                                  </td>
+                                                  <!-- <td>$679.00</td> -->
+                                                  <td>
+                                                      <div class="table-data-feature">
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                              <i class="zmdi zmdi-mail-send"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form'">
+                                                              <i class="zmdi zmdi-edit"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                              <i class="zmdi zmdi-delete"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                              <i class="zmdi zmdi-more"></i>
+                                                          </button>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                              <tr class="spacer"></tr>
+                                              <tr class="tr-shadow">
+                                                  <td>
+                                                      <label class="au-checkbox">
+                                                          <input type="checkbox">
+                                                          <span class="au-checkmark"></span>
+                                                      </label>
+                                                  </td>
+                                                  <td>Lori Lynch</td>
+                                                  <!-- <td>
+                                                      <span class="block-email">john@example.com</span>
+                                                  </td> -->
+                                                  <td class="desc">iPhone X 64Gb Grey</td>
+                                                  <td>2018-09-29 05:57</td>
+                                                  <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">비활성</option>
+                                                            <option value="" selected="selected">활성화</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Lori Lynch</td>
-                                                <!-- <td>
-                                                    <span class="block-email">lyn@example.com</span>
-                                                </td> -->
-                                                <td class="desc">iPhone X 256Gb Black</td>
-                                                <td>2018-09-25 19:03</td>
-                                                <td>
-                                                  <div class="rs-select2--trans rs-select2--sm">
-                                                      <select class="js-select2" name="property">
-                                                          <option value="">비활성</option>
-                                                          <option value="" selected="selected">활성화</option>
-                                                      </select>
-                                                      <div class="dropDownSelect2"></div>
-                                                  </div>
-                                                </td>
-                                                <!-- <td>$1199.00</td> -->
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
+                                                  </td>
+                                                  <!-- <td>$999.00</td> -->
+                                                  <td>
+                                                      <div class="table-data-feature">
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                              <i class="zmdi zmdi-mail-send"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form'">
+                                                              <i class="zmdi zmdi-edit"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                              <i class="zmdi zmdi-delete"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                              <i class="zmdi zmdi-more"></i>
+                                                          </button>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                              <tr class="spacer"></tr>
+                                              <tr class="tr-shadow">
+                                                  <td>
+                                                      <label class="au-checkbox">
+                                                          <input type="checkbox">
+                                                          <span class="au-checkmark"></span>
+                                                      </label>
+                                                  </td>
+                                                  <td>Lori Lynch</td>
+                                                  <!-- <td>
+                                                      <span class="block-email">lyn@example.com</span>
+                                                  </td> -->
+                                                  <td class="desc">iPhone X 256Gb Black</td>
+                                                  <td>2018-09-25 19:03</td>
+                                                  <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">비활성</option>
+                                                            <option value="" selected="selected">활성화</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Lori Lynch</td>
-                                                <!-- <td>
-                                                    <span class="block-email">doe@example.com</span>
-                                                </td> -->
-                                                <td class="desc">Camera C430W 4k</td>
-                                                <td>2018-09-24 19:10</td>
-                                                <td>
-                                                  <div class="rs-select2--trans rs-select2--sm">
-                                                      <select class="js-select2" name="property">
-                                                          <option value="">비활성</option>
-                                                          <option value="" selected="selected">활성화</option>
-                                                      </select>
-                                                      <div class="dropDownSelect2"></div>
-                                                  </div>
-                                                </td>
-                                                <!-- <td>$699.00</td> -->
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
+                                                  </td>
+                                                  <!-- <td>$1199.00</td> -->
+                                                  <td>
+                                                      <div class="table-data-feature">
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                              <i class="zmdi zmdi-mail-send"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                              <i class="zmdi zmdi-edit"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                              <i class="zmdi zmdi-delete"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                              <i class="zmdi zmdi-more"></i>
+                                                          </button>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                              <tr class="spacer"></tr>
+                                              <tr class="tr-shadow">
+                                                  <td>
+                                                      <label class="au-checkbox">
+                                                          <input type="checkbox">
+                                                          <span class="au-checkmark"></span>
+                                                      </label>
+                                                  </td>
+                                                  <td>Lori Lynch</td>
+                                                  <!-- <td>
+                                                      <span class="block-email">doe@example.com</span>
+                                                  </td> -->
+                                                  <td class="desc">Camera C430W 4k</td>
+                                                  <td>2018-09-24 19:10</td>
+                                                  <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">비활성</option>
+                                                            <option value="" selected="selected">활성화</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE -->
-                            </div>
-                        </div>
-                        <div class="row m-t-30">
-                            <div class="col-md-12">
+                                                  </td>
+                                                  <!-- <td>$699.00</td> -->
+                                                  <td>
+                                                      <div class="table-data-feature">
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                              <i class="zmdi zmdi-mail-send"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                              <i class="zmdi zmdi-edit"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                              <i class="zmdi zmdi-delete"></i>
+                                                          </button>
+                                                          <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                              <i class="zmdi zmdi-more"></i>
+                                                          </button>
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                  <!-- END DATA TABLE -->
+                              </div>
+                          </div>
+                          <div class="row m-t-30">
+                              <div class="col-md-12">
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-auto">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-xl-auto">
+                                  <div class="copyright">
+                                      <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-      <!--start footer-->
-        <div class="footer-main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-top-box">
-                            <h3>사업자 정보</h3>
-                            <ul class="list-time">
-                                <li>주소지: 노원구 공릉로 232 서울과학기술대학교</li> <li>대표자:이현주,배진환,권찬미,홍성웅</li>
-                                <li>고객 센터:010-5239-7894</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-top-box">
-                            <h3>이용약관</h3>
-                            <ul class="list-time">
-                            <li><a href="/policy">More</a></li>
-                            <li>
-                        </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-top-box">
-                            <h3>개인정보 처리 방침</h3>
-                            <ul class="list-time">
-                                <li><a href="/privacy">More</a></li>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-        </div>
-    <!--end footer-->
-    </div>
-
-
+        <!--start footer-->
+          <div class="footer-main">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-12 col-sm-12">
+                          <div class="footer-top-box">
+                              <h3>사업자 정보</h3>
+                              <ul class="list-time">
+                                  <li>주소지: 노원구 공릉로 232 서울과학기술대학교</li> <li>대표자:이현주,배진환,권찬미,홍성웅</li>
+                                  <li>고객 센터:010-5239-7894</li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12 col-sm-12">
+                          <div class="footer-top-box">
+                              <h3>이용약관</h3>
+                              <ul class="list-time">
+                              <li><a href="/policy">More</a></li>
+                              <li>
+                          </ul>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12 col-sm-12">
+                          <div class="footer-top-box">
+                              <h3>개인정보 처리 방침</h3>
+                              <ul class="list-time">
+                                  <li><a href="/privacy">More</a></li>
+                          </div>
+                      </div>
+                  </div>
+                  <hr>
+              </div>
+          </div>
+      <!--end footer-->
+      </div>
 
 
-    <!-- Jquery JS-->
-    <script src="/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="/vendor/slick/slick.min.js">
-    </script>
-    <script src="/vendor/wow/wow.min.js"></script>
-    <script src="/vendor/animsition/animsition.min.js"></script>
-    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="/vendor/select2/select2.min.js">
-    </script>
 
-    <!-- Main JS-->
-    <script src="/js/admin_main.js"></script>
 
-</body>
+      <!-- Jquery JS-->
+      <script src="/vendor/jquery-3.2.1.min.js"></script>
+      <!-- Bootstrap JS-->
+      <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+      <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+      <!-- Vendor JS       -->
+      <script src="/vendor/slick/slick.min.js">
+      </script>
+      <script src="/vendor/wow/wow.min.js"></script>
+      <script src="/vendor/animsition/animsition.min.js"></script>
+      <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+      </script>
+      <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+      <script src="/vendor/counter-up/jquery.counterup.min.js">
+      </script>
+      <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+      <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+      <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+      <script src="/vendor/select2/select2.min.js">
+      </script>
 
-</html>
-<!-- end document-->
+      <!-- Main JS-->
+      <script src="/js/admin_main.js"></script>
+
+  </body>
+
+  </html>
+  <!-- end document-->

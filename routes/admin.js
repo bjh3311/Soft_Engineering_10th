@@ -27,6 +27,11 @@ router.get('/modify', function(req, res){
     res.render('admin/modify');
 });
 
+// 판매 정보 통계
+router.get('/sales_statistics',function(req,res){
+  res.render('admin/sales_statistics');
+})
+
 // 상품 관리
 
 router.get('/shop', async function(req,res){

@@ -61,80 +61,108 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="/images/logo.png" alt="AmoAmo" />
+      <!-- HEADER MOBILE-->
+      <header class="header-mobile d-block d-lg-none">
+          <div class="header-mobile__bar">
+              <div class="container-fluid">
+                  <div class="header-mobile-inner">
+                      <a class="logo" href="/index">
+                          <img src="/images/logo.png" alt="AmoAmo" />
+                      </a>
+                      <button class="hamburger hamburger--slider" type="button">
+                          <span class="hamburger-box">
+                              <span class="hamburger-inner"></span>
+                          </span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <nav class="navbar-mobile">
+              <div class="container-fluid">
+                  <ul class="navbar-mobile__list list-unstyled">
+                      <li>
+                        <a href="/admin/">
+                            <i class="fas fa-desktop"></i>관리자 메인 화면</a>
+                      </li>
+                      <li>
+                          <a href="/admin/shop">
+                              <i class="fas fa-chart-bar"></i>상품 관리</a>
+                      </li>
+                      <li>
+                          <a href="/admin/table">
+                              <i class="fas fa-table"></i>공지 이벤트</a>
+                      </li>
+                      <li class="has-sub">
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리</a>
+                          <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              <li>
+                                  <a href="/admin/sales_statistics">주문 내역 확인</a>
+                              </li>
+                              <li>
+                                  <a href="/admin/sales_statistics">판매 정보 통계</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="/">
+                              <i class="zmdi zmdi-power"></i>로그아웃</a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+      <!-- END HEADER MOBILE-->
+
+      <!-- MENU SIDEBAR-->
+      <aside class="menu-sidebar d-none d-lg-block">
+          <div class="logo">
+              <a href="#">
+                  <img src="/images/logo.png" alt="AmoAmo" />
+              </a>
+          </div>
+          <div class="menu-sidebar__content js-scrollbar1">
+              <nav class="navbar-sidebar">
+                  <ul class="list-unstyled navbar__list">
+                      <li>
+                         <a href ="/admin/">
+                             <i class="fas fa-desktop"></i>관리자 메인 화면</a>
+                      </li>
+                      <li class="active">
+                          <a href="/admin/shop">
+                              <i class="fas fa-chart-bar"></i>상품 관리</a>
+                      </li>
+                      <li>
+                          <a href="/admin/table">
+                              <i class="fas fa-table"></i>공지 이벤트</a>
+                      </li>
+                      <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                          <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리
                         </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>상품 관리</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>공지 이벤트</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>로그아웃</a>
-                        </li>
-                            </a>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                          <li>
+                            <a href="/admin/sales_statistics">
+                              <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
+                          </li>
+                          <li>
+                            <a href="/admin/sales_statistics">
+                              <i class="fas fa-tachometer-alt"></i>판매 정보 통계</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                          <a href="/">
+                              <i class="zmdi zmdi-power"></i>로그아웃</a>
+                      </li>
 
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo">
-                <a href="#">
-                    <img src="/images/logo.png" alt="AmoAmo" />
-                </a>
-            </div>
-            <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                        <li>
-                           <a href ="indexAdmin.html">
-                               <i class="fas fa-desktop"></i>관리자 메인 화면</a>
-                        </li>
-                        <li class="active">
-                            <a href="AdminShop.html">
-                                <i class="fas fa-chart-bar"></i>상품 관리</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>공지 이벤트</a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                <i class="zmdi zmdi-power"></i>로그아웃</a>
-                        </li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <!-- END MENU SIDEBAR-->
+                          </ul>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </aside>
+      <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
@@ -168,7 +196,7 @@
                 <!-- /.navbar-collapse -->
 
                 <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
+                <!-- <div class="attr-nav">
                     <ul>
                         <li class="side-menu">
                         <a href="AdminShop.html" style="padding-right: 50px">
@@ -176,7 +204,7 @@
 					    </a>
                        </li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- End Atribute Navigation -->
             </header>
 
