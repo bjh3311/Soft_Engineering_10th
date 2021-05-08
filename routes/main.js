@@ -64,6 +64,16 @@ router.get('/gallery',function(req,res){
   });
 })
 
+// 주문 내역
+router.get('/order_list',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  res.render('main/order_list',{
+    username:username,
+    errors:errors
+  });
+})
+
 // Post Login // 3
 router.post('/login',
   function(req,res,next){
