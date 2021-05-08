@@ -97,7 +97,7 @@
                               <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리</a>
                           <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                               <li>
-                                  <a href="/admin/order_list">주문 내역 확인</a>
+                                  <a href="/admin/sales_statistics">주문 내역 확인</a>
                               </li>
                               <li>
                                   <a href="/admin/sales_statistics">판매 정보 통계</a>
@@ -142,7 +142,7 @@
                         </a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                           <li>
-                            <a href="/admin/order_list">
+                            <a href="/admin/sales_statistics">
                               <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
                           </li>
                           <li>
@@ -193,39 +193,79 @@
                             <div class="col-xl-auto">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">
-                                  <!-- Start Cart  -->
+                                  <!-- Start Wishlist  -->
                                   기간:
                                   <form method="post">
-                                  	<input type="date">~<input type="date">&nbsp&nbsp<input type="submit" value="Submit"></form>
-                                  <div class="cart-box-main">
-                                      <div class="container">
-                                          <div class="row new-account-login">
-                                              <div class="col-sm-6 col-lg-6 mb-3">
-                                                  <div class="title-left">
-                                                      <h3>총 판매금액</h3>
-                                                  </div>
-                                                  1억
-                                                  <br>
-                                                  <br>
-                                                  <br>
-                                                  <br>
-                                                  <br>
-                                              </div>
-                                          </div>
-                                          <div class="row">
-                                              <div class="col-sm-6 col-lg-6 mb-3">
-                                                  <div class="checkout-address">
-                                                      <div class="title-left">
-                                                          <h3>가장 많이 판매된 (상품)/(카테고리)</h3>
-                                                      </div>
-                                                      예가체프 / 입문용원두
-                                                  </div>
-                                              </div>
-                                          </div>
+    	                               <input type="date">~<input type="date">&nbsp&nbsp<input type="submit" value="Submit"></form>
 
-                                      </div>
-                                  </div>
-                                  <!-- End Cart -->
+                                     <div class="wishlist-box-main">
+                                       <div class="container">
+                                         <div class="row">
+                                           <div class="col-lg-12">
+                                             <div class="table-main table-responsive">
+                                               <table class="table">
+                                                 <thead>
+                                                   <tr>
+                                                     <th>날짜</th>
+                                                     <th>상품명 </th>
+                                                     <th>가격 </th>
+                                                     <th>주문 상태</th>
+                                                     <th>비고</th>
+                                                   </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                   <tr>
+                                                     <td class="thumbnail-img">
+                                                       <a href="#">2021-05-05</a>
+                                                      </td>
+                                                      <td class="name-pr">
+                                                        <a href="#">루왁커피원두</a>
+                                                      </td>
+                                                      <td class="price-pr">
+                                                        <p>100만원</p>
+                                                      </td>
+                                                      <td class="quantity-box">결제완료</td>
+                                                      <td class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">배송하기</a>
+                                                      </td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td class="thumbnail-img">
+                                                        <a href="#">2021-05-04</a>
+                                                      </td>
+                                                      <td class="name-pr">
+                                                        <a href="#">르완다 버번</a>
+                                                      </td>
+                                                      <td class="price-pr">
+                                                        <p>1000원</p>
+                                                      </td>
+                                                      <td class="quantity-box">배송완료</td>
+                                                      <td class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">상품평가</a>
+                                                      </td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td class="thumbnail-img">
+                                                        <a href="#">2021-05-03</a>
+                                                      </td>
+                                                      <td class="name-pr">
+                                                        <a href="#">예가체프</a>
+                                                      </td>
+                                                      <td class="price-pr">
+                                                        <p>3000원</p>
+                                                      </td>
+                                                      <td class="quantity-box">구매 확정</td>
+                                                      <td class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">상품평가</a>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+    <!-- End Wishlist -->
                                 </h3>
                                 <div class="table-data__tool">
                                 </div>

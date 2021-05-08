@@ -27,10 +27,15 @@ router.get('/modify', function(req, res){
     res.render('admin/modify');
 });
 
+// 주문 내역
+router.get('/order_list',function(req,res){
+  res.render('admin/order_list');
+});
+
 // 판매 정보 통계
 router.get('/sales_statistics',function(req,res){
   res.render('admin/sales_statistics');
-})
+});
 
 // 상품 관리
 
