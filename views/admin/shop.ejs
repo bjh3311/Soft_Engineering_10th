@@ -20,7 +20,7 @@
 
     <!-- Bootstrap CSS-->
     <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
     <!-- Site CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- Responsive CSS -->
@@ -46,20 +46,15 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Site Metas -->
-    <!-- <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content=""> -->
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
 
-</head>
-
 <body class="animsition">
+
+
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -168,44 +163,6 @@
         <div class="page-container">
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                            <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <div class="toolbar-sorter-right">
-                                    <span>Sort by </span>
-                                    <div class="btn-group bootstrap-select show-tick form-control show">
-                                        <button type="button" class="btn dropdown-toggle btn-default btn-light" data-toggle="dropdown" role="button" data-id="basic" title="Popularity" aria-expanded="false">
-                                            <span class="filter-option pull-left">Popularity</span>
-                                            <span class="bs-caret">
-                                                <span class="caret"></span>
-                                            </span>
-                                        </button>
-                                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD" tabindex="-98">
-                                        <option data-display="Select">Nothing</option>
-                                        <option value="1">Popularity</option>
-                                        <option value="2">High Price → High Price</option>
-                                        <option value="3">Low Price → High Price</option>
-                                        <option value="4">Best Selling</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <p>Showing all 4 results</p>
-                            </div>
-                            <div class="col-12 col-sm-4 text-center text-sm-right">
-                                <ul class="nav nav-tabs ml-auto">
-                                    <li>
-                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
-                                    </li>
-                                    <!--<li>
-                                        <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
-                                    </li>-->
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </header>
 
 
@@ -214,9 +171,26 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
                     <div class="right-product-box">
-                           <a href="/admin/register">
-                               <button type="button" style="width: 120pt; height: 30pt" class="btn btn-outline-success">상품 등록</button>
-                           </a>
+                           <div class="product-item-filter row">
+                             <div class="col-12 col-sm-8 text-center text-sm-left">
+                                 <div class="toolbar-sorter-right">
+                                     <span>Sort by </span>
+                                     <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                            <option data-display="Select">Nothing</option>
+                            <option value="1">Popularity</option>
+                            <option value="2">High Price → High Price</option>
+                            <option value="3">Low Price → High Price</option>
+                            <option value="4">Best Selling</option>
+                         </select>
+                                 </div>
+                                 <p>Showing all 4 results</p>
+                             </div>
+                             <div class="col-12 col-sm-4 text-center text-sm-right">
+                               <a href="/admin/register">
+                                   <button type="button" style="width: 120pt; height: 30pt" class="btn btn-outline-success">상품 등록</button>
+                               </a>
+                             </div>
+                           </div>
                         <div class="product-categorie-box">
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
@@ -444,7 +418,7 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
                         <div class="search-product">
                             <form action="#">
@@ -459,7 +433,7 @@
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 <div class="list-group-collapse sub-men">
                                     <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits & Drinks <small class="text-muted">(100)</small>
-								</a>
+                        </a>
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active">Fruits 1 <small class="text-muted">(50)</small></a>
@@ -472,8 +446,8 @@
                                 </div>
                                 <div class="list-group-collapse sub-men">
                                     <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables
-								<small class="text-muted">(50)</small>
-								</a>
+                        <small class="text-muted">(50)</small>
+                        </a>
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action">Vegetables 1 <small class="text-muted">(10)</small></a>
@@ -565,12 +539,31 @@
     <script src="/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="/vendor/select2/select2.min.js">
-    </script>
+    <script src="/vendor/select2/select2.min.js"></script>
 
     <!-- Main JS-->
     <script src="/js/admin_main.js"></script>
 
+
+<!--user-->
+    <!-- ALL JS FILES -->
+    <!-- <script src="/js/jquery-3.2.1.min.js"></script> -->
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="/js/jquery.superslides.min.js"></script>
+    <script src="/js/bootstrap-select.js"></script>
+    <script src="/js/inewsticker.js"></script>
+    <script src="/js/bootsnav.js."></script>
+    <script src="/js/images-loded.min.js"></script>
+    <script src="/js/isotope.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/baguetteBox.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script>
+    <script src="/js/form-validator.min.js"></script>
+    <script src="/js/contact-form-script.js"></script>
+    <script src="/js/custom.js"></script>
 </body>
 
 </html>
