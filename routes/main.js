@@ -27,13 +27,27 @@ router.get('/policy', function(req, res){
 
 //about us --
 router.get('/about',function(req,res){
-  res.render('main/about');
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/about',{
+    username:username,
+    errors:errors,
+  });
 });
 
 
 //contact하기 --
 router.get('/contact-us',function(req,res){
-  res.render('main/contact-us');
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/contact-us',{
+    username:username,
+    errors:errors,
+  });
 });
 
 // cart --
@@ -49,7 +63,26 @@ router.get('/cart',function(req,res){
 
 // gallery --
 router.get('/gallery',function(req,res){
-  res.render('main/gallery',);
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/gallery',{
+    username:username,
+    errors:errors,
+  });
+})
+
+// order_list
+router.get('/order_list',function(req,res){
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/order_list',{
+    username:username,
+    errors:errors,
+  });
 })
 
 router.get('/category/:origin', async function(req,res){
@@ -88,7 +121,7 @@ router.get('/order_list',function(req,res){
     username:username,
     errors:errors
   });
-})
+});
 
 
 // Post Login // 3
