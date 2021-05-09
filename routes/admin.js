@@ -5,7 +5,7 @@ var router = express.Router();
 var Product = require('../models/Product');
 
 // Index
-router.get('/', function(req, res){
+router.get('/index', function(req, res){
     res.render('admin/index');
 });
 router.get('/table', function(req, res){
