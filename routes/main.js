@@ -25,20 +25,26 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
-//about us -- 
+//about us --
 router.get('/about',function(req,res){
   res.render('main/about');
 });
 
 
-//contact하기 -- 
+//contact하기 --
 router.get('/contact-us',function(req,res){
   res.render('main/contact-us');
 });
 
-// cart -- 
+// cart --
 router.get('/cart',function(req,res){
-  res.render('main/cart');
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/cart', {
+    username:username,
+    errors:errors,
+  });
 })
 
 // gallery --
@@ -50,7 +56,7 @@ router.get('/category/:origin', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
   var products = await Product.find({'origin':req.params.origin});
-  
+
   res.render('main/category', {
     username:username,
     errors:errors,
@@ -73,7 +79,7 @@ router.get('/:id', function(req, res){
     });
 });
 
-// Post Login 
+// Post Login
 // 주문 내역
 router.get('/order_list',function(req,res){
   var username = req.flash('username')[0];
