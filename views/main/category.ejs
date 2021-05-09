@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>카테고리 화면</title>
+    <title>아모아모 - 상품 목록</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +28,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/custom.css">
 
+
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -36,114 +38,115 @@
 </head>
 
 <body>
-    <!-- Start Main Top -->
-    <div class="main-top">
-        <div class="container-fluid">
-            <div class="row" float="right">
-              <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo" alt="" height="30px"></a>
-            </div>
-        </div>
-    </div>
-    <!-- End Main Top -->
 
-    <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-             <div class="container-fluid">
-            <div class="row" float="right">
-            <% if(isAuthenticated){ %>
-                <span><%= currentUser.username %> 환영합니다.</span>
-                <button type="button" onclick="location.href='/logout'">Logout</button>
-            <% } else { %>
-                <div class="login">
-                    <form action="/login" method="post">
-                      ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
-                      PASSWORD <input type="password" name="password" id="password" placeholder="password">
-                      Login<input class="" type="submit" value="Submit">
-                    </form>
-                  </div>
-            <button type="button" class="register" onclick="location.href='/users/signup'">ID/PW 찾기</button>
-            <button type="button" class="register" onclick="location.href='/users/signup'">회원가입</button>
-            <% } %>
-        </div>
-            </div>
-        </div>
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-                <!-- End Header Navigation -->
-                <!--, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                            <ul class="dropdown-menu">
-								<li><a href="/shop">Sidebar Shop</a></li>
-								<li><a href="/shop-detail">Shop Detail</a></li>
-                                <li><a href="/cart">Cart</a></li>
-                                <li><a href="/checkout">Checkout</a></li>
-                                <li><a href="/my-account">My Account</a></li>
-                                <li><a href="/wishlist">Wishlist</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact-us">Contact Us</a></li>
-                    </ul>
+  <!-- Start Main Top -->
+  <div class="main-top">
+      <div class="container-fluid">
+          <div class="row" float="right">
+            <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo" alt="" height="30px"></a>
+          </div>
+      </div>
+  </div>
+  <!-- End Main Top -->
+
+  <!-- Start Main Top -->
+  <header class="main-header">
+      <!-- Start Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+           <div class="container-fluid">
+          <div class="row" float="right">
+          <% if(isAuthenticated){ %>
+              <span><%= currentUser.username %> 환영합니다.</span>
+              <button type="button" onclick="location.href='/logout'">Logout</button>
+          <% } else { %>
+              <div class="login">
+                  <form action="/login" method="post">
+                    ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
+                    PASSWORD <input type="password" name="password" id="password" placeholder="password">
+                    Login<input class="" type="submit" value="Submit">
+                  </form>
                 </div>
-                <!-- /.navbar-collapse -->
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu">
-							<a href="#">
-								<i class="fa fa-shopping-bag"></i>
-								<p>My Cart</p>
-							</a>
-						</li>
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
+          <button type="button" class="register" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+          <button type="button" class="register" onclick="location.href='/users/signup'">회원가입</button>
+          <% } %>
+      </div>
+          </div>
+          <div class="container">
+              <!-- Start Header Navigation -->
+              <div class="navbar-header">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa fa-bars"></i>
+              </button>
+          </div>
+              <!-- End Header Navigation -->
+              <!--, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="navbar-menu">
+                  <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
+                      <li class="dropdown active">
+                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                          <ul class="dropdown-menu">
+              <li><a href="/shop">Sidebar Shop</a></li>
+              <li><a href="/shop-detail">Shop Detail</a></li>
+                              <li><a href="/cart">Cart</a></li>
+                              <li><a href="/checkout">Checkout</a></li>
+                              <li><a href="/my-account">My Account</a></li>
+                              <li><a href="/wishlist">Wishlist</a></li>
+                              <li><a href="/order_list">Orderlist</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/contact-us">Contact Us</a></li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+              <!-- Start Atribute Navigation -->
+              <div class="attr-nav">
+                  <ul>
+                      <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                      <li class="side-menu">
+            <a href="#">
+              <i class="fa fa-shopping-bag"></i>
+              <p>My Cart</p>
+            </a>
+          </li>
+                  </ul>
+              </div>
+              <!-- End Atribute Navigation -->
+          </div>
+          <!-- Start Side Menu -->
+          <div class="side">
+              <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+              <li class="cart-box">
+                  <ul class="cart-list">
+                      <li>
+                          <a href="#" class="photo"><img src="/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                          <h6><a href="#">Delica omtantur </a></h6>
+                          <p>1x - <span class="price">$80.00</span></p>
+                      </li>
+                      <li>
+                          <a href="#" class="photo"><img src="/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                          <h6><a href="#">Omnes ocurreret</a></h6>
+                          <p>1x - <span class="price">$60.00</span></p>
+                      </li>
+                      <li>
+                          <a href="#" class="photo"><img src="/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                          <h6><a href="#">Agam facilisis</a></h6>
+                          <p>1x - <span class="price">$40.00</span></p>
+                      </li>
+                      <li class="total">
+                          <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                          <span class="float-right"><strong>Total</strong>: $180.00</span>
+                      </li>
+                  </ul>
+              </li>
+          </div>
+          <!-- End Side Menu -->
+      </nav>
+      <!-- End Navigation -->
+  </header>
+  <!-- End Main Top -->
 
     <!-- Start Top Search -->
     <div class="top-search">
@@ -162,10 +165,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Shop</h2>
+                    <h2>상품 목록</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Shop</li>
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active" style="color: white">상품 목록</li>
                     </ul>
                 </div>
             </div>
@@ -184,14 +187,14 @@
                                 <div class="toolbar-sorter-right">
                                     <span>Sort by </span>
                                     <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-									<option data-display="Select">Nothing</option>
-									<option value="1">Popularity</option>
-									<option value="2">High Price → High Price</option>
-									<option value="3">Low Price → High Price</option>
-									<option value="4">Best Selling</option>
-								</select>
+                           <option data-display="Select">Nothing</option>
+                           <option value="1">Popularity</option>
+                           <option value="2">High Price → High Price</option>
+                           <option value="3">Low Price → High Price</option>
+                           <option value="4">Best Selling</option>
+                        </select>
                                 </div>
-                               
+
                             </div>
                             <div class="col-12 col-sm-4 text-center text-sm-right">
                                 <ul class="nav nav-tabs ml-auto">
@@ -229,7 +232,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <% }) %>                                      
+                                        <% }) %>
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
@@ -259,7 +262,7 @@
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a href="파푸아.html" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                        </ul>                                                    
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
@@ -268,15 +271,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
-                                                <div class="box-img-hover">          
+                                                <div class="box-img-hover">
                                                     <img src="/images/pro5-3.jpg" class="img-fluid" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a href="에티오피아.html" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            
+
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
@@ -285,9 +288,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                                                       
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">  
-                                                         
+
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +396,7 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
                         <div class="search-product">
                             <form action="#">
@@ -408,20 +411,20 @@
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 <div class="list-group-collapse sub-men">
                                     <a class="list-group-item list-group-item-action " href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">원두 종류 <small class="text-muted">(6)</small>
-								</a>
+                        </a>
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="/category/4" class="list-group-item list-group-item-action">입문자용 원두 <small class="text-muted">(1)</small></a>
                                             <a href="/category/1" class="list-group-item list-group-item-action active">일반 원두 <small class="text-muted">(3)</small></a>
-                                            <a href="/category/3" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted">(2)</small></a>           
+                                            <a href="/category/3" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted">(2)</small></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group-collapse sub-men">        
-								</a>
+                                <div class="list-group-collapse sub-men">
+                        </a>
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                     </div>
-                                </div>                     
+                                </div>
                             </div>
                         </div>
                         <div class="filter-price-left">
@@ -442,6 +445,12 @@
         </div>
     </div>
     <!-- End Shop Page -->
+
+
+
+
+
+    <!-- Start Footer  -->
     <footer>
         <div class="footer-main">
             <div class="container">
@@ -460,8 +469,7 @@
                             <h3>이용약관</h3>
                             <ul class="list-time">
                             <li><a href="/policy">More</a></li>
-                            <li>
-                        </ul>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
@@ -469,6 +477,7 @@
                             <h3>개인정보 처리 방침</h3>
                             <ul class="list-time">
                                 <li><a href="/privacy">More</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -477,26 +486,31 @@
         </div>
     </footer>
     <!-- End Footer  -->
+
+
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="js/jquery.superslides.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <script src="js/inewsticker.js"></script>
-    <script src="js/bootsnav.js."></script>
-    <script src="js/images-loded.min.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/baguetteBox.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="/js/jquery.superslides.min.js"></script>
+    <script src="/js/bootstrap-select.js"></script>
+    <script src="/js/inewsticker.js"></script>
+    <script src="/js/bootsnav.js"></script>
+    <script src="/js/images-loded.min.js"></script>
+    <script src="/js/isotope.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/baguetteBox.min.js"></script>
+    <script src="/js/form-validator.min.js"></script>
+    <script src="/js/contact-form-script.js"></script>
+    <script src="/js/custom.js"></script>
+
+<!--성웅이가 추가한듯-->
+    <!-- <script src="/js/jquery-ui.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script> -->
+
 </body>
 
 </html>

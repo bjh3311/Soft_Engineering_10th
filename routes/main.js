@@ -25,32 +25,75 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
-//about us -- 
+router.get('/destination_select',function(req,res){
+  res.render('main/destination_select');
+});
+
+//about us --
 router.get('/about',function(req,res){
-  res.render('main/about');
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/about',{
+    username:username,
+    errors:errors,
+  });
 });
 
 
-//contact하기 -- 
+//contact하기 --
 router.get('/contact-us',function(req,res){
-  res.render('main/contact-us');
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/contact-us',{
+    username:username,
+    errors:errors,
+  });
 });
 
-// cart -- 
+// cart --
 router.get('/cart',function(req,res){
-  res.render('main/cart');
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/cart', {
+    username:username,
+    errors:errors,
+  });
 })
 
 // gallery --
 router.get('/gallery',function(req,res){
-  res.render('main/gallery',);
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/gallery',{
+    username:username,
+    errors:errors,
+  });
+})
+
+// order_list
+router.get('/order_list',function(req,res){
+
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/order_list',{
+    username:username,
+    errors:errors,
+  });
 })
 
 router.get('/category/:origin', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
   var products = await Product.find({'origin':req.params.origin});
-  
+
   res.render('main/category', {
     username:username,
     errors:errors,
@@ -73,7 +116,7 @@ router.get('/:id', function(req, res){
     });
 });
 
-// Post Login 
+// Post Login
 // 주문 내역
 router.get('/order_list',function(req,res){
   var username = req.flash('username')[0];
@@ -82,7 +125,8 @@ router.get('/order_list',function(req,res){
     username:username,
     errors:errors
   });
-})
+});
+
 
 // Post Login // 3
 
