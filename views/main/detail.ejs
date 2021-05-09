@@ -28,10 +28,20 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/custom.css">
 
+    <!--popup css-->
+    <link rel="stylesheet" href="/css/popup.css">
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!--popup-->
+    <script language="javascript">
+      function showPopup(){
+        window.open("/destination_select","a","width=400,height=300,left=100,top=50");
+      }
+    </script>
 
 </head>
 
@@ -226,13 +236,23 @@
                      <div class="cart-and-bay-btn">
                         <a class="btn hvr-hover" data-fancybox-close="" href="#">바로 구매 </a>
                         <a class="btn hvr-hover" data-fancybox-close="" href="#">장바구니 담기</a><br><br>
-                        <a class="btn hvr-hover" data-fancybox-close="" href="#">배송지 선택</a>
-                        <form>
+                        <a class="btn hvr-hover" data-fancybox-close="" onclick="showPopup()">배송지 선택</a>
+                        <!-- <form>
                            <select name="배송지">
                               <option value="none">기본 배송지</option>
                            </select>
-                        </form>
+                        </form> -->
                      </div>
+                  </div>
+
+                  <div id="popup_choice" class="overlay">
+                    <div class="popup">
+                  		<h2>Here i am</h2>
+                  		<a class="close" href="#">&times;</a>
+                  		<div class="content">
+                  			Thank to pop me out of that button, but now i'm done so you can close this window.
+                  		</div>
+                  	</div>
                   </div>
                     </div>
                 </div>

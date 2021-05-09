@@ -25,6 +25,10 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
+router.get('/destination_select',function(req,res){
+  res.render('main/destination_select');
+});
+
 //about us --
 router.get('/about',function(req,res){
 
