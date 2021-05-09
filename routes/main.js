@@ -3,14 +3,16 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('../config/passport');
-
+var Product = require('../models/Product');
 // Main
-router.get('/', function(req, res){
+router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  res.render('main/index', {
+  var products = await Product.find();
+    res.render('main/index', {
     username:username,
-    errors:errors
+    errors:errors,
+    products:products
   });
 });
 
@@ -23,47 +25,55 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
-//about us -- 찬미 추가
+//about us -- 
 router.get('/about',function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  res.render('main/about',{
-    username:username,
-    errors:errors
-  });
+  res.render('main/about');
 });
 
 
-//contact하기 -- 찬미 추가
+//contact하기 -- 
 router.get('/contact-us',function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  res.render('main/contact-us',{
-    username:username,
-    errors:errors
-  });
+  res.render('main/contact-us');
 });
 
-// cart -- 찬미
+// cart -- 
 router.get('/cart',function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  res.render('main/cart',{
-    username:username,
-    errors:errors
-  });
+  res.render('main/cart');
 })
 
-// gallery -- 찬미
+// gallery --
 router.get('/gallery',function(req,res){
+  res.render('main/gallery',);
+})
+
+router.get('/category/:origin', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  res.render('main/gallery',{
+  var products = await Product.find({'origin':req.params.origin});
+  
+  res.render('main/category', {
     username:username,
-    errors:errors
+    errors:errors,
+    products:products
   });
 })
 
+
+router.get('/:id', function(req, res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  Product.findOne({_id:req.params.id})
+    .exec(function(err, product){
+      if(err) return res.json(err);
+      res.render('main/detail', {
+        username:username,
+        errors:errors,
+        product:product
+      });
+    });
+});
+
+// Post Login 
 // 주문 내역
 router.get('/order_list',function(req,res){
   var username = req.flash('username')[0];
@@ -76,6 +86,7 @@ router.get('/order_list',function(req,res){
 
 
 // Post Login // 3
+
 router.post('/login',
   function(req,res,next){
     var errors = {};
@@ -89,9 +100,6 @@ router.post('/login',
       isValid = false;
       errors.password = 'Password is required!';
     }
-
-
-// 찬미 추가
     if(!req.body.name){
       isValid=false;
       errors.name=' name is required!';
