@@ -1,6 +1,11 @@
 
 # Soft_Engineering_10th
 
+# 구조
+* 배송지
+main/category (카테고리) -> main/detail (상품 선택) -> 배송지 버튼 클릭 -> destination_select (팝업 화면) -> 추가 등록 버튼
+-> destination_create (배송지 추가/수정)
+
 
 # front 요구사항 정리 (1차/2차 요구사항)
 
