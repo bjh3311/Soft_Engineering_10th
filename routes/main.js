@@ -29,6 +29,11 @@ router.get('/destination_select',function(req,res){
   res.render('main/destination_select');
 });
 
+// 배송지 추가/수정
+router.get('/destination_create',function(req,res){
+  res.render('main/destination_create');
+});
+
 //about us --
 router.get('/about',function(req,res){
 
