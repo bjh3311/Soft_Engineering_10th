@@ -3,14 +3,18 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/Product');
+var Post = require('../models/Post');
 
 // Index
 router.get('/index', function(req, res){
     res.render('admin/index');
 });
-router.get('/table', function(req, res){
-    res.render('admin/table');
+router.get('/table', async function(req, res){
+  posts = await Post.find();
+    res.render('admin/table', {
+    posts:posts
   });
+});
 
 router.get('/form', function(req, res){
     res.render('admin/form');
