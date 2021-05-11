@@ -262,6 +262,55 @@
                                               </tr>
                                           </thead>
                                           <tbody>
+                                              <% posts.forEach(function(post) { %>
+                                                <tr class="tr-shadow">
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td><%= post.title %></td>
+                                                    <!-- <td>
+                                                        <span class="block-email">lori@example.com</span>
+                                                    </td> -->
+                                                    <td class="desc"><%= post.body %></td>
+                                                    <td><%= post.start %> <br> <%= post.end %></td>
+                                                    <td>
+                                                      <div class="rs-select2--trans rs-select2--sm">
+                                                          <select class="js-select2" name="property">
+                                                              <option value="0">비활성</option>
+                                                              <option value="1" selected="selected">활성화</option>
+                                                          </select>
+                                                          <div class="dropDownSelect2"></div>
+                                                      </div>
+                                                        <!-- <span class="status--process">Processed</span> -->
+                                                    </td>
+                                                    <!-- <td>$679.00</td> -->
+                                                    <td>
+                                                      <img src="/event/<%= post._id %>" width=100 height=100 alt="AmoAmo" />
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                                <i class="zmdi zmdi-mail-send"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form'">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </button>
+                                                            <form action="/posts/<%= post._id %>?_method=delete" method="post">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </form>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="spacer"></tr>
+                                            <% }); %>
                                               <tr class="tr-shadow">
                                                   <td>
                                                       <label class="au-checkbox">

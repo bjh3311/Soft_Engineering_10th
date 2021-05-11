@@ -185,41 +185,51 @@
                                          <strong>Basic Form</strong> Elements
                                      </div>
                                      <div class="card-body card-block">
-                                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                         <form action="/posts" method="post" class="form-horizontal">
                                              <div class="row form-group">
                                                  <div class="col col-md-3">
-                                                     <label for="text-input" class=" form-control-label">제목</label>
+                                                     <label for="title" class=" form-control-label">제목</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
+                                                     <input type="text" id="title" name="title" placeholder="title" class="form-control">
                                                      <small class="form-text text-muted">공지/이벤트 제목</small>
                                                  </div>
                                              </div>
                                              <div class="row form-group">
                                                  <div class="col col-md-3">
-                                                     <label for="text-input" class=" form-control-label">기간</label>
+                                                     <label for="start" class=" form-control-label">시작 날</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
+                                                     <input type="date" id="start" name="start" class="form-control">
                                                      <small class="form-text text-muted">공지/이벤트 기간</small>
                                                  </div>
                                              </div>
                                              <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="end" class=" form-control-label">끝나는 날</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="date" id="end" name="end" class="form-control">
+                                                    <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                </div>
+                                            </div>
+                                             <div class="row form-group">
                                                  <div class="col col-md-3">
-                                                     <label for="textarea-input" class=" form-control-label">내용</label>
+                                                     <label for="body" class=" form-control-label">내용</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                     <textarea name="body" id="body" rows="9" placeholder="Content..." class="form-control"></textarea>
                                                  </div>
                                              </div>
                                              <div class="row form-group">
-                                                 <div class="col col-md-3">
-                                                     <label for="file-input" class=" form-control-label">File input</label>
-                                                 </div>
-                                                 <div class="col-12 col-md-9">
-                                                     <input type="file" id="file-input" name="file-input" class="form-control-file">
-                                                 </div>
-                                             </div>
+                                                <div class="col col-md-3">
+                                                    <label for="file" class=" form-control-label">공지 이미지 등록</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="file" id="file" name="attachment" class="form-control-file">
+                                                </div>
+                                            </div>
+                                             <!--
                                              <div class="row form-group">
                                                  <div class="col col-md-3">
                                                      <label for="file-multiple-input" class=" form-control-label">Multiple File input</label>
@@ -227,16 +237,16 @@
                                                  <div class="col-12 col-md-9">
                                                      <input type="file" id="file-multiple-input" name="file-multiple-input" multiple="" class="form-control-file">
                                                  </div>
-                                             </div>
+                                             </div>-->
+                                             <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                                <button type="reset" class="btn btn-danger btn-sm" onclick="location.href='/admin/table'">
+                                                    <i class="fa fa-ban"></i> Reset
+                                                </button>
+                                            </div>
                                          </form>
-                                     </div>
-                                     <div class="card-footer">
-                                         <button type="submit" class="btn btn-primary btn-sm" onclick="location.href='/admin/table'">
-                                             <i class="fa fa-dot-circle-o"></i> Submit
-                                         </button>
-                                         <button type="reset" class="btn btn-danger btn-sm" onclick="location.href='/admin/table'">
-                                             <i class="fa fa-ban"></i> Reset
-                                         </button>
                                      </div>
                                  </div>
 

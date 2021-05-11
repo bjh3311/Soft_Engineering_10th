@@ -16,11 +16,13 @@ var userSchema = mongoose.Schema({
   },
   name:{
     type:String,
+    required:[true,'Name is required!'],
     trim:true
   },
   email:{
     type:String,
     match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
+    required:[true,'email is required!'],
     trim:true
   },
   right:{
