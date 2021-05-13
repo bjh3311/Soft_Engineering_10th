@@ -16,8 +16,20 @@ router.get('/table', async function(req, res){
   });
 });
 
-router.get('/form', function(req, res){
-    res.render('admin/form');
+router.get('/table_delete',function(req,res){
+  res.render('admin/table_delete');
+});
+
+router.get('/table_detail',function(req,res){
+  res.render('admin/table_detail')
+})
+
+router.get('/form_create', function(req, res){
+    res.render('admin/form_create');
+});
+
+router.get('/form_update', function(req, res){
+    res.render('admin/form_update');
 });
 
 router.get('/register', function(req, res){
