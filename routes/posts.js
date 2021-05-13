@@ -16,7 +16,7 @@ var storage  = multer.diskStorage({ // 2
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
-    Product.create(req.body, function(err, post){
+    Post.create(req.body, function(err, post){
       if(err){
         req.flash('posts', req.body);
         req.flash('errors', util.parseError(err));
@@ -29,38 +29,38 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   
   // show
   router.get('/:id', function(req, res){
-    Product.findOne({_id:req.params.id})
-      .exec(function(err, product){
+    Post.findOne({_id:req.params.id})
+      .exec(function(err, post){
         if(err) return res.json(err);
-        res.render('admin/detail', {product:product});
+        res.render('admin/detail', {post:post});
       });
   });
   
   // edit
   router.get('/:id/edit', function(req, res){
-    var product = req.flash('product')[0];
+    var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
-    if(!product){
-      Product.findOne({_id:req.params.id}, function(err, product){
+    if(!post){
+      Post.findOne({_id:req.params.id}, function(err, post){
           if(err) return res.json(err);
-          res.render('admin/modify', { product:product, errors:errors });
+          res.render('admin/modify', { post:post, errors:errors });
         });
     }
     else {
-      product._id = req.params.id;
-      res.render('admin/modify', { product:product, errors:errors });
+      post._id = req.params.id;
+      res.render('admin/modify', { post:post, errors:errors });
     }
   });
   
   // update
   router.put('/:id',function(req, res){
-    Product.findOneAndUpdate({_id:req.params.id}, req.body, function(err, product){
+    Post.findOneAndUpdate({_id:req.params.id}, req.body, function(err, post){
       if(err){
-        req.flash('product', req.body);
+        req.flash('post', req.body);
         req.flash('errors', util.parseError(err));
-        return res.redirect('/products/'+req.params.id+'/edit');
+        return res.redirect('/posts/'+req.params.id+'/edit');
       }
-      res.redirect('/products/'+req.params.id);
+      res.redirect('/posts/'+req.params.id);
     });
   });
   
@@ -68,7 +68,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
-      res.redirect('/admin/shop');
+      res.redirect('/admin/table');
     });
   });
 module.exports = router;

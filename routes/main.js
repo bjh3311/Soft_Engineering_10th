@@ -104,6 +104,17 @@ router.get('/order_list',function(req,res){
   });
 })
 
+router.get('/category', async function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  var products = await Product.find();
+
+  res.render('main/category', {
+    username:username,
+    errors:errors,
+    products:products
+  });
+})
 router.get('/category/:origin', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
