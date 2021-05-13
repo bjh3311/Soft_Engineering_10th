@@ -2,11 +2,17 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var flash = require('connect-flash'); 
-var session = require('express-session'); 
+var flash = require('connect-flash');
+var session = require('express-session');
 var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
+
+//posts
+
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(bodyParser.json());
 
 // DB setting
 mongoose.set('useNewUrlParser', true);
@@ -31,7 +37,7 @@ app.use(methodOverride('_method'));
 app.use(flash()); // 2
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
-// Passport 
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 

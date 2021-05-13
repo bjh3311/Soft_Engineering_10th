@@ -6,6 +6,20 @@
 main/category (카테고리) -> main/detail (상품 선택) -> 배송지 버튼 클릭 -> destination_select (팝업 화면) -> 추가 등록 버튼
 -> destination_create (배송지 추가/수정)
 
+* post
+[Object: null prototype] {
+  destination_name: '',
+  postcode: '',
+  roadAddress: '전북 정읍시 가곡길 13-8',
+  jibunAddress: '전북 정읍시 영파동 128-1',
+  detailAddress: '',
+  extraAddress: ' (영파동)',
+  destination_number: ''
+}
+
+
+
+
 
 # front 요구사항 정리 (1차/2차 요구사항)
 

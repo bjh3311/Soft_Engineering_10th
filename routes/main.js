@@ -16,6 +16,12 @@ router.get('/', async function(req, res){
   });
 });
 
+
+//test
+router.post('/test',function(req,res){
+
+});
+
 //개인정보
 router.get('/privacy', function(req, res){
   res.render('main/privacy');
@@ -32,6 +38,10 @@ router.get('/destination_select',function(req,res){
 // 배송지 추가/수정
 router.get('/destination_create',function(req,res){
   res.render('main/destination_create');
+});
+
+router.get('/test',function(req,res){
+  res.render('main/test.php');
 });
 
 //about us --
