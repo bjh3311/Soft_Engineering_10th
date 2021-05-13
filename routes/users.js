@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var passport = require('../config/passport');
 var User = require('../models/User');
 var util = require('../util');
 
@@ -13,17 +14,43 @@ router.get('/signup', function(req, res){
 });
 
 // create
-router.post('/', function(req, res){
-  console.log(req.body);
+router.post('/', function(req, res , next){
   User.create(req.body, function(err, user){
     if(err){
       req.flash('user', req.body);
       req.flash('errors', util.parseError(err));
       return res.redirect('/users/signup');
     }
-    res.redirect('/');
-  });
-});
+    next();
+  })},
+  function(req, res, next){
+    var errors = {};
+    var isValid = true;
+
+    if(!req.body.username){
+      isValid = false;
+      console.log("1");
+      errors.username = 'Username is required!';
+    }
+    if(!req.body.password){
+      isValid = false;
+      errors.password = 'Password is required!';
+    }
+    if(isValid){
+      next();
+    }
+    else {
+      req.flash('errors',errors);
+      res.redirect('/');
+    }
+  },
+  passport.authenticate('local-login',{
+    successRedirect : '/',
+    failureRedirect : '/'
+  }
+  )
+);
+
 
 /*
 // show
@@ -75,6 +102,53 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
   });
 });
 */
+
+// Post Login // 3
+
+router.post('/login',
+  function(req,res,next){
+    var errors = {};
+    var isValid = true;
+
+    if(!req.body.username){
+      isValid = false;
+      console.log("1");
+      errors.username = 'Username is required!';
+    }
+    if(!req.body.password){
+      isValid = false;
+      errors.password = 'Password is required!';
+    }
+    if(isValid){
+      next();
+    }
+    else {
+      req.flash('errors',errors);
+      res.redirect('/');
+    }
+  },
+  passport.authenticate('local-login', {
+    successRedirect : '/users/check',
+    failureRedirect : '/'
+  }
+));
+
+router.get('/check', function(req,res){
+  if(req.user.right==true){
+    res.redirect('/admin/index');
+  }
+  else{
+    res.redirect('/');
+  }
+})
+
+// Logout // 4
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+
 module.exports = router;
 
 // functions
