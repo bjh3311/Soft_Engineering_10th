@@ -2,18 +2,17 @@
 
 var express = require('express');
 var router = express.Router();
-var passport = require('../config/passport');
 var Product = require('../models/Product');
 // Main
 router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
   var products = await Product.find();
-    res.render('main/index', {
-    username:username,
-    errors:errors,
-    products:products
-  });
+      res.render('main/index', {
+      username:username,
+      errors:errors,
+      products:products
+    });
 });
 
 
@@ -151,52 +150,6 @@ router.get('/order_list',function(req,res){
     username:username,
     errors:errors
   });
-});
-
-
-// Post Login // 3
-
-router.post('/login',
-  function(req,res,next){
-    var errors = {};
-    var isValid = true;
-
-    if(!req.body.username){
-      isValid = false;
-      errors.username = 'Username is required!';
-    }
-    if(!req.body.password){
-      isValid = false;
-      errors.password = 'Password is required!';
-    }
-    if(!req.body.name){
-      isValid=false;
-      errors.name=' name is required!';
-    }
-
-    if(!req.body.email){
-      isValid=false;
-      erros.email='email is required!';
-    }
-
-    if(isValid){
-      next();
-    }
-    else {
-      req.flash('errors',errors);
-      res.redirect('/');
-    }
-  },
-  passport.authenticate('local-login', {
-    successRedirect : '/',
-    failureRedirect : '/'
-  }
-));
-
-// Logout // 4
-router.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
 });
 
 module.exports = router;
