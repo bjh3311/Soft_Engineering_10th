@@ -57,33 +57,20 @@
     <div class="page-wrapper">
       <!-- MAIN CONTENT-->
         <div class="main-content">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="row">
-
+                <form action="/posts/<%= post._id %>?_method=delete" method="post">
                     <div class="row">
                         <div class="col-lg-6">
-
-                            삭제 하시겠습니까?
+                            정말로 삭제 하시겠습니까?
                         </div>
-                        <div class="col-lg-6">
-
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="col-xl-auto">
 
 
                             <button type="button" class="btn btn-success btn-lg" onclick="self.close();">취소</button>
-                            <button type="button" class="btn btn-danger btn-lg" onclick="self.close();">삭제</button>
+                            <button type="submit" class="btn btn-danger btn-lg">삭제</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </div>
         </div>
 
-
-    </div>
 
 
 

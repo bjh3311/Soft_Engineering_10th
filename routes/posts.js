@@ -6,7 +6,7 @@ var util = require('../util');
 
 var storage  = multer.diskStorage({ // 2
     destination(req, file, cb) {
-      cb(null, './public/event');
+      cb(null, './public/posts');
     },
     filename(req, file, cb) {
       cb(null, `${file.originalname}`);
@@ -32,7 +32,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     Post.findOne({_id:req.params.id})
       .exec(function(err, post){
         if(err) return res.json(err);
-        res.render('admin/detail', {post:post});
+        res.render('admin/table_detail', {post:post});
       });
   });
   
@@ -43,12 +43,12 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     if(!post){
       Post.findOne({_id:req.params.id}, function(err, post){
           if(err) return res.json(err);
-          res.render('admin/modify', { post:post, errors:errors });
+          res.render('admin/form_update', { post:post, errors:errors });
         });
     }
     else {
       post._id = req.params.id;
-      res.render('admin/modify', { post:post, errors:errors });
+      res.render('admin/form_update', { post:post, errors:errors });
     }
   });
   
@@ -60,10 +60,24 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
         req.flash('errors', util.parseError(err));
         return res.redirect('/posts/'+req.params.id+'/edit');
       }
-      res.redirect('/posts/'+req.params.id);
+      res.redirect('/admin/table');
     });
   });
   
+  router.get('/:id/destroy/', function(req, res){
+    var post = req.flash('post')[0];
+    var errors = req.flash('errors')[0] || {};
+    if(!post){
+      Post.findOne({_id:req.params.id}, function(err, post){
+          if(err) return res.json(err);
+          res.render('admin/table_delete', { post:post, errors:errors });
+        });
+    }
+    else {
+      post._id = req.params.id;
+      res.render('admin/table_delete', { post:post, errors:errors });
+    }
+  });
   // destroy
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
