@@ -23,7 +23,8 @@ var userSchema = mongoose.Schema({
     type:String,
     match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
     required:[true,'email is required!'],
-    trim:true
+    trim:true,
+    unique:true
   },
   right:{
       type:Boolean,
@@ -35,7 +36,7 @@ var userSchema = mongoose.Schema({
 },{
   toObject:{virtuals:true}
 });
-
+userSchema.index({ username: 1 ,email: 1});
 // virtuals // 2
 userSchema.virtual('passwordConfirmation')
   .get(function(){ return this._passwordConfirmation; })
