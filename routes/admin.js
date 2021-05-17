@@ -6,6 +6,7 @@ var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
 
+
 // Index
 router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
     res.render('admin/index');
@@ -63,9 +64,9 @@ router.get('/shop',util.isLoggedin, checkPermission,  async function(req,res){
   });
 });
 
-  module.exports = router;
+module.exports = router;
 
-  function checkPermission(req, res, next){
-    if(req.user.right == false) return util.noPermission(req,res);
-    next();
-  }
+function checkPermission(req, res, next){
+  if(req.user.right == false) return util.noPermission(req,res);
+  next();
+}

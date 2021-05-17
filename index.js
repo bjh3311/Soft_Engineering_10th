@@ -8,6 +8,10 @@ var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
 
+//layouts
+var expressLayouts = require('express-ejs-layouts');
+
+app.use(expressLayouts);
 //posts
 
 app.use(express.urlencoded({extended:false}));
@@ -37,6 +41,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(flash()); // 2
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+
+
+//layouts
+app.set('layout','./layout/full-width');
+app.set("layout extractScripts",true);
 
 // Passport
 app.use(passport.initialize());
