@@ -15,6 +15,7 @@ var productSchema = mongoose.Schema({
   origin:{type:String},
   sales:{type:Number, default:0, min:0},
   stock:{type:Number, default:1000, min:0},
+  flag:{type:Boolean, default: true}
 });
 
 // model & export 
