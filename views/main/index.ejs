@@ -7,7 +7,7 @@
                 <div class="row" float="right">
                     <% if(isAuthenticated){ %>
                         <span><%= currentUser.username %> 환영합니다.</span>
-                        <button type="button" onclick="location.href='/logout'">Logout</button>
+                        <button type="button" onclick="location.href='/users/logout'">Logout</button>
                     <% } else { %>
                         <div class="login">
                             <form action="/users/login" method="post">
