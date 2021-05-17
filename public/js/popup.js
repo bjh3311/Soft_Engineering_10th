@@ -2,7 +2,7 @@ function showDetail(path){
   window.open(`/posts/${path}`,"admin_detail","width=800, height=500,top=400");
 }
 
-function showPopup(path){
+function DeleteEvent(path){
   console.log(path);
   window.open(`/posts/${path}/destroy`,"admin_delete","width=400, height=200,top=400");
 }
