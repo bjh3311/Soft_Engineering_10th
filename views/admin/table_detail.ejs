@@ -77,10 +77,11 @@
                             <div class="table-responsive table-responsive-data2">
                               <div class="card">
                                   <div class="card-header">
-                                      <strong>공지/이벤트</strong> 상세 내용
+                                      <strong><%= post.title %></strong> 
                                   </div>
                                   <div class="card-body card-block">
-                                    상세 내용
+                                    <img src="/event/<%= post._id %>" alt="img">
+                                    <%= post.body %>
 
                                   </div>
                               </div>

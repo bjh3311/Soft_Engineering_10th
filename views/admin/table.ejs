@@ -57,14 +57,15 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
     <script language="javascript">
-      function showPopup(){
-        window.open("/admin/table_delete","admin_delete","width=400, height=200,top=400");
+      function showPopup(path){
+        console.log(path);
+        window.open(`/posts/${path}/destroy`,"admin_delete","width=400, height=200,top=400");
       }
     </script>
 
     <script language="javascript">
-      function showDetail(){
-        window.open("/admin/table_detail","admin_detail","width=800, height=500,top=400");
+      function showDetail(path){
+        window.open(`/posts/${path}`,"admin_detail","width=800, height=500,top=400");
       }
     </script>
 
@@ -282,8 +283,9 @@
                                                     <td><%= post.title %></td>
                                                     <!-- <td>
                                                         <span class="block-email">lori@example.com</span>
-                                                    </td> -->
-                                                    <td class="desc"><%= post.body %></td>
+                                                    </td> --><td>
+                                                    <button type="button" class="btn btn-outline-success btn-lg" onclick="showDetail('<%= post._id %>')">상세내용 보기</button>
+                                                </td>
                                                     <td><%= post.start %> <br> <%= post.end %></td>
                                                     <td>
                                                       <div class="rs-select2--trans rs-select2--sm">
@@ -300,13 +302,13 @@
                                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                                 <i class="zmdi zmdi-mail-send"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/admin/form_update'">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/posts/<%= post._id %>/edit'">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </button>
-                                                            <form action="/posts/<%= post._id %>?_method=delete" method="post">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="showPopup()">
+                                    
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="showPopup('<%= post._id %>')">
                                                                 <i class="zmdi zmdi-delete"></i>
-                                                            </form>
+                                
                                                             </button>
                                                             <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                                 <i class="zmdi zmdi-more"></i>

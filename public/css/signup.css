@@ -177,3 +177,7 @@ select {
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
+
+.err{
+    color:  red;
+}
