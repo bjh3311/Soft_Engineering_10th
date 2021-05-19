@@ -12,7 +12,7 @@ var storage  = multer.diskStorage({ // 2
       cb(null, `${file.originalname}`);
     },
   });
-  var uploadWithOriginalFilename = multer({ storage: storage }); 
+  var uploadWithOriginalFilename = multer({ storage: storage });
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
@@ -26,7 +26,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/admin/table');
     });
   });
-  
+
   // show
   router.get('/:id', function(req, res){
     Post.findOne({_id:req.params.id})
@@ -35,7 +35,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
         res.render('admin/table_detail', {post:post});
       });
   });
-  
+
   // edit
   router.get('/:id/edit', function(req, res){
     var post = req.flash('post')[0];
@@ -51,7 +51,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.render('admin/form_update', { post:post, errors:errors });
     }
   });
-  
+
   // update
   router.put('/:id',function(req, res){
     Post.findOneAndUpdate({_id:req.params.id}, req.body, function(err, post){
@@ -63,7 +63,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/admin/table');
     });
   });
-  
+
   router.get('/:id/destroy/', function(req, res){
     var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
@@ -82,7 +82,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
-      res.redirect('/admin/table');
+      res.send("<script>opener.parent.location.reload();window.close();</script > ")
     });
   });
 module.exports = router;

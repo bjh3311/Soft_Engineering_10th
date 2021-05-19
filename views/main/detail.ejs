@@ -13,11 +13,13 @@
                   <form action="/users/login" method="post">
                     ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
                     PASSWORD <input type="password" name="password" id="password" placeholder="password">
-                    Login<input class="" type="submit" value="Submit">
+                    <input class="" type="submit" value="Submit">
                   </form>
                 </div>
-          <button type="button" class="register" onclick="location.href='/users/signup'">ID/PW 찾기</button>
-          <button type="button" class="register" onclick="location.href='/users/signup'">회원가입</button>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">회원가입</button>
+                </div>
           <% } %>
       </div>
           </div>
@@ -46,8 +48,14 @@
                               <li><a href="/order_list">Orderlist</a></li>
                           </ul>
                       </li>
+                      <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/notice">Notice</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                        </ul>
+                      </li>
                       <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                      <li class="nav-item"><a class="nav-link" href="/contact-us">Contact Us</a></li>
                   </ul>
               </div>
               <!-- /.navbar-collapse -->
