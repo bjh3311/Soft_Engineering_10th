@@ -1,73 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>관리자 - 상품 관리</title>
-
-    <!-- Fontfaces CSS-->
-    <link href="/css/font-face.css" rel="stylesheet" media="all">
-    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
-    <!-- Bootstrap CSS-->
-    <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/custom.css">
-
-    <!-- Vendor CSS-->
-    <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="/css/theme.css" rel="stylesheet" media="all">
-
-     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
-    <title>관리자 - 상품 관리</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-
-
-</head>
-
 <body class="animsition">
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+      <div class="menu-sidebar__content js-scrollbar1">
+          <nav class="navbar-sidebar">
+              <ul class="list-unstyled navbar__list">
+                  <li>
+                     <a href ="/admin/index">
+                         <i class="fas fa-desktop"></i>관리자 메인 화면</a>
+                  </li>
+                  <li class="active">
+                      <a href="/admin/shop">
+                          <i class="fas fa-chart-bar"></i>상품 관리</a>
+                  </li>
+                  <li>
+                      <a href="/admin/table">
+                          <i class="fas fa-table"></i>공지 이벤트</a>
+                  </li>
+                  <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                      <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리
+                    </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                      <li>
+                        <a href="/admin/order_list">
+                          <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
+                      </li>
+                      <li>
+                        <a href="/admin/sales_statistics">
+                          <i class="fas fa-tachometer-alt"></i>판매 정보 통계</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                      <a href="/">
+                          <i class="zmdi zmdi-power"></i>로그아웃</a>
+                  </li>
+
+                      </ul>
+          </nav>
+      </div>
+  </aside>
+  <!-- END MENU SIDEBAR-->
     <div class="page-wrapper">
       <!-- HEADER MOBILE-->
       <header class="header-mobile d-block d-lg-none">
           <div class="header-mobile__bar">
               <div class="container-fluid">
                   <div class="header-mobile-inner">
-                      <a class="logo" href="/index">
-                          <img src="/images/logo.png" alt="AmoAmo" />
+                      <a class="logo" href="/admin/index">
                       </a>
                       <button class="hamburger hamburger--slider" type="button">
                           <span class="hamburger-box">
@@ -81,7 +61,7 @@
               <div class="container-fluid">
                   <ul class="navbar-mobile__list list-unstyled">
                       <li>
-                        <a href="/admin/">
+                        <a href="/admin/index">
                             <i class="fas fa-desktop"></i>관리자 메인 화면</a>
                       </li>
                       <li>
@@ -114,99 +94,10 @@
       </header>
       <!-- END HEADER MOBILE-->
 
-      <!-- MENU SIDEBAR-->
-      <aside class="menu-sidebar d-none d-lg-block">
-          <div class="logo">
-              <a href="#">
-                  <img src="/images/logo.png" alt="AmoAmo" />
-              </a>
-          </div>
-          <div class="menu-sidebar__content js-scrollbar1">
-              <nav class="navbar-sidebar">
-                  <ul class="list-unstyled navbar__list">
-                      <li>
-                         <a href ="/admin/">
-                             <i class="fas fa-desktop"></i>관리자 메인 화면</a>
-                      </li>
-                      <li class="active">
-                          <a href="/admin/shop">
-                              <i class="fas fa-chart-bar"></i>상품 관리</a>
-                      </li>
-                      <li>
-                          <a href="/admin/table">
-                              <i class="fas fa-table"></i>공지 이벤트</a>
-                      </li>
-                      <li class="has-sub">
-                        <a class="js-arrow" href="#">
-                          <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리
-                        </a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list">
-                          <li>
-                            <a href="/admin/order_list">
-                              <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
-                          </li>
-                          <li>
-                            <a href="/admin/sales_statistics">
-                              <i class="fas fa-tachometer-alt"></i>판매 정보 통계</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                          <a href="/">
-                              <i class="zmdi zmdi-power"></i>로그아웃</a>
-                      </li>
 
-                          </ul>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-      </aside>
-      <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="dropdown active">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                            <ul class="dropdown-menu">
-								<li><a href="shop.html">Sidebar Shop</a></li>
-								<li><a href="shop-detail.html">Shop Detail</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-
-                <!-- Start Atribute Navigation -->
-                <!-- <div class="attr-nav">
-                    <ul>
-                        <li class="side-menu">
-                        <a href="AdminShop.html" style="padding-right: 50px">
-						<button type="button" class="btn btn-outline-success">상품 관리 메인화면</button>
-					    </a>
-                       </li>
-                    </ul>
-                </div> -->
-                <!-- End Atribute Navigation -->
-            </header>
 
             <!-- END MAIN CONTENT-->
             <!-- Start Shop Page  -->

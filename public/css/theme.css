@@ -288,7 +288,9 @@ section {
 }
 .page-container {
     background: #e5e5e5;
-    padding-left: 300px;
+    /* padding-left: 300px; */
+    float:left;
+    width:100%;
 }
 
 @media (max-width: 991px) {
@@ -1578,7 +1580,8 @@ section {
 
 .menu-sidebar {
     width: 300px;
-    position: fixed;
+    /* position: fixed; */
+    float:left;
     left: 0;
     top: 0;
     bottom: 0;
