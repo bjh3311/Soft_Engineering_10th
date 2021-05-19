@@ -97,6 +97,12 @@ p {
     border-radius: 3px;
 }
 
+
+/*pagination*/
+.pagination {
+   justify-content: center;
+}
+
 /* ----- Typography ----- */
 body {
     font-family: "Poppins", sans-serif;

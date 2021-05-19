@@ -16,10 +16,26 @@ router.get('/', async function(req, res){
 });
 
 
-//test
-router.post('/test',function(req,res){
+//게시판
+router.get('/notice',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
 
-});
+  res.render('main/notice',{
+    username:username,
+    errors:errors,
+  });
+})
+
+router.get('/notice_detail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/notice_detail',{
+    username:username,
+    errors:errors,
+  });
+})
 
 //개인정보
 router.get('/privacy', function(req, res){
