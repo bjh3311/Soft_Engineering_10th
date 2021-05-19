@@ -58,7 +58,7 @@ app.use(function(req,res,next){
   next();
 });
 // routes setting
-app.use('/', require('./routes/main'));
+app.use('/', util.getProductQueryString, require('./routes/main'));
 app.use('/admin', require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));

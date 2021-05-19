@@ -122,25 +122,45 @@ router.get('/order_list',function(req,res){
 router.get('/category', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  var products = await Product.find();
 
+  var page = Math.max(1, parseInt(req.query.page));  
+  var limit = Math.max(1, parseInt(req.query.limit));
+  var origin = Math.max(1,parseInt(req.query.origin));
+  page = !isNaN(page)?page:1;                        
+  limit = !isNaN(limit)?limit:3;
+  origin =!isNaN(origin)?origin:0;                    
+
+  var searchQuery = createSearchQuery(req.query);
+
+  var skip = (page-1)*limit; // 4
+  var count = await Product.countDocuments(searchQuery); 
+  var maxPage = Math.ceil(count/limit);
+
+  if(origin == 0){
+  var products = await Product.find(searchQuery)
+    .sort('-createdAt')
+    .skip(skip)   // 8
+    .limit(limit) // 8
+    .exec();
+  }else{
+    var products = await Product.find({'origin' : origin})
+    .sort('-createdAt')
+    .skip(skip)   // 8
+    .limit(limit) // 8
+    .exec();
+  }
   res.render('main/category', {
     username:username,
     errors:errors,
-    products:products
+    products:products,
+    currentPage:page,
+    maxPage:maxPage,  
+    limit:limit,
+    origin:origin,
+    searchText: req.query.searchText
   });
 })
-router.get('/category/:origin', async function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  var products = await Product.find({'origin':req.params.origin});
 
-  res.render('main/category', {
-    username:username,
-    errors:errors,
-    products:products
-  });
-})
 
 
 router.get('/:id', function(req, res){
@@ -169,3 +189,19 @@ router.get('/order_list',function(req,res){
 });
 
 module.exports = router;
+
+function createSearchQuery(queries){ // 4
+  var searchQuery = {};
+  if(queries.searchText && queries.searchText.length >= 2){
+    //var searchTypes = queries.searchType.toLowerCase().split(',');
+    var productQueries = [];
+    productQueries.push({ name: { $regex: new RegExp(queries.searchText, 'i') } });
+    
+    /*
+    if(searchTypes.indexOf('body')>=0){
+      productQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });
+    }*/
+    if(productQueries.length > 0) searchQuery = {$or:productQueries};
+  }
+  return searchQuery;
+}
