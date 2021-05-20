@@ -109,17 +109,17 @@ router.get('/category', async function(req,res){
 
   var page = Math.max(1, parseInt(req.query.page));  
   var limit = Math.max(1, parseInt(req.query.limit));
-  var origin = Math.max(1,parseInt(req.query.origin));
+  var origin = Math.max(0,parseInt(req.query.origin));
   page = !isNaN(page)?page:1;                        
   limit = !isNaN(limit)?limit:3;
   origin =!isNaN(origin)?origin:0;                    
 
   var searchQuery = createSearchQuery(req.query);
-
+  console.log(searchQuery);
   var skip = (page-1)*limit; // 4
   var count = await Product.countDocuments(searchQuery); 
   var maxPage = Math.ceil(count/limit);
-
+ 
   if(origin == 0){
   var products = await Product.find(searchQuery)
     .sort('-createdAt')
@@ -127,7 +127,7 @@ router.get('/category', async function(req,res){
     .limit(limit) // 8
     .exec();
   }else{
-    var products = await Product.find({'origin' : origin})
+    var products = await Product.find({'origin' : origin},searchQuery)
     .sort('-createdAt')
     .skip(skip)   // 8
     .limit(limit) // 8
