@@ -50,11 +50,6 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-    <script language="javascript">
-      function showPopup(){
-        window.open("/destination_create","new","width=800,height=500,top=400");
-      }
-    </script>
 
 
 </head>
@@ -98,7 +93,7 @@
                                             <td>
                                                 <div class="table-data-feature">
                                                   <button type="button" class="btn btn-outline-success btn-sm">선택</button>
-                                                  <button type="button" onclick="showPopup()"class="btn btn-outline-primary btn-sm">수정</button>
+                                                  <button type="button" onclick="EditDestination()"class="btn btn-outline-primary btn-sm">수정</button>
                                                   <button type="button" class="btn btn-outline-danger btn-sm">삭제</button>
                                                 </div>
                                             </td>
@@ -115,7 +110,7 @@
                                             <td>
                                                 <div class="table-data-feature">
                                                   <button type="button" class="btn btn-outline-success btn-sm">선택</button>
-                                                  <button type="button" onclick="showPopup()" class="btn btn-outline-primary btn-sm">수정</button>
+                                                  <button type="button" onclick="EditDestination()" class="btn btn-outline-primary btn-sm">수정</button>
                                                   <button type="button" class="btn btn-outline-danger btn-sm">삭제</button>
                                                 </div>
                                             </td>
@@ -128,7 +123,7 @@
                                 </table>
                             </div>
                             <!-- END DATA TABLE -->
-                            <button type="button" onclick="showPopup()" class="btn btn-success btn-lg btn-block">추가 등록</button>
+                            <button type="button" onclick="showNewDestination()" class="btn btn-success btn-lg btn-block">추가 등록</button>
                         </div>
                     </div>
                     <div class="row m-t-30">

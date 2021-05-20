@@ -1,4 +1,5 @@
 <body class="animsition">
+
   <!-- MENU SIDEBAR-->
   <aside class="menu-sidebar d-none d-lg-block">
       <div class="menu-sidebar__content js-scrollbar1">
@@ -32,7 +33,7 @@
                     </ul>
                   </li>
                   <li>
-                      <a href="/">
+                      <a href="/users/logout">
                           <i class="zmdi zmdi-power"></i>로그아웃</a>
                   </li>
               </ul>
@@ -84,7 +85,7 @@
                           </ul>
                       </li>
                       <li>
-                          <a href="/">
+                          <a href="/users/logout">
                               <i class="zmdi zmdi-power"></i>로그아웃</a>
                       </li>
                   </ul>
@@ -219,7 +220,7 @@
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </button>
 
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="showPopup('<%= post._id %>')">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="DeleteEvent('<%= post._id %>')">
                                                                 <i class="zmdi zmdi-delete"></i>
 
                                                             </button>
@@ -419,7 +420,7 @@
       </div>
 
 
-      <script language="javascript">
+      <!-- <script language="javascript">
         function showPopup(path){
           console.log(path);
           window.open(`/posts/${path}/destroy`,"admin_delete","width=400, height=200,top=400");
@@ -430,9 +431,8 @@
         function showDetail(path){
           window.open(`/posts/${path}`,"admin_detail","width=800, height=500,top=400");
         }
-      </script>
+      </script> -->
+
+
 
   </body>
-
-  </html>
-  <!-- end document-->
