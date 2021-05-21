@@ -5,6 +5,7 @@ var router = express.Router();
 var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
+var moment = require('moment');
 
 
 // Index
@@ -14,7 +15,8 @@ router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
 router.get('/table', util.isLoggedin, checkPermission,  async function(req, res){
   posts = await Post.find();
     res.render('admin/table', {
-    posts:posts
+    posts:posts,
+    moment
   });
 });
 
