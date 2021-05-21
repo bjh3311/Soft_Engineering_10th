@@ -223,7 +223,7 @@
                                     <label for="body" class=" form-control-label">상품 상세 정보</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control" value="<%= product.body %>"></textarea>
+                                    <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"><%= product.body %></textarea>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -264,15 +264,8 @@
 
                         </form>
 
-						<div class="price-box-bar">
 						</div>
-
-						<div class="add-to-btn">
-
-							</div>
-
-						</div>
-                    </div>
+          </div>
                 </div>
             </div>
 
@@ -287,28 +280,11 @@
 
     </div>
 
-    <!-- Jquery JS-->
-    <!-- <script src="/vendor/jquery-3.2.1.min.js"></script> -->
-    <!-- Bootstrap JS-->
-    <!-- <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script> -->
-    <!-- Vendor JS       -->
-    <!-- <script src="/vendor/slick/slick.min.js">
-    </script>
-    <script src="/vendor/wow/wow.min.js"></script>
-    <script src="/vendor/animsition/animsition.min.js"></script>
-    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="/vendor/select2/select2.min.js">
-    </script> -->
-
-    <!-- Main JS-->
-    <!-- <script src="/js/admin_main.js"></script> -->
 
 </body>
+<script>
+  document.getElementById('manufacturer').value = <%= product.manufacturer %>;
+  document.getElementById('taste').value = <%= product.taste %>;
+  document.getElementById('weight').value = <%= product.weight %>;
+  document.getElementById('origin').value = <%= product.origin %>;
+</script>
