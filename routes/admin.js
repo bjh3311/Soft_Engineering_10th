@@ -39,6 +39,7 @@ router.get('/register', util.isLoggedin, checkPermission, function(req, res){
 });
 
 router.get('/detail', util.isLoggedin, checkPermission, function(req, res){
+  console.log("admin");
   res.render('admin/detail');
 });
 router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){

@@ -12,7 +12,7 @@ var storage  = multer.diskStorage({ // 2
       cb(null, `${file.originalname}`);
     },
   });
-  var uploadWithOriginalFilename = multer({ storage: storage }); 
+  var uploadWithOriginalFilename = multer({ storage: storage });
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
@@ -26,7 +26,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/admin/shop');
     });
   });
-  
+
   // show
   router.get('/:id', function(req, res){
     Product.findOne({_id:req.params.id})
@@ -35,7 +35,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
         res.render('admin/detail', {product:product});
       });
   });
-  
+
   // edit
   router.get('/:id/edit', function(req, res){
     var product = req.flash('product')[0];
@@ -51,7 +51,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.render('admin/modify', { product:product, errors:errors });
     }
   });
-  
+
   // update
   router.put('/:id',function(req, res){
     Product.findOneAndUpdate({_id:req.params.id}, req.body, function(err, product){
@@ -63,7 +63,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/products/'+req.params.id);
     });
   });
-  
+
   // destroy
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
