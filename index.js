@@ -7,6 +7,7 @@ var session = require('express-session');
 var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
+var moment = require('moment');
 
 //layouts
 var expressLayouts = require('express-ejs-layouts');

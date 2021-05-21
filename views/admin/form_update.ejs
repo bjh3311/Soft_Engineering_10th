@@ -121,7 +121,7 @@
                                                      <label for="start" class=" form-control-label">시작 날</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <input type="date" id="start" name="start" class="form-control">
+                                                     <input type="date" id="start" name="start" value="<%= moment(post.start).format('YYYY-MM-DD') %>" class="form-control">
                                                      <small class="form-text text-muted">공지/이벤트 기간</small>
                                                  </div>
                                              </div>
@@ -130,7 +130,7 @@
                                                     <label for="end" class=" form-control-label">끝나는 날</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="date" id="end" name="end" class="form-control">
+                                                    <input type="date" id="end" name="end" value="<%= moment(post.end).format('YYYY-MM-DD') %>" class="form-control">
                                                     <small class="form-text text-muted">공지/이벤트 기간</small>
                                                 </div>
                                             </div>
@@ -139,7 +139,7 @@
                                                      <label for="body" class=" form-control-label">내용</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <textarea name="body" id="body" rows="9" value="<%= post.body %>" class="form-control"></textarea>
+                                                     <textarea name="body" id="body" rows="9" class="form-control"><%= post.body %></textarea>
                                                  </div>
                                              </div>
                                              <div class="row form-group">

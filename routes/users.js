@@ -122,6 +122,7 @@ router.post('/login',
     if(isValid){
       next();
     }
+
     else {
       req.flash('errors',errors);
       res.redirect('/');
