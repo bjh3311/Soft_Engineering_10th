@@ -80,8 +80,10 @@
                                       <strong><%= post.title %></strong> 
                                   </div>
                                   <div class="card-body card-block">
-                                    <img src="/event/<%= post._id %>" alt="img">
-                                    <%= post.body %>
+                                    <img src="/posts/<%= post.title %>.jpg" alt="img">
+                                    <p>
+                                        <%= post.body %>
+                                    </p> 
 
                                   </div>
                               </div>
