@@ -300,9 +300,9 @@
                         </a>
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="/category/4" class="list-group-item list-group-item-action">입문자용 원두 <small class="text-muted">(1)</small></a>
-                                            <a href="/category/1" class="list-group-item list-group-item-action active">일반 원두 <small class="text-muted">(3)</small></a>
-                                            <a href="/category/3" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted">(2)</small></a>
+                                            <a href="/category?origin=4" id="begin" class="list-group-item list-group-item-action">입문자용 원두 <small class="text-muted"></small></a>
+                                            <a href="/category?origin=1" id="normal" class="list-group-item list-group-item-action">일반 원두 <small class="text-muted"></small></a>
+                                            <a href="/category?origin=3" id="advanced" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted"></small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -320,8 +320,14 @@
                             <div class="price-box-slider">
                                 <div id="slider-range"></div>
                                 <p>
-                                    <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                    <button class="btn hvr-hover" type="submit">Filter</button>
+                                    <form action="" method="get">
+                                      <label for="amount_start"></label>
+                                      <label for="amout_end"></label>
+                                      <input type="text" size="8" id="amount_start" name="amount_start" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                       ~
+                                      <input type="text" size="8" id="amount_end" name="amount_end" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                      <button class="btn hvr-hover" type="submit">Filter</button>
+                                    </form>
                                 </p>
                             </div>
                         </div>
@@ -331,3 +337,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    if(<%= origin %>==4){
+      document.getElementById("begin").className="list-group-item list-group-item-action active";
+    }else if(<%= origin %>==1){
+      document.getElementById("normal").className="list-group-item list-group-item-action active";
+    }else if(<%= origin %>==3){
+      document.getElementById("advanced").className="list-group-item list-group-item-action active";
+    }
+    document.write(<%= origin %>);
+</script>

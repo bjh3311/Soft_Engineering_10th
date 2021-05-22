@@ -123,18 +123,18 @@ router.get('/category', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
-  var page = Math.max(1, parseInt(req.query.page));  
+  var page = Math.max(1, parseInt(req.query.page));
   var limit = Math.max(1, parseInt(req.query.limit));
   var origin = Math.max(0,parseInt(req.query.origin));
-  page = !isNaN(page)?page:1;                        
+  page = !isNaN(page)?page:1;
   limit = !isNaN(limit)?limit:3;
-  origin =!isNaN(origin)?origin:0;                    
+  origin =!isNaN(origin)?origin:0;
 
   var searchQuery = createSearchQuery(req.query);
   var skip = (page-1)*limit; // 4
-  var count = await Product.countDocuments(searchQuery); 
+  var count = await Product.countDocuments(searchQuery);
   var maxPage = Math.ceil(count/limit);
- 
+
   if(origin == 0){
   var products = await Product.find(searchQuery)
     .sort('-createdAt')
@@ -148,12 +148,13 @@ router.get('/category', async function(req,res){
     .limit(limit) // 8
     .exec();
   }
+
   res.render('main/category', {
     username:username,
     errors:errors,
     products:products,
     currentPage:page,
-    maxPage:maxPage,  
+    maxPage:maxPage,
     limit:limit,
     origin:origin,
     searchText: req.query.searchText
@@ -195,7 +196,7 @@ function createSearchQuery(queries){ // 4
     //var searchTypes = queries.searchType.toLowerCase().split(',');
     var productQueries = [];
     productQueries.push({ name: { $regex: new RegExp(queries.searchText, 'i') } });
-    
+
     /*
     if(searchTypes.indexOf('body')>=0){
       productQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });

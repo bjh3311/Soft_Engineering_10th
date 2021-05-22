@@ -8,6 +8,7 @@ var Post = require('../models/Post');
 var moment = require('moment');
 
 
+
 // Index
 router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
     res.render('admin/index');
@@ -62,11 +63,11 @@ router.get('/sales_statistics',util.isLoggedin, checkPermission, function(req,re
 
 router.get('/shop',util.isLoggedin, checkPermission,  async function(req,res){
   var origin = Math.max(0,parseInt(req.query.origin));
-  origin =!isNaN(origin)?origin:0;                    
+  origin =!isNaN(origin)?origin:0;
 
   var searchQuery = createSearchQuery(req.query);
   //console.log(searchQuery);
- 
+
   if(origin == 0){
   var products = await Product.find(searchQuery)
     .sort('-createdAt')
@@ -84,7 +85,7 @@ router.get('/shop',util.isLoggedin, checkPermission,  async function(req,res){
 });
 
 router.get('/test',util.isLoggedin, checkPermission, function(req,res){
-  console.log(req.body);
+  console.log(req.query);
   res.redirect('/admin/shop');
 })
 
@@ -104,7 +105,7 @@ function createSearchQuery(queries){ // 4
     //var searchTypes = queries.searchType.toLowerCase().split(',');
     var productQueries = [];
     productQueries.push({ name: { $regex: new RegExp(queries.searchText, 'i') } });
-    
+
     /*
     if(searchTypes.indexOf('body')>=0){
       productQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });

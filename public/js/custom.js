@@ -1,8 +1,8 @@
 (function($) {
     "use strict";
-	
+
 	/* ..............................................
-	   Loader 
+	   Loader
 	   ................................................. */
 	$(window).on('load', function() {
 		$('.preloader').fadeOut();
@@ -197,11 +197,18 @@
 			max: 4000,
 			values: [1000, 3000],
 			slide: function(event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+
+				// $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#amount_start").val(ui.values[0]);
+        $("#amount_end").val(ui.values[1]);
 			}
 		});
-		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-			" - $" + $("#slider-range").slider("values", 1));
+
+    $("#amount_start").val($("#slider-range").slider("values",0));
+    $("#amount_end").val($("#slider-range").slider("values",1));
+		// $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+		// 	" - $" + $("#slider-range").slider("values", 1));
+
 	});
 
 	/* ..............................................
@@ -211,6 +218,6 @@
 	$(".brand-box").niceScroll({
 		cursorcolor: "#9b9b9c",
 	});
-	
-	
+
+
 }(jQuery));
