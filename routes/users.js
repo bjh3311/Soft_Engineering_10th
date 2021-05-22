@@ -122,6 +122,7 @@ router.post('/login',
     if(isValid){
       next();
     }
+
     else {
       req.flash('errors',errors);
       res.redirect('/');
@@ -174,7 +175,7 @@ function checkPermission(req, res, next){
   User.findOne({username:req.params.username}, function(err, user){
    if(err) return res.json(err);
    if(user.id != req.user.id) return util.noPermission(req, res);
- 
+
    next();
   });
  }

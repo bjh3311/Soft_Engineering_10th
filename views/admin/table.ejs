@@ -200,7 +200,11 @@
                                                     </td> --><td>
                                                     <button type="button" class="btn btn-outline-success btn-lg" onclick="showDetail('<%= post._id %>')">상세내용 보기</button>
                                                 </td>
-                                                    <td><%= post.start %> <br> <%= post.end %></td>
+                                                    <td>
+                                                      <%= moment(post.start).format('YYYY-MM-DD') %>
+                                                      ~
+                                                      <%= moment(post.end).format('YYYY-MM-DD') %>
+                                                    </td>
                                                     <td>
                                                       <div class="rs-select2--trans rs-select2--sm">
                                                           <select class="js-select2" name="property">

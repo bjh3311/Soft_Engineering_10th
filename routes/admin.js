@@ -5,7 +5,7 @@ var router = express.Router();
 var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
-const { route } = require('./main');
+var moment = require('moment');
 
 
 // Index
@@ -15,7 +15,8 @@ router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
 router.get('/table', util.isLoggedin, checkPermission,  async function(req, res){
   posts = await Post.find();
     res.render('admin/table', {
-    posts:posts
+    posts:posts,
+    moment
   });
 });
 
@@ -40,6 +41,7 @@ router.get('/register', util.isLoggedin, checkPermission, function(req, res){
 });
 
 router.get('/detail', util.isLoggedin, checkPermission, function(req, res){
+  console.log("admin");
   res.render('admin/detail');
 });
 router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){

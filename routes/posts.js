@@ -3,6 +3,7 @@ var router = express.Router();
 var Post = require('../models/Post');
 var multer = require('multer');
 var util = require('../util');
+var moment = require('moment');
 
 var storage  = multer.diskStorage({ // 2
     destination(req, file, cb) {
@@ -43,12 +44,12 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     if(!post){
       Post.findOne({_id:req.params.id}, function(err, post){
           if(err) return res.json(err);
-          res.render('admin/form_update', { post:post, errors:errors });
+          res.render('admin/form_update', { post:post, errors:errors, moment });
         });
     }
     else {
       post._id = req.params.id;
-      res.render('admin/form_update', { post:post, errors:errors });
+      res.render('admin/form_update', { post:post, errors:errors, moment });
     }
   });
 
