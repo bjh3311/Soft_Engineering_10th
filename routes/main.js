@@ -1,11 +1,16 @@
 // routes/home.js
-
 var express = require('express');
 var router = express.Router();
 var passport = require('../config/passport');
 var Product = require('../models/Product');
+var Cart = require('../models/cart');
 var expressLayouts = require('express-ejs-layouts');
+var session = require('express-session'); 
 const { render } = require('ejs');
+const { request } = require('express');
+const cart = require('../models/cart');
+
+
 
 // Main
 router.get('/', async function(req, res){
@@ -48,7 +53,6 @@ router.get('/about',function(req,res){
 
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-
   res.render('main/about',{
     username:username,
     errors:errors,
@@ -72,12 +76,23 @@ router.get('/contact-us',function(req,res){
 router.get('/cart',function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-
+  
+  if(req.session.cart === undefined){
+    return res.render('main/cart', {
+      productArray : null,
+      username:username,
+      errors:errors
+    });
+  }
+  var cart = new Cart(req.session.cart);
   res.render('main/cart', {
     username:username,
     errors:errors,
+    productArray : cart.generateArray(), 
+    totalPrice : cart.totalPrice
   });
 })
+
 
 // gallery --
 router.get('/gallery',function(req,res){
@@ -103,6 +118,20 @@ router.get('/order_list',function(req,res){
   });
 })
 
+//shop detail
+router.get('/detail', async function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  var products = await Product.find();
+
+  res.render('main/detail', {
+    username:username,
+    errors:errors,
+    product:products
+  });
+});
+
+
 router.get('/category', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
@@ -113,7 +142,9 @@ router.get('/category', async function(req,res){
     errors:errors,
     products:products
   });
-})
+});
+
+
 router.get('/category/:origin', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
@@ -141,16 +172,7 @@ router.get('/:id', function(req, res){
     });
 });
 
-// Post Login
-// 주문 내역
-router.get('/order_list',function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  res.render('main/order_list',{
-    username:username,
-    errors:errors
-  });
-});
+
 
 
 // Post Login // 3
@@ -198,4 +220,54 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+// cart
+router.post('/Addcart/:id', function(req,res,next){
+  var count = Number(req.body.count);
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Product.findOneAndUpdate({_id:productId}, count, function(err, product){
+    if(err){
+      req.flash('product', req.body);
+      req.flash('errors', util.parseError(err));
+      return res.redirect('/'+req.params.id);
+    }
+    cart.add(product, productId, count);
+    req.session.cart = cart;
+    res.redirect('/'+req.params.id);
+  });
+});
+
+// cart conunt up
+router.post('/up', function(req,res,next){
+  var cart = new Cart(req.session.cart);
+  var id = req.body.up;
+
+  cart.addByOne(id);
+  req.session.cart = cart;
+
+  res.redirect('/cart');
+});
+
+// cart count down
+router.post('/down', function(req,res,next){
+  var cart = new Cart(req.session.cart);
+
+  cart.reduceByOne(req.body.down);
+  req.session.cart = cart;
+
+  res.redirect('/cart');
+});
+
+// cart item remove
+router.post('/remove', function(req, res, next){
+  var cart = new Cart(req.session.cart);
+  
+  cart.removeItem(req.body.remove);
+  req.session.cart = cart;
+
+  res.redirect('/cart');
+});
+
+
 module.exports = router;
+ 

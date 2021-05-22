@@ -8,6 +8,8 @@ var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
 var expressLayouts = require('express-ejs-layouts');
+const MongoStore = require('connect-mongo');
+
 
 // DB setting
 mongoose.set('useNewUrlParser', true);
@@ -30,11 +32,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(flash()); // 2
-app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+app.use(session({
+  secret:'MySecret', 
+  resave:false, 
+  saveUninitialized:true,
+  store: MongoStore.create({
+  mongoUrl : mongoose.connection._connectionString,
+  ttl: 60 * 60
+  }),
+}));
 
 // setting
 app.set('view engine','ejs'); // 1
-app.set('views', __dirname + '/views');
 app.set('layout', './layout/full-width');
 
 // Passport 
@@ -45,6 +54,7 @@ app.use(passport.session());
 app.use(function(req,res,next){
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.currentUser = req.user;
+  res.locals.session = req.session;
   next();
 });
 // routes setting

@@ -1,160 +1,55 @@
-<!DOCTYPE html>
-<html lnag="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>아모아모 회원가입</title>
-        <link rel="stylesheet" href="/css/signup.css">
-        <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/custom.css">
-    </head>
-    <body>
-    	 <!-- Start Main Top -->
-    <div class="main-top">
-        <div class="container-fluid">
-            <div class="row" float="right">
-            <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo" alt="" height="30px"></a>
-            </div>
-        </div>
-    </div>
-    <!-- End Main Top -->
-        <!-- header -->
-         <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                </div>
-                <!-- End Header Navigation -->
-                <!-- Start Atribute Navigation -->
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-        <!-- wrapper -->
-        <div id="wrapper">
+<head>
+  <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+    <!-- wrapper -->
+        <div id="wrapper" style="padding : 50px 100px 500px 100px; margin : 100px;">
             <!-- content-->
             <div id="content">
                 <!-- ID -->
             <form action="/users" method="post">
                 <div>
-                <label for="username">ID</label>
-                <input type="text" name='username' id="username" value="<%= user.username %>" >
-                <% if(errors.username){ %> <!-- 3 -->
-                    <span><%= errors.username.message %></span>
-                  <% } %>
-            </div>
-            <div>
-              <label for="name">이름</label>
-              <input type="text" name='name' id='name' value="<%= user.name %>">
-              <% if(errors.name){ %>
-                <span><%= erros.name.message %></span>
-              <% } %>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="">
-                <% if(errors.password){ %> <!-- 3 -->
-                    <span><%= errors.password.message %></span>
+                  <label for="username">ID : </label>
+                  <input type="text" name='username' id="username" value="<%= user.username %>">
+                  <% if(errors.username){ %> <!-- 3 -->
+                      <span><%= errors.username.message %></span>
                   <% } %>
                 </div>
                 <div>
-                    <label for="passwordConfirmation" >Password Confirmation</label>
+                  <label for="name">이름 : </label>
+                  <input type="text" name='name' id='name' value="<%= user.name %>">
+                  <% if(errors.name){ %>
+                    <span><%= erros.name.message %></span>
+                  <% } %>
+                </div>
+                <div>
+                  <label for="password">Password : </label>
+                  <input type="password" name="password" id="password" value="">
+                  <% if(errors.password){ %> <!-- 3 -->
+                      <span><%= errors.password.message %></span>
+                  <% } %>
+                </div>
+                <div>
+                    <label for="passwordConfirmation" >Password Confirmation : </label>
                 <input type="password" id="passwordConfirmation" name="passwordConfirmation" value="" >
                 <% if(errors.passwordConfirmation){ %> <!-- 3 -->
                     <span><%= errors.passwordConfirmation.message %></span>
-                  <% } %>
+                <% } %>
 
                 </div>
                   <div>
-                    <label for="email" >Email</label>
+                    <label for="email" >Email : </label>
                     <input type="text" name="email" id="email" value="<%= user.email %>">
                     <% if(errors.email){ %>
                         <span><%= errors.email.message %></span>
                       <% } %>
                   </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" style="margin : 20px">Submit</button>
             </form>
             </div>
             <!-- content-->
         </div>
         <!-- wrapper -->
     <script src="/js/main.js"></script>
-    <!-- Start Footer  -->
-    <footer>
-        <div class="footer-main">
-            <div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>사업자 정보</h3>
-							<ul class="list-time">
-								<li>주소지: 노원구 공릉로 232 서울과학기술대학교</li> <li>대표자:이현주,배진환,권찬미,홍성웅</li>
-								<li>고객 센터:010-5239-7894</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>이용약관</h3>
-							<ul class="list-time">
-							<li><a href="/policy">More</a></li>
-							<li>
-						</ul>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>개인정보 처리 방침</h3>
-							<ul class="list-time">
-								<li><a href="/privacy">More</a></li>
-						</div>
-					</div>
-				</div>
-				<hr>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer  -->
-    </body>
-</html>
+</body>
+
