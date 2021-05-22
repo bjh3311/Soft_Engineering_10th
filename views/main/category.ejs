@@ -300,9 +300,9 @@
                         </a>
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="/category?origin=4" class="list-group-item list-group-item-action">입문자용 원두 <small class="text-muted">(1)</small></a>
-                                            <a href="/category?origin=1" class="list-group-item list-group-item-action active">일반 원두 <small class="text-muted">(3)</small></a>
-                                            <a href="/category?origin=3" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted">(2)</small></a>
+                                            <a href="/category?origin=4" id="begin" class="list-group-item list-group-item-action">입문자용 원두 <small class="text-muted"></small></a>
+                                            <a href="/category?origin=1" id="normal" class="list-group-item list-group-item-action">일반 원두 <small class="text-muted"></small></a>
+                                            <a href="/category?origin=3" id="advanced" class="list-group-item list-group-item-action">고급 원두 <small class="text-muted"></small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -337,3 +337,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    if(<%= origin %>==4){
+      document.getElementById("begin").className="list-group-item list-group-item-action active";
+    }else if(<%= origin %>==1){
+      document.getElementById("normal").className="list-group-item list-group-item-action active";
+    }else if(<%= origin %>==3){
+      document.getElementById("advanced").className="list-group-item list-group-item-action active";
+    }
+    document.write(<%= origin %>);
+</script>
