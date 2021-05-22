@@ -79,7 +79,10 @@
         <div class="container">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
+                <form action="/category" method="get">
+                    <input class="form-control" name="searchText" value="" placeholder="Search here..." type="text">
+                    <button type="submit"> <i class="fa fa-search"></i> </button>
+                </form>
                 <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
             </div>
         </div>
@@ -252,3 +255,4 @@
         </div>
     </div>
     <!-- End Products  -->
+</body>

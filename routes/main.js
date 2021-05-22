@@ -131,7 +131,6 @@ router.get('/category', async function(req,res){
   origin =!isNaN(origin)?origin:0;                    
 
   var searchQuery = createSearchQuery(req.query);
-  console.log(searchQuery);
   var skip = (page-1)*limit; // 4
   var count = await Product.countDocuments(searchQuery); 
   var maxPage = Math.ceil(count/limit);
