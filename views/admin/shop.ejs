@@ -110,14 +110,14 @@
                              <div class="col-12 col-sm-8 text-center text-sm-left">
                                  <div class="toolbar-sorter-right">
                                      <span>Sort by </span>
-                                     <form action="/admin/shop<% getProductQueryString(false) %>" method="get">
-                                        <select id="basic" name="sort" class="selectpicker show-tick form-control"  onchange="this.form.submit()" data-placeholder="$ USD">
-                                            <option data-display="Select" value="-createAt">Nothing</option>
-                                            <option value="-price">High Price → Low Price</option>
-                                            <option value="price">Low Price → High Price</option>
-                                            <option value="sales">Best Selling</option>
-                                            </select>
-                                        </form>
+                                     <select id="filter" name="filter" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="PriceSubmit();">
+                                      <option data-display="Select" value="1">Nothing</option>
+                                      <option value="2">High Price → Low Price</option>
+                                      <option value="3">Low Price → High Price</option>
+                                    </select>
+                                    <form action="" id="price_submit">
+                                      <input type="hidden" name="price_filter" id="price_filter">
+                                    </form>
                                  </div>
                                  <p>Showing all 4 results</p>
                              </div>

@@ -119,7 +119,6 @@ router.get('/order_list',function(req,res){
 })
 
 router.get('/category', async function(req,res){
-  console.log(req.query);
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
