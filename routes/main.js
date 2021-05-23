@@ -120,35 +120,47 @@ router.get('/order_list',function(req,res){
 })
 
 router.get('/category', async function(req,res){
+  console.log(req.query);
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
   var page = Math.max(1, parseInt(req.query.page));
   var limit = Math.max(1, parseInt(req.query.limit));
   var origin = Math.max(0,parseInt(req.query.origin));
+
+  var amount_start = Math.max(0,parseInt(req.query.amount_start));
+  var amount_end = Math.min(1000000,parseInt(req.query.amount_end));
+  var sort = req.query.sort?req.query.sort:'-createAt';
+
   page = !isNaN(page)?page:1;
   limit = !isNaN(limit)?limit:3;
   origin =!isNaN(origin)?origin:0;
+  amount_start = !isNaN(amount_start)?amount_start:0;
+  amount_end = !isNaN(amount_end)?amount_end:1000000;
 
   var searchQuery = createSearchQuery(req.query);
   var skip = (page-1)*limit; // 4
   var count = await Product.countDocuments(searchQuery);
   var maxPage = Math.ceil(count/limit);
 
+  try{
   if(origin == 0){
   var products = await Product.find(searchQuery)
-    .sort('-createdAt')
+    .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8
     .exec();
   }else{
-    var products = await Product.find({'origin' : origin},searchQuery)
-    .sort('-createdAt')
+    var products = await Product.find(searchQuery)
+    .where('origin').equals(origin)
+    .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8
     .exec();
+  }}
+  catch(err){
+    console.log(err);
   }
-
   res.render('main/category', {
     username:username,
     errors:errors,
@@ -157,7 +169,10 @@ router.get('/category', async function(req,res){
     maxPage:maxPage,
     limit:limit,
     origin:origin,
-    searchText: req.query.searchText
+    searchText: req.query.searchText,
+    amount_start:amount_start,
+    amount_end:amount_end,
+    sort:sort
   });
 })
 

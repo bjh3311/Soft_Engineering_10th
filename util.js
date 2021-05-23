@@ -48,16 +48,20 @@ util.getProductQueryString = function(req, res, next){
     var limit = overwrites.limit?overwrites.limit:(req.query.limit?req.query.limit:'');
     //var searchType = overwrites.searchType?overwrites.searchType:(req.query.searchType?req.query.searchType:''); 
     var searchText = overwrites.searchText?overwrites.searchText:(req.query.searchText?req.query.searchText:'');
-    var min = overwrites.min?overwrites.min:(req.query.min?req.query.min:'');
-    var max = overwrites.min?overwrites.min:(req.query.min?req.query.min:'');
+    var amount_start = overwrites.amount_start?overwrites.amount_start:(req.query.amount_start?req.query.amount_start:'');
+    var amount_end = overwrites.amount_end?overwrites.amount_end:(req.query.amount_end?req.query.amount_end:'');
+    var sort = overwrites.sort?overwrites.sort:(req.query.sort?req.query.sort:'');
+    
     if(origin) queryArray.push('origin='+origin);
     if(page) queryArray.push('page='+page);
     if(limit) queryArray.push('limit='+limit);
-    //if(searchType) queryArray.push('searchType='+searchType); 
+    //if(searchType) queryArray.push('searchType='+searchType);
+    if(amount_start) queryArray.push('amount_start='+amount_start);
+    if(amount_end) queryArray.push('amount_end='+amount_end);
+    if(sort) queryArray.push('sort='+sort); 
     if(searchText) queryArray.push('searchText='+searchText);
     
     if(queryArray.length>0) queryString = (isAppended?'&':'?') + queryArray.join('&');
-
     return queryString;
   }
   next();
