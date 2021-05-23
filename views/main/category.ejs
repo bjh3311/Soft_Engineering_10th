@@ -292,7 +292,7 @@
                                 <input class="form-control" minlength="2" name="searchText" value="<%= searchText %>" placeholder="Search here..." type="text">
                                 <input type="hidden" name="amount_start" value="<%= amount_start %>">
                                 <input type="hidden" name="amount_end" value="<%= amount_end %>">
-                               
+
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
@@ -338,7 +338,7 @@
                                       <input type="hidden" name= "page" id= "page" value="<%= currentPage %>">
                                       <input type="hidden" name= "origin" id= "origin" value="<%= origin %>">
                                       <input type="hidden" name= "searchText" id= "searchText" value="<%= searchText %>">
-                                    
+
                                       <button class="btn hvr-hover" type="submit">Filter</button>
                                 </form>
                                 </p>
@@ -356,7 +356,7 @@
         const amount_end = document.getElementById('amount_end').value;
         const query = decodeURI(`<%= getProductQueryString(true) %>`);
         console.log(query);
-        
+
      }
 </script>
 <script>
