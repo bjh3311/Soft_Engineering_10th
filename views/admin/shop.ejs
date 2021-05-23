@@ -130,21 +130,34 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        <%  products.forEach(function(product) {  %>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
-                                                        <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
-                                                        </a>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4><%= product.name %></h4>
-                                                        <h5> <%= product.price %>won</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% }) %>
+                                      <%  products.forEach(function(product) {  %>
+                                          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                              <div class="products-single fix">
+                                                  <div class="box-img-hover">
+                                                      <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
+                                                      <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
+                                                      </a>
+                                                  </div>
+                                                  <div class="why-text">
+                                                      <h4><%= product.name %></h4>
+                                                      <h5> <%= product.price %>won</h5>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <% }) %>
+                                          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                              <div class="products-single fix">
+                                                  <div class="box-img-delete">
+                                                      <a href="" data-toggle="tooltip" data-placement="right" title="View">
+                                                      <img src="/posts/dummy.jpg" class="img-fluid" alt="Image">
+                                                      </a>
+                                                  </div>
+                                                  <div class="why-text">
+                                                      <h4></h4>
+                                                      <h5></h5>
+                                                  </div>
+                                              </div>
+                                          </div>
                                     </div>
                                 </div>
                             </div>

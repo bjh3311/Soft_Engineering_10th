@@ -110,13 +110,15 @@
                             <div class="col-12 col-sm-8 text-center text-sm-left">
                                 <div class="toolbar-sorter-right">
                                     <span>Sort by </span>
-                                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                           <option data-display="Select">Nothing</option>
-                           <option value="1">Popularity</option>
-                           <option value="2">High Price → High Price</option>
-                           <option value="3">Low Price → High Price</option>
-                           <option value="4">Best Selling</option>
-                        </select>
+                                    <select id="filter" name="filter" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="PriceSubmit();">
+                                      <option data-display="Select" value="1">Nothing</option>
+                                      <option value="2">High Price → Low Price</option>
+                                      <option value="3">Low Price → High Price</option>
+                                    </select>
+                                    <form action="" id="price_submit">
+                                      <input type="hidden" name="price_filter" id="price_filter">
+                                    </form>
+
                                 </div>
 
                             </div>
@@ -346,5 +348,12 @@
     }else if(<%= origin %>==3){
       document.getElementById("advanced").className="list-group-item list-group-item-action active";
     }
-    document.write(<%= origin %>);
+
+
+    function PriceSubmit(){
+      var sel=document.getElementById("filter");
+      var price_select=sel.options[sel.selectedIndex].value;
+      document.getElementById("price_filter").value=price_select;
+      document.getElementById("price_submit").submit();
+    }
 </script>

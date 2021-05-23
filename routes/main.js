@@ -15,7 +15,6 @@ router.get('/', async function(req, res){
     });
 });
 
-
 //게시판
 router.get('/notice',function(req,res){
   var username = req.flash('username')[0];
