@@ -110,13 +110,14 @@
                              <div class="col-12 col-sm-8 text-center text-sm-left">
                                  <div class="toolbar-sorter-right">
                                      <span>Sort by </span>
-                                     <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                            <option data-display="Select">Nothing</option>
-                            <option value="1">Popularity</option>
-                            <option value="2">High Price → High Price</option>
-                            <option value="3">Low Price → High Price</option>
-                            <option value="4">Best Selling</option>
-                         </select>
+                                     <form action="/admin/shop<% getProductQueryString(false) %>" method="get">
+                                        <select id="basic" name="sort" class="selectpicker show-tick form-control"  onchange="this.form.submit()" data-placeholder="$ USD">
+                                            <option data-display="Select" value="-createAt">Nothing</option>
+                                            <option value="-price">High Price → Low Price</option>
+                                            <option value="price">Low Price → High Price</option>
+                                            <option value="sales">Best Selling</option>
+                                            </select>
+                                        </form>
                                  </div>
                                  <p>Showing all 4 results</p>
                              </div>
@@ -130,34 +131,22 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                      <%  products.forEach(function(product) {  %>
-                                          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                              <div class="products-single fix">
-                                                  <div class="box-img-hover">
-                                                      <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
-                                                      <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
-                                                      </a>
-                                                  </div>
-                                                  <div class="why-text">
-                                                      <h4><%= product.name %></h4>
-                                                      <h5> <%= product.price %>won</h5>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <% }) %>
-                                          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                              <div class="products-single fix">
-                                                  <div class="box-img-delete">
-                                                      <a href="" data-toggle="tooltip" data-placement="right" title="View">
-                                                      <img src="/posts/dummy.jpg" class="img-fluid" alt="Image">
-                                                      </a>
-                                                  </div>
-                                                  <div class="why-text">
-                                                      <h4></h4>
-                                                      <h5></h5>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                        <%  products.forEach(function(product) {  %>
+                                            <% if(product.price < amount_start || product.price > amount_end) return; %>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
+                                                        <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="why-text">
+                                                        <h4><%= product.name %></h4>
+                                                        <h5> <%= product.price %>won</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +192,7 @@
                             <div class="price-box-slider">
                                 <div id="slider-range"></div>
                                 <p>
-                                    <form action="/admin/test" method="get">
+                                    <form action="/admin/shop" method="get">
                                         <label for="amount_start"></label>
                                         <label for="amout_end"></label>
                                         <input type="text" size="8" id="amount_start" name="amount_start" readonly style="border:0; color:#fbb714; font-weight:bold;">원
