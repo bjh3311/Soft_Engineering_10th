@@ -7,7 +7,14 @@ var Product = require('../models/Product');
 router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  var products = await Product.find();
+
+  var limit = 4;
+
+  var products = await Product.find()
+    .where('flag').equals(true)
+    .sort('-createAt')
+    .limit(limit) // 8
+    .exec();
       res.render('main/index', {
       username:username,
       errors:errors,
