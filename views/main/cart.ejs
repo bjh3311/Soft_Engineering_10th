@@ -56,175 +56,156 @@
               </div>
               <!-- /.navbar-collapse -->
               <!-- Start Atribute Navigation -->
-              <div class="attr-nav">
-                <ul>
-                    <a href="#">
-                    <i class="fa fa-shopping-bag" style="padding-left: 10px;"></i>
+              <div class="attr-nav" style="padding-right: 10px;">
+                  <ul>
+                      <a href="/cart">
+                          <i class="fa fa-shopping-bag">
+                              <% if(session.cart){ %>
+                                  <span class="badge">
+                                      <%= session.cart.totalQty %>
+                                  </span>
+                                  <% } else { %>
+                                      <span class="badge">0</span>
+                                      <% } %>
+                          </i>
                         My Cart
                     </a>
                 </ul>
             </div>
-                <!-- End Atribute Navigation -->
-            </div>
-        </nav>
-        <!-- End Navigation -->
-    </header>
+            <!-- End Atribute Navigation -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+</header>
 <!-- End Main Top -->
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+<!-- Start Top Search -->
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+</div>
+<!-- End Top Search -->
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>장바구니</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active" style="color: white">장바구니</li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- End Top Search -->
+</div>
+<!-- End All Title Box -->
 
-    <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>장바구니</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active" style="color: white">장바구니</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End All Title Box -->
-
-    <!-- Start Cart  -->
+<!-- Start Cart  -->
+<% if(productArray !==null){ %>
     <div class="cart-box-main">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="table-main table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>상품 이미지</th>
-                                    <th>상품 이름</th>
-                                    <th>가격</th>
-                                    <th>상품 수량 선택</th>
-                                    <th>상품 주문 금액</th>
-                                    <th>삭제</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 60.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 30.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-main table-responsive">
+                            <table class="table" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>상품 이미지</th>
+                                        <th>상품 이름</th>
+                                        <th>가격</th>
+                                        <th>상품 수량 선택</th>
+                                        <th>상품 주문 금액</th>
+                                        <th>삭제</th>
+                                    </tr>
+                                </thead>
 
-            <div class="row my-5">
-                <div class="col-lg-6 col-sm-6">
-                    <div class="coupon-box">
-                        <div class="input-group input-group-sm">
+                                <tbody>
+                                    <% productArray.forEach(function(key){ %>
+                                        <tr>
+                                            <td class="thumbnail-img">
+                                                <a href="/<%= key.item._id %>">
+                                                    <img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
+                                                </a>
+                                            </td>
+                                            <td class="name-pr">
+                                                <a href="/<%= key.item._id %>">
+                                                    <%= key.item.name %>
+                                                </a>
+                                            </td>
+                                            <td class="price-pr">
+                                                <p>
+                                                    <%= key.item.price %>
+                                                </p>
+                                            </td>
+
+
+                                            <td class="quantity-box">
+
+                                                <input type="text" size="1" maxlength="4" value="<%= key.sales %>" style="width: auto; float:left; margin : 0px 10% 0px 30%;">
+
+                                                <form action="/up" method="POST">
+                                                    <button type="submit" class="up" value="<%= key.item._id %>" name="up" style="float:left;">
+                                                        <i class="fas fa-arrow-alt-circle-up up"></i>
+                                                    </button>
+                                                </form>
+
+                                                <form action="/down" method="POST">
+                                                    <button type="submit" class="down" value="<%= key.item._id %>" name="down" style="float:left;">
+                                                        <i class="fas fa-arrow-alt-circle-down down"></i>
+                                                    </button>
+                                                </form>
+
+
+                                            </td>
+
+
+                                            <td class="total-pr">
+                                                <p>
+                                                    <%= key.price %>
+                                                </p>
+                                            </td>
+                                            <td class="remove-pr">
+                                                <form action="/remove" method="POST">
+                                                    <button type="submit" class="remove" value="<%= key.item._id %>" name="remove">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-sm-6">
-                    <div class="update-box">
-                        <input value="Update Cart" type="submit">
-                    </div>
-                </div>
-            </div>
+
+
 
             <div class="row my-5">
                 <div class="col-lg-8 col-sm-12"></div>
                 <div class="col-lg-4 col-sm-12">
                     <div class="order-box">
-                        <h3>총 금액</h3>
+                        <h3 class="ml-auto font-weight-bold">총 금액</h3>
+                        <hr class="my-1">
                         <div class="d-flex">
                             <h4>상품 금액</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
-                        </div>
-                        <div class="d-flex">
-                            <h4>할인 금액</h4>
-                            <div class="ml-auto font-weight-bold"> $ 40 </div>
+                            <div class="ml-auto font-weight-bold">
+                                <%= totalPrice %> 원
+                            </div>
+
                         </div>
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>세금</h4>
-                            <div class="ml-auto font-weight-bold"> $ 2 </div>
+
+                            <div class="ml-auto font-weight-bold"> Free </div>
+
                         </div>
                         <div class="d-flex">
                             <h4>배송비</h4>
@@ -233,13 +214,46 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>총 합계</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5">
+                                <%= totalPrice %> 원
+                            </div>
                         </div>
-                        <hr> </div>
+                        <hr>
+                    </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="/checkout" class="ml-auto btn hvr-hover">결제하기</a> </div>
+                <div class="col-12 d-flex shopping-box"><a href="/checkout" class="ml-auto btn hvr-hover">결제하기</a>
+                </div>
             </div>
-
         </div>
     </div>
- <!-- End Cart -->
+    <% } else{%>
+        <div class="cart-box-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-main table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>상품 이미지</th>
+                                        <th>상품 이름</th>
+                                        <th>가격</th>
+                                        <th>상품 수량 선택</th>
+                                        <th>상품 주문 금액</th>
+                                        <th>삭제</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="col-lg-20" style="text-align: center; margin:150px">
+                                장바구니가 비었습니다
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+</body>
+
+
+            <!-- End Cart -->

@@ -57,10 +57,18 @@
               </div>
               <!-- /.navbar-collapse -->
               <!-- Start Atribute Navigation -->
-              <div class="attr-nav">
+              <div class="attr-nav" style="padding-right: 10px;">
                 <ul>
-                    <a href="#">
-                    <i class="fa fa-shopping-bag" style="padding-left: 10px;"></i>
+                    <a href="/cart">
+                        <i class="fa fa-shopping-bag">
+                            <% if(session.cart){ %>
+                                <span class="badge">
+                                    <%= session.cart.totalQty %>
+                                </span>
+                                <% } else { %>
+                                    <span class="badge">0</span>
+                                    <% } %>
+                        </i>
                         My Cart
                     </a>
                 </ul>
@@ -122,7 +130,7 @@
                                       <input type="hidden" name="page" id= "page" value="<%= currentPage %>">
                                       <input type="hidden" name="origin" id= "origin" value="<%= origin %>">
                                       <input type="hidden" name="searchText" id= "searchText" value="<%= searchText %>">
-                                      
+
                                     </form>
                                 </div>
 
@@ -337,7 +345,7 @@
                                       <input type="hidden" name= "origin" id= "origin" value="<%= origin %>">
                                       <input type="hidden" name= "searchText" id= "searchText" value="<%= searchText %>">
                                       <input type="hidden" name= "sort" id= "sort" value="<%= sort %>">
-                                    
+
                                       <button class="btn hvr-hover" type="submit">Filter</button>
                                 </form>
                                 </p>
