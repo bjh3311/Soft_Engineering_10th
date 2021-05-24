@@ -171,10 +171,15 @@
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <select name="manufacturer" id="manufacturer" class="form-control" value="<%= product.manufacturer %>">
-                                        <option value="0">Please select</option>
-                                        <option value="1">제조사1</option>
-                                        <option value="2">제조사2</option>
-                                        <option value="3">제조사3</option>
+                                        <option value="1"<% if(product.manufacturer==1){%>
+                                            selected="selected"
+                                        <% } %>>제조사1</option>
+                                        <option value="2"<% if(product.manufacturer==2){%>
+                                            selected="selected"
+                                        <% } %>>제조사2</option>
+                                        <option value="3"<% if(product.manufacturer==3){%>
+                                            selected="selected"
+                                        <% } %>>제조사3</option>
                                     </select>
                                 </div>
                             </div>
@@ -184,10 +189,15 @@
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <select name="taste" id="taste" class="form-control" value="<%= product.taste %>">
-                                        <option value="0">Please select</option>
-                                        <option value="1">맛1</option>
-                                        <option value="2">맛2</option>
-                                        <option value="3">맛3</option>
+                                        <option value="1"<% if(product.taste==1){%>
+                                            selected="selected"
+                                        <% } %>>맛1</option>
+                                        <option value="2"<% if(product.taste==2){%>
+                                            selected="selected"
+                                        <% } %>>맛2</option>
+                                        <option value="3"<% if(product.taste==3){%>
+                                            selected="selected"
+                                        <% } %>>맛3</option>
                                     </select>
                                 </div>
                             </div>
@@ -197,10 +207,15 @@
                         </div>
                         <div class="col-12 col-md-9">
                             <select name="weight" id="weight" class="form-control" value="<%= product.weight %>">
-                                <option value="0">Please select</option>
-                                <option value="1">200g</option>
-                                <option value="2">600g</option>
-                                <option value="3">1.2kg</option>
+                                <option value="200g" <% if(product.weight=="200g"){%>
+                                        selected="selected"
+                                    <% } %>>200g</option>
+                                <option value="600g"<% if(product.weight=="600g"){%>
+                                    selected="selected"
+                                <% } %>>600g</option>
+                                <option value="1.2kg" <% if(product.weight=="1.2kg"){%>
+                                    selected="selected"
+                                <% } %>>1.2kg</option>
                             </select>
                         </div>
                     </div>
@@ -210,11 +225,15 @@
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <select name="origin" id="origin" class="form-control" value="<%= product.origin %>">
-                                        <option value="0">Please select</option>
-                                        <option value="1">에티오피아</option>
-                                        <option value="2">콜롬비아</option>
-                                        <option value="3">케냐</option>
-                                        <option value="4">그 외</option>
+                                        <option value="1"<% if(product.origin==1){%>
+                                            selected="selected"
+                                        <% } %>>일반원두</option>
+                                        <option value="3"<% if(product.origin==3){%>
+                                            selected="selected"
+                                        <% } %>>고급원두</option>
+                                        <option value="4" <% if(product.origin==4){%>
+                                            selected="selected"
+                                        <% } %>>입문자용 원두</option>
                                     </select>
                                 </div>
                             </div>
@@ -252,7 +271,7 @@
                                     <small class="help-block form-text">상품 재고 입력</small>
                                 </div>
                             </class>
-
+                                <input type="hidden" id="flag" name="flag" value="true">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> 상품 수정
                                 </button>

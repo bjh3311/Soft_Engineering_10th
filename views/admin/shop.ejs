@@ -146,7 +146,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="why-text">
-                                                        <h4><%= product.name %></h4>
+                                                        <h4><%= product.name %><% if(product.flag==false) { %>
+                                                        <span>(삭제된 상품)</span>
+                                                        <% } %></h4>
                                                         <h5> <%= product.price %>won</h5>
                                                     </div>
                                                 </div>
