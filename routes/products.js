@@ -53,7 +53,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
   // update
   router.put('/:id',function(req, res){
-    Product.findOneAndUpdate({_id:req.params.id}, req.body, function(err, product){
+    Product.findOneAndUpdate({_id:req.params.id}, req.body,{runValidators: true }, function(err, product){
       if(err){
         req.flash('product', req.body);
         req.flash('errors', util.parseError_(err));

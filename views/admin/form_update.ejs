@@ -112,8 +112,12 @@
                                                      <label for="title" class=" form-control-label">제목</label>
                                                  </div>
                                                  <div class="col-12 col-md-9">
-                                                     <input type="text" id="title" name="title" value="<%= post.title %>" class="form-control">
+                                                     <input type="text" id="title" name="title" value = "<%= post.title %>" class="form-control">
+                                                     <% if(errors.title){ %>
+                                                        <span><%= errors.title.message %></span>
+                                                    <%} else {%>
                                                      <small class="form-text text-muted">공지/이벤트 제목</small>
+                                                    <% } %>
                                                  </div>
                                              </div>
                                              <div class="row form-group">
@@ -122,7 +126,11 @@
                                                  </div>
                                                  <div class="col-12 col-md-9">
                                                      <input type="date" id="start" name="start" value="<%= moment(post.start).format('YYYY-MM-DD') %>" class="form-control">
+                                                     <% if(errors.start){ %>
+                                                        <span><%= errors.start.message %></span>
+                                                    <%} else {%>
                                                      <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                    <% } %>
                                                  </div>
                                              </div>
                                              <div class="row form-group">
@@ -131,7 +139,11 @@
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="date" id="end" name="end" value="<%= moment(post.end).format('YYYY-MM-DD') %>" class="form-control">
-                                                    <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                    <% if(errors.end){ %>
+                                                        <span><%= errors.end.message %></span>
+                                                        <%} else {%>
+                                                     <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                              <div class="row form-group">
@@ -140,7 +152,10 @@
                                                  </div>
                                                  <div class="col-12 col-md-9">
                                                      <textarea name="body" id="body" rows="9" class="form-control"><%= post.body %></textarea>
-                                                 </div>
+                                                     <% if(errors.body) { %>
+                                                        <span><%= errors.body.message %></span>
+                                                    <% } %>     
+                                                </div>
                                              </div>
                                              <div class="row form-group">
                                                 <div class="col col-md-3">
