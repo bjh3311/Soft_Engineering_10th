@@ -1,5 +1,6 @@
 // routes/home.js
 var express = require('express');
+const Post = require('../models/Post');
 var router = express.Router();
 var passport = require('../config/passport');
 var Product = require('../models/Product');
@@ -16,11 +17,22 @@ const cart = require('../models/cart');
 router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  var products = await Product.find();
+
+  var limit = 4;
+
+  var products = await Product.find()
+    .where('flag').equals(true)
+    .sort('-createAt')
+    .limit(limit) // 8
+    .exec();
+
+  var posts = await Post.find();
+
       res.render('main/index', {
       username:username,
       errors:errors,
-      products:products
+      products:products,
+      posts:posts
     });
 });
 
@@ -135,7 +147,6 @@ router.get('/order_list',function(req,res){
 })
 
 router.get('/category', async function(req,res){
-  console.log(req.query);
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
@@ -161,6 +172,7 @@ router.get('/category', async function(req,res){
   try{
   if(origin == 0){
   var products = await Product.find(searchQuery)
+    .where('flag').equals(true)
     .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8
@@ -168,6 +180,7 @@ router.get('/category', async function(req,res){
   }else{
     var products = await Product.find(searchQuery)
     .where('origin').equals(origin)
+    .where('flag').equals(true)
     .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8

@@ -110,14 +110,19 @@
                              <div class="col-12 col-sm-8 text-center text-sm-left">
                                  <div class="toolbar-sorter-right">
                                      <span>Sort by </span>
-                                     <form action="/admin/shop<% getProductQueryString(false) %>" method="get">
-                                        <select id="basic" name="sort" class="selectpicker show-tick form-control"  onchange="this.form.submit()" data-placeholder="$ USD">
-                                            <option data-display="Select" value="-createAt">Nothing</option>
-                                            <option value="-price">High Price → Low Price</option>
-                                            <option value="price">Low Price → High Price</option>
-                                            <option value="sales">Best Selling</option>
-                                            </select>
-                                        </form>
+                                     <select id="filter" name="filter" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="PriceSubmit();">
+                                        <option data-display="Select" value="-createAt">Nothing</option>
+                                        <option value="-price">High Price → Low Price</option>
+                                        <option value="price">Low Price → High Price</option>
+                                      </select>
+                                      <form action="/admin/shop" method="get" id="form_sort">
+                                        <input type="hidden" name="amount_start" value="<%= amount_start %>">
+                                        <input type="hidden" name="amount_end" value="<%= amount_end %>">
+                                        <input type="hidden" name="sort" id="sort" value="<%= sort %>">
+                                        <input type="hidden" name="origin" id= "origin" value="<%= origin %>">
+                                        <input type="hidden" name="searchText" id= "searchText" value="<%= searchText %>">
+                                        
+                                      </form>
                                  </div>
                                  <p>Showing all 4 results</p>
                              </div>
@@ -141,7 +146,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="why-text">
-                                                        <h4><%= product.name %></h4>
+                                                        <h4><%= product.name %><% if(product.flag==false) { %>
+                                                        <span>(삭제된 상품)</span>
+                                                        <% } %></h4>
                                                         <h5> <%= product.price %>won</h5>
                                                     </div>
                                                 </div>
@@ -172,6 +179,10 @@
                         <div class="search-product">
                             <form action="/admin/shop" method="get">
                                 <input class="form-control" minlength="2" name="searchText" value="<%= searchText %>" placeholder="Search here..." type="text">
+                                <input type="hidden" name="amount_start" value="<%= amount_start %>">
+                                <input type="hidden" name="amount_end" value="<%= amount_end %>">
+                                <input type="hidden" name="sort" id="sort" value="<%= sort %>">
+                                <input type="hidden" name="origin" id="origin" value="<%= origin %>">
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
@@ -207,13 +218,15 @@
                                 <div id="slider-range"></div>
                                 <p>
                                     <form action="/admin/shop" method="get">
-                                        <label for="amount_start"></label>
-                                        <label for="amout_end"></label>
-                                        <input type="text" size="8" id="amount_start" name="amount_start" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                        <input type="text" size="8" id="amount_start" name="amount_start"  readonly style="border:0; color:#fbb714; font-weight:bold;">원
                                          ~
-                                        <input type="text" size="8" id="amount_end" name="amount_end" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                        <input type="text" size="8" id="amount_end" name="amount_end"  readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                        <input type="hidden" name= "origin" id= "origin" value="<%= origin %>">
+                                        <input type="hidden" name= "searchText" id= "searchText" value="<%= searchText %>">
+                                        <input type="hidden" name= "sort" id= "sort" value="<%= sort %>">
+                                      
                                         <button class="btn hvr-hover" type="submit">Filter</button>
-                                    </form>
+                                  </form>
                                 </p>
                             </div>
                         </div>
@@ -240,4 +253,11 @@
       document.getElementById("advanced").className="list-group-item list-group-item-action active";
     }
     document.write(<%= origin %>);
+
+    function PriceSubmit(){
+      var sel=document.getElementById("filter");
+      var price_select=sel.options[sel.selectedIndex].value;
+      document.getElementById("sort").value=price_select;
+      document.getElementById("form_sort").submit();
+    }
 </script>

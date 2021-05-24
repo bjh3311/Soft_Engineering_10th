@@ -64,6 +64,16 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     });
   });
 
+  router.put('/:id/flag',function(req, res){
+    Product.findOneAndUpdate({_id:req.params.id}, {flag:false}, function(err, product){
+      if(err){
+        req.flash('product', req.body);
+        req.flash('errors', util.parseError(err));
+        return res.redirect('/products/'+req.params.id+'/edit');
+      }
+      res.redirect('/products/'+req.params.id);
+    });
+  });
   // destroy
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
