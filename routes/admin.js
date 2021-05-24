@@ -80,6 +80,7 @@ router.get('/shop',util.isLoggedin, checkPermission,  async function(req,res){
     .exec();
   }else{
     var products = await Product.find({'origin' : origin},searchQuery)
+    .where('origin').equals(origin)
     .sort(sort)
     .exec();
   }
