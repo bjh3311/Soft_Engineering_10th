@@ -64,8 +64,18 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/admin/table');
     });
   });
+  router.put('/:id/flag',function(req, res){
+    Post.findOneAndUpdate({_id:req.params.id}, {flag:req.body.flag}, function(err, post){
+      if(err){
+        req.flash('post', req.body);
+        req.flash('errors', util.parseError(err));
+        return res.redirect('/admin/table');
+      }
+      res.redirect('/admin/table');
+    });
+  });
 
-  router.get('/:id/destroy/', function(req, res){
+  router.get('/:id/destroy', function(req, res){
     var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
     if(!post){

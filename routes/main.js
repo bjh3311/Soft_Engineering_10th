@@ -144,6 +144,7 @@ router.get('/category', async function(req,res){
   try{
   if(origin == 0){
   var products = await Product.find(searchQuery)
+    .where('flag').equals(true)
     .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8
@@ -151,6 +152,7 @@ router.get('/category', async function(req,res){
   }else{
     var products = await Product.find(searchQuery)
     .where('origin').equals(origin)
+    .where('flag').equals(true)
     .sort(sort)
     .skip(skip)   // 8
     .limit(limit) // 8

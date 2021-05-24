@@ -207,11 +207,17 @@
                                                     </td>
                                                     <td>
                                                       <div class="rs-select2--trans rs-select2--sm">
-                                                          <select class="js-select2" name="property">
-                                                              <option value="0">비활성</option>
-                                                              <option value="1" selected="selected">활성화</option>
+                                                          <form action="/posts/<%= post._id %>/flag?_method=put" method="post">
+                                                          <select class="js-select2" name="flag" onchange="this.form.submit()">
+                                                              <option value="false" <% if(!post.flag) { %>
+                                                                selected="selected"      
+                                                            <% } %>>비활성</option>
+                                                              <option value="true"<% if(post.flag) { %>
+                                                                selected="selected"      
+                                                            <% } %>>활성화</option>
                                                           </select>
                                                           <div class="dropDownSelect2"></div>
+                                                        </form>
                                                       </div>
                                                         <!-- <span class="status--process">Processed</span> -->
                                                     </td>
