@@ -56,10 +56,18 @@
               </div>
               <!-- /.navbar-collapse -->
               <!-- Start Atribute Navigation -->
-              <div class="attr-nav">
+              <div class="attr-nav" style="padding-right: 10px;">
                 <ul>
-                    <a href="#">
-                    <i class="fa fa-shopping-bag" style="padding-left: 10px;"></i>
+                    <a href="/cart">
+                        <i class="fa fa-shopping-bag">
+                            <% if(session.cart){ %>
+                                <span class="badge">
+                                    <%= session.cart.totalQty %>
+                                </span>
+                                <% } else { %>
+                                    <span class="badge">0</span>
+                                    <% } %>
+                        </i>
                         My Cart
                     </a>
                 </ul>
@@ -138,26 +146,30 @@
                   <h4>Short Description:</h4>
                   <p><%= product.body %>
                    </p>
-                  <ul>
-                     <li>
-                        <div class="form-group quantity-box">
-                           <label class="control-label">수량(100g당 1개로 센다)</label>
-                           <input class="form-control" value="0" min="0" max="20" type="number">
+                   <form action="/AddCart/<%= product._id %>" method="post">
+                        <ul>
+                            <li>
+                                <div class="form-group quantity-box">
+                                        <label class="control-label">수량(100g당 1개로 센다)
+                                            <input class="form-control" value="0" min="0" max="20" type="number" name="count">
+                                        </label>
+                                </div>
+                                </li>
+                        </ul>
+                        <div class="price-box-bar">
+                            <div class="cart-and-bay-btn">
+                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">바로 구매 </a>
+                                    <input type="submit" class="btn hvr-hover" style="float:right" data-fancybox-close="" value="장바구니 담기">
+                                    <a class="btn hvr-hover" data-fancybox-close="" onclick="showDestination()">배송지 선택</a>
+                                <!-- <form>
+                                <select name="배송지">
+                                    <option value="none">기본 배송지</option>
+                                </select>
+                                </form> -->
+                            </div>
                         </div>
-                     </li>
-                  </ul>
+                    </form>
 
-                  <div class="price-box-bar">
-                     <div class="cart-and-bay-btn">
-                        <a class="btn hvr-hover" data-fancybox-close="" href="#">바로 구매 </a>
-                        <a class="btn hvr-hover" data-fancybox-close="" href="#">장바구니 담기</a><br><br>
-                        <a class="btn hvr-hover" data-fancybox-close="" onclick="showDestination()">배송지 선택</a>
-                        <!-- <form>
-                           <select name="배송지">
-                              <option value="none">기본 배송지</option>
-                           </select>
-                        </form> -->
-                     </div>
                   </div>
                     </div>
                 </div>

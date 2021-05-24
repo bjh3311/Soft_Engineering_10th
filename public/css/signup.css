@@ -67,7 +67,7 @@ h3 {
 }
 
 input {
-    font-family: Dotum,'돋움',Helvetica,sans-serif;    
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
 .box.int_id {
@@ -110,7 +110,7 @@ input {
 #bir_yy {
     display: table-cell;
     width: 147px;
-    
+
 }
 
 #bir_mm {
@@ -147,7 +147,7 @@ select {
 .error_next_box {
     margin-top: 9px;
     font-size: 12px;
-    color: red;    
+    color: red;
     display: none;
 }
 

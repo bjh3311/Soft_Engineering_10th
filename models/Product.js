@@ -19,6 +19,6 @@ var productSchema = mongoose.Schema({
   createAt:{type: Date, default: Date.now}
 });
 
-// model & export 
+// model & export
 var Product = mongoose.model('product',productSchema);
 module.exports = Product;

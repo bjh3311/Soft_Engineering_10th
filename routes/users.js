@@ -102,6 +102,7 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
   });
 });
 */
+<<<<<<< HEAD
 
 // Post Login // 3
 
@@ -150,6 +151,8 @@ router.get('/logout', function(req, res) {
 });
 
 
+=======
+>>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
 module.exports = router;
 
 // functions
@@ -175,7 +178,14 @@ function checkPermission(req, res, next){
   User.findOne({username:req.params.username}, function(err, user){
    if(err) return res.json(err);
    if(user.id != req.user.id) return util.noPermission(req, res);
+<<<<<<< HEAD
 
    next();
   });
  }
+=======
+
+   next();
+  });
+ }
+>>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47

@@ -56,13 +56,18 @@
                 </div>
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
-                <div class="attr-nav col-xl-auto">
+                <div class="attr-nav" style="padding-right: 10px;">
                     <ul>
-		                    <li class="search">
-                          <a href="#"><i class="fa fa-search"></i></a>
-                        </li>
-                        <a href="#">
-                        <i class="fa fa-shopping-bag" style="padding-left: 10px;"></i>
+                        <a href="/cart">
+                            <i class="fa fa-shopping-bag">
+                                <% if(session.cart){ %>
+                                    <span class="badge">
+                                        <%= session.cart.totalQty %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge">0</span>
+                                        <% } %>
+                            </i>
                             My Cart
                         </a>
                     </ul>
