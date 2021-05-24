@@ -23,8 +23,14 @@ util.parseError = function(errors){
 }
 
 
-util.parseError_product = function(errors){
+util.parseError_ = function(errors){
   var parsed = {};
+  if(errors.name == 'ValidationError'){
+    for(var name in errors.errors){
+      var validationError = errors.errors[name];
+      parsed[name] = { message:validationError.message };
+    }
+  }
   parsed.unhandled = JSON.stringify(errors);
   return parsed;
 }

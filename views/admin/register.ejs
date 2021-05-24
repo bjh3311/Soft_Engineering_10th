@@ -123,7 +123,7 @@
                                                             <input type="text" id="name" name="name" placeholder="상품 이름 작성" class="form-control">
                                                             <% if(errors.name) { %>
                                                                 <span><%= errors.name.message %></span>
-                                                            <%} 5>
+                                                            <%} %>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -132,7 +132,11 @@
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <input type="number" id="price" name="price" placeholder="상품 가격 입력" class="form-control">
-                                                            <small class="form-text text-muted">상품 가격 입력하세요.</small>
+                                                            <% if(errors.price) { %>
+                                                                <span><%= errors.price.message %></span>
+                                                            <%} else { %>
+                                                                <small class="form-text text-muted">상품 가격 입력하세요.</small>
+                                                            <% } %>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -173,7 +177,7 @@
                                             </div>
                                                    <div class="row form-group">
                                                         <div class="col col-md-3">
-                                                            <label for="origin" class=" form-control-label">상품 원산지</label>
+                                                            <label for="origin" class=" form-control-label">상품 종류</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <select name="origin" id="origin" class="form-control">
@@ -188,7 +192,10 @@
                                                             <label for="body" class=" form-control-label">상품 상세 정보</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오." class="form-control"></textarea>
+                                                            <textarea name="body" id="body" rows="9" placeholder="상품 상세 정보 입력하시오."  value="" class="form-control"></textarea>
+                                                            <% if(errors.body) { %>
+                                                                <span><%= errors.body.message %></span>
+                                                            <% } %>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">

@@ -19,7 +19,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     Product.create(req.body, function(err, product){
       if(err){
         req.flash('producuts', req.body);
-        req.flash('errors', util.parseError(err));
+        req.flash('errors', util.parseError_product(err));
         return res.redirect('/admin/register');
       }
       res.redirect('/admin/shop');
@@ -56,7 +56,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     Product.findOneAndUpdate({_id:req.params.id}, req.body, function(err, product){
       if(err){
         req.flash('product', req.body);
-        req.flash('errors', util.parseError(err));
+        req.flash('errors', util.parseError_(err));
         return res.redirect('/products/'+req.params.id+'/edit');
       }
       res.redirect('/products/'+req.params.id);
