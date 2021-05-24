@@ -19,7 +19,13 @@ util.parseError = function(errors){
   else {
     parsed.unhandled = JSON.stringify(errors);
   }
-  console.log(errors);
+  return parsed;
+}
+
+
+util.parseError_product = function(errors){
+  var parsed = {};
+  parsed.unhandled = JSON.stringify(errors);
   return parsed;
 }
 

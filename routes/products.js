@@ -20,7 +20,6 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       if(err){
         req.flash('producuts', req.body);
         req.flash('errors', util.parseError(err));
-        console.log(err);
         return res.redirect('/admin/register');
       }
       res.redirect('/admin/shop');

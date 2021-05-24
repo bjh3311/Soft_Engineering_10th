@@ -121,6 +121,9 @@
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <input type="text" id="name" name="name" placeholder="상품 이름 작성" class="form-control">
+                                                            <% if(errors.name) { %>
+                                                                <span><%= errors.name.message %></span>
+                                                            <%} 5>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -138,7 +141,6 @@
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <select name="manufacturer" id="manufacturer" class="form-control">
-                                                                <option value="0">Please select</option>
                                                                 <option value="1">제조사1</option>
                                                                 <option value="2">제조사2</option>
                                                                 <option value="3">제조사3</option>
@@ -151,7 +153,6 @@
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <select name="taste" id="taste" class="form-control">
-                                                                <option value="0">Please select</option>
                                                                 <option value="1">맛1</option>
                                                                 <option value="2">맛2</option>
                                                                 <option value="3">맛3</option>
@@ -164,7 +165,6 @@
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <select name="weight" id="weight" class="form-control">
-                                                        <option value="0">Please select</option>
                                                         <option value="200g">200g</option>
                                                         <option value="600g">600g</option>
                                                         <option value="1.2kg">1.2kg</option>
@@ -177,11 +177,9 @@
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <select name="origin" id="origin" class="form-control">
-                                                                <option value="0">Please select</option>
-                                                                <option value="1">에티오피아</option>
-                                                                <option value="2">콜롬비아</option>
-                                                                <option value="3">케냐</option>
-                                                                <option value="4">그 외</option>
+                                                                <option value="1">고급 원두</option>
+                                                                <option value="3">일반 원두</option>
+                                                                <option value="4">입문용 원두</option>
                                                             </select>
                                                         </div>
                                                     </div>
