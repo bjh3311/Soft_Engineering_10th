@@ -3,17 +3,21 @@ var router = express.Router();
 var Post = require('../models/Post');
 var multer = require('multer');
 var util = require('../util');
+
 var moment = require('moment');
 
 var storage  = multer.diskStorage({ // 2
     destination(req, file, cb) {
       cb(null, './public/posts');
+
     },
     filename(req, file, cb) {
       cb(null, `${file.originalname}`);
     },
   });
+
   var uploadWithOriginalFilename = multer({ storage: storage });
+
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
@@ -33,9 +37,11 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     Post.findOne({_id:req.params.id})
       .exec(function(err, post){
         if(err) return res.json(err);
+
         res.render('admin/table_detail', {post:post});
       });
   });
+
 
   // edit
   router.get('/:id/edit', function(req, res){
@@ -44,14 +50,18 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     if(!post){
       Post.findOne({_id:req.params.id}, function(err, post){
           if(err) return res.json(err);
+
           res.render('admin/form_update', { post:post, errors:errors, moment });
+
         });
     }
     else {
       post._id = req.params.id;
+
       res.render('admin/form_update', { post:post, errors:errors, moment });
     }
   });
+
 
   // update
   router.put('/:id',function(req, res){
@@ -61,6 +71,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
         req.flash('errors', util.parseError(err));
         return res.redirect('/posts/'+req.params.id+'/edit');
       }
+
       res.redirect('/admin/table');
     });
   });
@@ -89,10 +100,12 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.render('admin/table_delete', { post:post, errors:errors });
     }
   });
+
   // destroy
   router.delete('/:id', function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
+
       res.send("<script>opener.parent.location.reload();window.close();</script > ")
     });
   });
