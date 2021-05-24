@@ -30,23 +30,34 @@ router.get('/table_detail',util.isLoggedin, checkPermission, function(req,res){
 })
 
 router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
-    res.render('admin/form_create');
+  var errors = req.flash('errors')[0] || {};
+    res.render('admin/form_create',{
+      errors:errors
+    }); 
 });
 
 router.get('/form_update', util.isLoggedin, checkPermission, function(req, res){
-    res.render('admin/form_update');
+  var errors = req.flash('errors')[0] || {};
+    res.render('admin/form_update',{
+      errors:errors
+    });   
 });
 
 router.get('/register', util.isLoggedin, checkPermission, function(req, res){
-    res.render('admin/register');
+    var errors = req.flash('errors')[0] || {};
+    res.render('admin/register',{
+      errors:errors
+    });
 });
 
 router.get('/detail', util.isLoggedin, checkPermission, function(req, res){
-  console.log("admin");
   res.render('admin/detail');
 });
 router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
-    res.render('admin/modify');
+  var errors = req.flash('errors')[0] || {};  
+  res.render('admin/modify',{
+    errors:errors
+  });
 });
 
 // 주문 내역
