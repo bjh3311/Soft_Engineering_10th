@@ -115,13 +115,14 @@
                                       <option value="-price">High Price → Low Price</option>
                                       <option value="price">Low Price → High Price</option>
                                     </select>
-                                    <form action="/category" method="get" id=form_sort>
+                                    <form action="/category" method="get" id="form_sort">
+                                      <input type="hidden" name="amount_start" value="<%= amount_start %>">
+                                      <input type="hidden" name="amount_end" value="<%= amount_end %>">
                                       <input type="hidden" name="sort" id="sort" value="<%= sort %>">
-                                      <input type="hidden" name= "page" id= "page" value="<%= currentPage %>">
-                                      <input type="hidden" name= "origin" id= "origin" value="<%= origin %>">
-                                      <input type="hidden" name= "searchText" id= "searchText" value="<%= searchText %>">
-                                      <input type="hidden" name= "amount_start" id= "amount_start" value="<%= amount_start %>">
-                                      <input type="hidden" name= "amount_end id= "amount_end" value="<%= amount_end %>">
+                                      <input type="hidden" name="page" id= "page" value="<%= currentPage %>">
+                                      <input type="hidden" name="origin" id= "origin" value="<%= origin %>">
+                                      <input type="hidden" name="searchText" id= "searchText" value="<%= searchText %>">
+                                      
                                     </form>
                                 </div>
 
