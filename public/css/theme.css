@@ -294,13 +294,11 @@ section {
 }
 .page-container {
     background: #e5e5e5;
-<<<<<<< HEAD
+
     /* padding-left: 300px; */
     float:left;
     width:100%;
-=======
-    padding-left: 300px;
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
+
 }
 
 @media (max-width: 991px) {
@@ -1590,12 +1588,10 @@ section {
 
 .menu-sidebar {
     width: 300px;
-<<<<<<< HEAD
+
     /* position: fixed; */
     float:left;
-=======
-    position: fixed;
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
+
     left: 0;
     top: 0;
     bottom: 0;

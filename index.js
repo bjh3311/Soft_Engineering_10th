@@ -2,13 +2,14 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-<<<<<<< HEAD
+
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
 var moment = require('moment');
+const MongoStore = require('connect-mongo');
 
 //layouts
 var expressLayouts = require('express-ejs-layouts');
@@ -19,26 +20,16 @@ app.use(expressLayouts);
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(bodyParser.json());
-=======
-var flash = require('connect-flash'); 
-var session = require('express-session'); 
-var passport = require('./config/passport');
-var util = require('./util');
-var app = express();
-var expressLayouts = require('express-ejs-layouts');
-const MongoStore = require('connect-mongo');
 
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
 
 // DB setting
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-<<<<<<< HEAD
+
 mongoose.set('autoIndex', true);
-=======
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
+
 mongoose.connect('mongodb+srv://iqeq1945:sksmsdit12@cluster0.3rl9c.mongodb.net/test?retryWrites=true&w=majority');
 var db = mongoose.connection;
 db.once('open', function(){
@@ -48,32 +39,19 @@ db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
 
-<<<<<<< HEAD
+
 // setting
 app.set('view engine','ejs'); // 1
 app.use(express.static(__dirname + '/public'));
-=======
 
-app.use(express.static(__dirname + '/public'));
-app.use(expressLayouts);
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(flash()); // 2
-<<<<<<< HEAD
-app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
-
-//layouts
-app.set('layout','./layout/full-width');
-app.set("layout extractScripts",true);
-
-// Passport
-=======
 app.use(session({
-  secret:'MySecret', 
-  resave:false, 
+  secret:'MySecret',
+  resave:false,
   saveUninitialized:true,
   store: MongoStore.create({
   mongoUrl : mongoose.connection._connectionString,
@@ -84,9 +62,11 @@ app.use(session({
 // setting
 app.set('view engine','ejs'); // 1
 app.set('layout', './layout/full-width');
+app.set("layout extractScripts",true);
 
-// Passport 
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
+
+// Passport
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -94,18 +74,12 @@ app.use(passport.session());
 app.use(function(req,res,next){
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.currentUser = req.user;
-<<<<<<< HEAD
-  next();
-});
-// routes setting
-app.use('/', util.getProductQueryString, require('./routes/main'));
-=======
   res.locals.session = req.session;
   next();
 });
 // routes setting
-app.use('/', require('./routes/main'));
->>>>>>> 3acdf7cdde1963dd07b50275bb7b95f1fbd49b47
+// app.use('/', require('./routes/main'));
+app.use('/', util.getProductQueryString, require('./routes/main'));
 app.use('/admin', require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
