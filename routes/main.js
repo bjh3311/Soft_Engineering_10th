@@ -1,6 +1,7 @@
 // routes/home.js
 
 var express = require('express');
+const Post = require('../models/Post');
 var router = express.Router();
 var Product = require('../models/Product');
 // Main
@@ -15,10 +16,14 @@ router.get('/', async function(req, res){
     .sort('-createAt')
     .limit(limit) // 8
     .exec();
+
+  var posts = await Post.find();
+
       res.render('main/index', {
       username:username,
       errors:errors,
-      products:products
+      products:products,
+      posts:posts
     });
 });
 

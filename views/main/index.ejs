@@ -92,36 +92,19 @@
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
+            <% posts.forEach(function(post) { %>
+            <% if(post.flag == false) return; %>
             <li class="text-center">
-                <img src="/images/banner1.jpg" alt="">
+                <img src="/posts/<%= post.title %>.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>이벤트 1: 쇼핑몰 문 닫는 날 까지 첫 주문시 커피포트 무료증정</strong></h1>
+                            <h1 class="m-b-20"><strong><%= post.body %></strong></h1>
                         </div>
                     </div>
                 </div>
             </li>
-            <li class="text-center">
-                <img src="/images/banner2.jpg" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>이벤트 2: 쇼핑몰 문 닫는 날 까지 무료배송</strong></h1>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src="/images/banner3.jpg" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>이벤트 3: 쇼핑몰 문 닫는 날 까지 24시간 배송</strong></h1>
-                        </div>
-                    </div>
-                </div>
-            </li>
+           <% }) %>
         </ul>
         <div class="slides-navigation">
             <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
