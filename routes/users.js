@@ -119,8 +119,9 @@ router.post('/login',
     }
     if(isValid){
       next();
+      console.log(req.body.username);
+      console.log(req.body.password);
     }
-
     else {
       req.flash('errors',errors);
       res.redirect('/');

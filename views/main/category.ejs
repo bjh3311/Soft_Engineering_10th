@@ -135,16 +135,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-12 col-sm-4 text-center text-sm-right">
-                                <ul class="nav nav-tabs ml-auto">
-                                    <li>
-                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
 
                         <div class="product-categorie-box">
@@ -154,16 +145,16 @@
                                         <%  products.forEach(function(product) {  %>
                                             <% if(product.price < amount_start || product.price > amount_end) return; %>
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <img src="/upload/<%= product.img %>" class="img-fluid" alt="Image">
+                                                <div class="products-single fix" style="height:100%; !important;">
+                                                    <div class="box-img-hover" style="height:70%; !important;">
+                                                        <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="why-text">
+                                                    <div class="why-text" style="height:30%; !important;">
                                                         <h4><%= product.name %></h4>
                                                         <h5><%= product.weight %>당 <%= product.price %>원</h5>
                                                     </div>

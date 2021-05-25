@@ -119,10 +119,10 @@
                         <div class="carousel-inner" role="listbox">
                             <% product.files.forEach(function(file,index){ %>
                             <div class="carousel-item <% if(index==0) {%>
-                                active" 
+                                active"
                                 <%}else { %>
                                     "
-                                 <% } %>> <img class="d-block w-100" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
+                                 <% } %>> <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
                             <% }) %>
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
