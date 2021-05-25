@@ -98,9 +98,8 @@
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <% posts.forEach(function(post) { %>
-            <% if(post.flag == false) return; %>
             <li class="text-center">
-                <img src="/posts/<%= post.title %>.jpg" alt="">
+                <img src="/posts/<%= post.file.name %>" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -163,7 +162,7 @@
                             <div class="type-lb">
                                 <p class="new">New</p>
                             </div>
-                            <img src="/upload/<%= product.name %>.jpg" class="img-fluid" alt="Image">
+                            <img src="/upload/<%= product.img %>" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

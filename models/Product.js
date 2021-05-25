@@ -15,7 +15,12 @@ var productSchema = mongoose.Schema({
   sales:{type:Number, default:0, min:0},
   stock:{type:Number, default:1000, min:0},
   flag:{type:Boolean, default: true},
-  createAt:{type: Date, default: Date.now}
+  createAt:{type: Date, default: Date.now},
+  img : {type:String},
+  files:{
+
+  }
+  
 });
 
 // model & export
