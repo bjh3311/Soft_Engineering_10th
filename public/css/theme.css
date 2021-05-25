@@ -97,6 +97,11 @@ p {
     border-radius: 3px;
 }
 
+/*image 고정*/
+.carousel_img{
+  height:300px;
+  object-fit:contain;
+}
 
 /*pagination*/
 .pagination {

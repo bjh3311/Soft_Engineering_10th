@@ -121,8 +121,9 @@ router.post('/login',
     }
     if(isValid){
       next();
+      console.log(req.body.username);
+      console.log(req.body.password);
     }
-
     else {
       req.flash('errors',errors);
       res.redirect('/');
@@ -135,6 +136,7 @@ router.post('/login',
 ));
 
 router.get('/check', function(req,res){
+  console.log(req.user);
   if(req.user.right==true){
     res.redirect('/admin/index');
   }
