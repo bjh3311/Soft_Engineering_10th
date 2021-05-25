@@ -133,6 +133,9 @@ router.post('/login',
 ));
 
 router.get('/check', function(req,res){
+  if(typeof req.user == "undefined"){
+    res.redirect('/users/logout');
+  }
   if(req.user.right==true){
     res.redirect('/admin/index');
   }
