@@ -4,22 +4,18 @@ var Product = require('../models/Product');
 var multer = require('multer');
 var util = require('../util');
 
-var storage  = multer.diskStorage({ // 2
-    destination(req, file, cb) {
-      cb(null, './public/upload');
-    },
-    filename(req, file, cb) {
-      cb(null, `${file.originalname}`);
-    },
-  });
-  var uploadWithOriginalFilename = multer({ storage: storage });
+var upload = multer({ dest: './public/upload' });
+
 
   //create
-router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
-    Product.create(req.body, function(err, product){
+router.post('/', upload.array('attachments',3), function(req, res){
+    var query =req.body;
+    query['files'] = req.files;
+    query['img'] = req.files[0].filename;
+    Product.create(query, function(err, product){
       if(err){
-        req.flash('producuts', req.body);
-        req.flash('errors', util.parseError_product(err));
+        req.flash('producuts', req.query);
+        req.flash('errors', util.parseError_(err));
         return res.redirect('/admin/register');
       }
       res.redirect('/admin/shop');
@@ -52,10 +48,16 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   });
 
   // update
-  router.put('/:id',function(req, res){
-    Product.findOneAndUpdate({_id:req.params.id}, req.body,{runValidators: true }, function(err, product){
+  router.put('/:id', upload.array('attachments',3),function(req, res){
+    var query =req.body;
+    if(typeof req.files != "undefined"){
+          query['files'] = req.files;
+          query['img'] = req.files[0].filename; 
+    }
+    
+    Product.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, product){
       if(err){
-        req.flash('product', req.body);
+        req.flash('product', query);
         req.flash('errors', util.parseError_(err));
         return res.redirect('/products/'+req.params.id+'/edit');
       }
