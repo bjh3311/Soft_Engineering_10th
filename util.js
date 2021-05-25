@@ -19,7 +19,19 @@ util.parseError = function(errors){
   else {
     parsed.unhandled = JSON.stringify(errors);
   }
-  console.log(errors);
+  return parsed;
+}
+
+
+util.parseError_ = function(errors){
+  var parsed = {};
+  if(errors.name == 'ValidationError'){
+    for(var name in errors.errors){
+      var validationError = errors.errors[name];
+      parsed[name] = { message:validationError.message };
+    }
+  }
+  parsed.unhandled = JSON.stringify(errors);
   return parsed;
 }
 

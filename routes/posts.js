@@ -26,7 +26,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
         req.flash('posts', req.body);
         req.flash('errors', util.parseError(err));
         console.log(err);
-        return res.redirect('/admin/form');
+        return res.redirect('/admin/form_create');
       }
       res.redirect('/admin/table');
     });
@@ -65,10 +65,10 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
   // update
   router.put('/:id',function(req, res){
-    Post.findOneAndUpdate({_id:req.params.id}, req.body, function(err, post){
+    Post.findOneAndUpdate({_id:req.params.id}, req.body,{runValidators: true }, function(err, post){
       if(err){
         req.flash('post', req.body);
-        req.flash('errors', util.parseError(err));
+        req.flash('errors', util.parseError_(err));
         return res.redirect('/posts/'+req.params.id+'/edit');
       }
 
@@ -79,7 +79,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     Post.findOneAndUpdate({_id:req.params.id}, {flag:req.body.flag}, function(err, post){
       if(err){
         req.flash('post', req.body);
-        req.flash('errors', util.parseError(err));
+        req.flash('errors', util.parseError_(err));
         return res.redirect('/admin/table');
       }
       res.redirect('/admin/table');
