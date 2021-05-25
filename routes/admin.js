@@ -6,6 +6,7 @@ var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
+const { search } = require('./posts');
 
 
 
@@ -14,9 +15,15 @@ router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
     res.render('admin/index');
 });
 router.get('/table', util.isLoggedin, checkPermission,  async function(req, res){
-  posts = await Post.find();
+  var sort = req.query.sort?req.query.sort:'start';
+  var searchQuery = createSearchQuery_(req.query);
+  posts = await Post.find(searchQuery)
+    .sort(sort)
+    .exec()
     res.render('admin/table', {
     posts:posts,
+    searchText:req.query.searchText,
+    sort:sort,
     moment
   });
 });
@@ -119,6 +126,22 @@ function createSearchQuery(queries){ // 4
     //var searchTypes = queries.searchType.toLowerCase().split(',');
     var productQueries = [];
     productQueries.push({ name: { $regex: new RegExp(queries.searchText, 'i') } });
+
+    /*
+    if(searchTypes.indexOf('body')>=0){
+      productQueries.push({ body: { $regex: new RegExp(queries.searchText, 'i') } });
+    }*/
+    if(productQueries.length > 0) searchQuery = {$or:productQueries};
+  }
+  return searchQuery;
+}
+
+function createSearchQuery_(queries){ // 4
+  var searchQuery = {};
+  if(queries.searchText && queries.searchText.length >= 2){
+    //var searchTypes = queries.searchType.toLowerCase().split(',');
+    var productQueries = [];
+    productQueries.push({ title: { $regex: new RegExp(queries.searchText, 'i') } });
 
     /*
     if(searchTypes.indexOf('body')>=0){
