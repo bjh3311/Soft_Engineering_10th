@@ -19,15 +19,18 @@ router.get('/', async function(req, res){
   var errors = req.flash('errors')[0] || {};
 
   var limit = 4;
-
   var products = await Product.find()
     .where('flag').equals(true)
     .sort('-createAt')
     .limit(limit) // 8
     .exec();
 
-  var posts = await Post.find();
-
+  var posts = await Post.find()
+    .where('end').gte(new Date().toISOString().substring(0,10))
+    .where('start').lte(new Date().toISOString().substring(0,10))
+    .where('flag').equals(true)
+    .sort('start')
+    .exec();
       res.render('main/index', {
       username:username,
       errors:errors,

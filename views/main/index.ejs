@@ -98,7 +98,6 @@
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <% posts.forEach(function(post) { %>
-            <% if(post.flag == false) return; %>
             <li class="text-center">
                 <img src="/posts/<%= post.title %>.jpg" alt="">
                 <div class="container">
