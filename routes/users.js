@@ -29,7 +29,6 @@ router.post('/', function(req, res , next){
 
     if(!req.body.username){
       isValid = false;
-      console.log("1");
       errors.username = 'Username is required!';
     }
     if(!req.body.password){
@@ -112,7 +111,6 @@ router.post('/login',
 
     if(!req.body.username){
       isValid = false;
-      console.log("1");
       errors.username = 'Username is required!';
     }
     if(!req.body.password){
@@ -136,7 +134,9 @@ router.post('/login',
 ));
 
 router.get('/check', function(req,res){
-  console.log(req.user);
+  if(typeof req.user == "undefined"){
+    res.redirect('/users/logout');
+  }
   if(req.user.right==true){
     res.redirect('/admin/index');
   }

@@ -3,7 +3,7 @@ var router = express.Router();
 var Post = require('../models/Post');
 var multer = require('multer');
 var util = require('../util');
-
+var path = require('path');
 var moment = require('moment');
 
 var storage  = multer.diskStorage({ // 2
@@ -12,7 +12,7 @@ var storage  = multer.diskStorage({ // 2
 
     },
     filename(req, file, cb) {
-      cb(null, `${file.originalname}`);
+      cb(null, req.body.title+'-'+file.originalname);
     },
   });
 
@@ -21,7 +21,12 @@ var storage  = multer.diskStorage({ // 2
 
   //create
 router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
-    Post.create(req.body, function(err, post){
+  var query = req.body;
+  query['file']={
+    name : req.file.filename,
+    original : req.file.originalname
+  };
+  Post.create(query, function(err, post){
       if(err){
         req.flash('posts', req.body);
         req.flash('errors', util.parseError(err));
@@ -44,7 +49,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
 
   // edit
-  router.get('/:id/edit', function(req, res){
+  router.get('/:id/edit',function(req, res){
     var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
     if(!post){
@@ -64,10 +69,17 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
 
   // update
-  router.put('/:id',function(req, res){
-    Post.findOneAndUpdate({_id:req.params.id}, req.body,{runValidators: true }, function(err, post){
+  router.put('/:id',uploadWithOriginalFilename.single('attachment'),function(req, res){
+    var query = req.body;
+    if(typeof req.file!="undefined"){
+      query['file']={
+        name : req.file.filename,
+        original : req.file.originalname
+      }
+    }
+    Post.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, post){
       if(err){
-        req.flash('post', req.body);
+        req.flash('post', query);
         req.flash('errors', util.parseError_(err));
         return res.redirect('/posts/'+req.params.id+'/edit');
       }
