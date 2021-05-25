@@ -121,7 +121,7 @@
                                         <input type="hidden" name="sort" id="sort" value="<%= sort %>">
                                         <input type="hidden" name="origin" id= "origin" value="<%= origin %>">
                                         <input type="hidden" name="searchText" id= "searchText" value="<%= searchText %>">
-                                        
+
                                       </form>
                                  </div>
                                  <p>Showing all 4 results</p>
@@ -140,7 +140,11 @@
                                             <% if(product.price < amount_start || product.price > amount_end) return; %>
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
-                                                    <div class="box-img-hover">
+                                                  <% if(product.flag==false){ %>
+                                                      <div class="box-img-delete">
+                                                  <% } else { %>
+                                                      <div class="box-img-hober">
+                                                  <% } %>
                                                         <a href="/products/<%= product._id %>" data-toggle="tooltip" data-placement="right" title="View">
                                                             <img src="/upload/<%= product.img %>" class="img-fluid" alt="Image">
                                                         </a>
@@ -154,20 +158,6 @@
                                                 </div>
                                             </div>
                                             <% }) %>
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-delete">
-                                                        <a href="" data-toggle="tooltip" data-placement="right" title="View">
-                                                        <img src="/posts/dummy.jpg" class="img-fluid" alt="Image">
-                                                        </a>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4></h4>
-                                                        <h5></h5>
-                                                        <h3>삭제</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +214,7 @@
                                         <input type="hidden" name= "origin" id= "origin" value="<%= origin %>">
                                         <input type="hidden" name= "searchText" id= "searchText" value="<%= searchText %>">
                                         <input type="hidden" name= "sort" id= "sort" value="<%= sort %>">
-                                      
+
                                         <button class="btn hvr-hover" type="submit">Filter</button>
                                   </form>
                                 </p>
