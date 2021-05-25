@@ -35,8 +35,8 @@
                         <a href="/users/logout">
                             <i class="zmdi zmdi-power"></i>로그아웃</a>
                     </li>
-                </ul>
-            </nav>
+  
+                        </ul>
         </div>
     </aside>
     <!-- END MENU SIDEBAR-->
@@ -112,12 +112,12 @@
                                                        <label for="title" class=" form-control-label">제목</label>
                                                    </div>
                                                    <div class="col-12 col-md-9">
-                                                       <input type="text" id="title" name="title" placeholder="title" class="form-control">
+                                                       <input type="text" id="title" name="title" value = "" class="form-control">
                                                        <% if(errors.title){ %>
-                                                        <span><%= errors.title.message %></span>
-                                                    <%} else {%>
-                                                     <small class="form-text text-muted">공지/이벤트 제목</small>
-                                                    <% } %>
+                                                          <span><%= errors.title.message %></span>
+                                                      <%} else {%>
+                                                       <small class="form-text text-muted">공지/이벤트 제목</small>
+                                                      <% } %>
                                                    </div>
                                                </div>
                                                <div class="row form-group">
@@ -125,12 +125,12 @@
                                                        <label for="start" class=" form-control-label">시작 날</label>
                                                    </div>
                                                    <div class="col-12 col-md-9">
-                                                       <input type="date" id="start" name="start" class="form-control">
+                                                       <input type="date" id="start" name="start" value="" class="form-control">
                                                        <% if(errors.start){ %>
-                                                        <span><%= errors.start.message %></span>
-                                                    <%} else {%>
-                                                     <small class="form-text text-muted">공지/이벤트 기간</small>
-                                                    <% } %>
+                                                          <span><%= errors.start.message %></span>
+                                                      <%} else {%>
+                                                       <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                      <% } %>
                                                    </div>
                                                </div>
                                                <div class="row form-group">
@@ -138,24 +138,24 @@
                                                       <label for="end" class=" form-control-label">끝나는 날</label>
                                                   </div>
                                                   <div class="col-12 col-md-9">
-                                                      <input type="date" id="end" name="end" class="form-control">
+                                                      <input type="date" id="end" name="end" value="" class="form-control">
                                                       <% if(errors.end){ %>
-                                                        <span><%= errors.end.message %></span>
-                                                        <%} else {%>
-                                                     <small class="form-text text-muted">공지/이벤트 기간</small>
-                                                    <% } %>
-                                                    </div>
+                                                          <span><%= errors.end.message %></span>
+                                                          <%} else {%>
+                                                       <small class="form-text text-muted">공지/이벤트 기간</small>
+                                                      <% } %>
+                                                  </div>
                                               </div>
                                                <div class="row form-group">
                                                    <div class="col col-md-3">
                                                        <label for="body" class=" form-control-label">내용</label>
                                                    </div>
                                                    <div class="col-12 col-md-9">
-                                                       <textarea name="body" id="body" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                       <textarea name="body" id="body" rows="9" class="form-control"></textarea>
                                                        <% if(errors.body) { %>
-                                                        <span><%= errors.body.message %></span>
-                                                    <% } %> 
-                                                    </div>
+                                                          <span><%= errors.body.message %></span>
+                                                      <% } %>     
+                                                  </div>
                                                </div>
                                                <div class="row form-group">
                                                   <div class="col col-md-3">
@@ -169,7 +169,7 @@
                                                   <button type="submit" class="btn btn-primary btn-sm">
                                                       <i class="fa fa-dot-circle-o"></i> Submit
                                                   </button>
-                                                  <button type="reset" class="btn btn-danger btn-sm" onclick="location.href='/admin/table'">
+                                                  <button type="button" class="btn btn-danger btn-sm" onclick="location.href='/admin/table'">
                                                       <i class="fa fa-ban"></i> Reset
                                                   </button>
                                               </div>
@@ -182,3 +182,4 @@
            </div>
   
    </body>
+  

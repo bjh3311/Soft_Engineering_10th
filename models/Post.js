@@ -9,7 +9,11 @@ var postSchema = mongoose.Schema({ // 1
   flag:{type:Boolean, default:0},
   start:{type: Date, required:[true, "Start date is required!"]},
   end:{type: Date, required:[true, "End date is required!"]},
-  createdAt:{type:Date, default:Date.now}, // 2
+  createdAt:{type:Date, default:Date.now}, 
+  file:{
+    name : {type:String},
+    original : {type:String}
+  }
 });
 
 // model & export

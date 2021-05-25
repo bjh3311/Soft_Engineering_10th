@@ -106,7 +106,7 @@
                                          <strong>공지/이벤트</strong> 수정
                                      </div>
                                      <div class="card-body card-block">
-                                         <form action="/posts/<%= post._id%>?_method=put" method="post" class="form-horizontal">
+                                         <form action="/posts/<%= post._id%>?_method=put" method="post" class="form-horizontal" enctype="multipart/form-data">
                                              <div class="row form-group">
                                                  <div class="col col-md-3">
                                                      <label for="title" class=" form-control-label">제목</label>
@@ -162,7 +162,7 @@
                                                     <label for="file" class=" form-control-label">공지 이미지 등록</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="file" id="file" name="attachment" class="form-control-file">
+                                                    <input type="file" id="file" name="attachment"  value="" class="form-control-file">
                                                 </div>
                                             </div>
                                              <div class="card-footer">
