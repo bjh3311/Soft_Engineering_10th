@@ -13,11 +13,15 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
     if(!isEmptyArr(req.files)){
       query['files'] = req.files;
       query['img'] = req.files[0].filename; 
+    }else{
+      req.flash('producuts', req.query);
+      req.flash('files', {error: "files are required!"})
+      return res.redirect('/admin/register');
     }
     Product.create(query, function(err, product){
       if(err){
         req.flash('producuts', req.query);
-        req.flash('errors', util.parseError_(err));
+        req.flash('errors', util.parseError_(err))
         return res.redirect('/admin/register');
       }
       res.redirect('/admin/shop');

@@ -28,9 +28,14 @@ router.post('/',util.isLoggedin, checkPermission, uploadWithOriginalFilename.sin
       original : req.file.originalname
     }
   }
+  else{
+    req.flash('posts', query);
+    req.flash('file',{error:'file is required!'})
+    return res.redirect('/admin/form_create');
+  }
   Post.create(query, function(err, post){
       if(err){
-        req.flash('posts', req.body);
+        req.flash('posts', query);
         req.flash('errors', util.parseError_(err));
         return res.redirect('/admin/form_create');
       }
