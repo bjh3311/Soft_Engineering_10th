@@ -121,7 +121,7 @@
                                   <h3 class="title-5 m-b-35">post table</h3>
                                   <div class="table-data__tool">
                                       <div class="table-data__tool-left">
-                                          <div class="rs-select2--light rs-select2--sm">
+                                          <div class="rs-select2--light rs-select2--md">
                                               <form action="/admin/table" method="get">
                                               <select class="js-select2" name="sort" onchange="this.form.submit()">
                                                   <option value="start" <% if(sort=="start") {%>
@@ -192,10 +192,10 @@
                                                           <form action="/posts/<%= post._id %>/flag?_method=put" method="post">
                                                           <select class="js-select2" name="flag" onchange="this.form.submit()">
                                                               <option value="false" <% if(!post.flag) { %>
-                                                                selected="selected"      
+                                                                selected="selected"
                                                             <% } %>>비활성</option>
                                                               <option value="true"<% if(post.flag) { %>
-                                                                selected="selected"      
+                                                                selected="selected"
                                                             <% } %>>활성화</option>
                                                           </select>
                                                           <div class="dropDownSelect2"></div>
@@ -205,7 +205,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="table-data-feature">
-            
+
                                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="location.href='/posts/<%= post._id %>/edit'">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </button>
@@ -214,7 +214,7 @@
                                                                 <i class="zmdi zmdi-delete"></i>
 
                                                             </button>
-                                                            
+
                                                         </div>
                                                     </td>
                                                 </tr>
