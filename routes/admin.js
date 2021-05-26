@@ -6,7 +6,6 @@ var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
-const { search } = require('./posts');
 
 
 
@@ -16,9 +15,12 @@ router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
 });
 router.get('/table', util.isLoggedin, checkPermission,  async function(req, res){
   var sort = req.query.sort?req.query.sort:'start';
-  var searchQuery = createSearchQuery_(req.query);
-  console.log(req.query);
-  posts = await Post.find(searchQuery)
+  var startSearch = req.query.startSearch?req.query.startSearch:new Date(0);
+  var endSearch = req.query.endSearch?req.query.endSearch:new Date('9999/12/31/00:00:00');
+
+  posts = await Post.find()
+    .where('start').gte(startSearch)
+    .where('end').lte(endSearch)
     .sort(sort)
     .exec()
     res.render('admin/table', {

@@ -138,6 +138,8 @@
                                                     <% } %>>End Descending</option>
                                               </select>
                                               <div class="dropDownSelect2"></div>
+                                              <input type="hidden" name="startSearch" value="<%= startSearch %>">
+                                              <input type="hidden" name="endSearch" value="<%= endSearch %>">
                                             </form>
                                           </div>
                                       </div>
@@ -160,7 +162,6 @@
                                                 끝나는 날짜로 검색
                                                 <input  type="date" id="endSearch" name="endSearch" value="<%= endSearch %>" class="form-control">
                                               </div>
-
                                                 <button class="au-btn--submit" type="submit">
                                                     <i class="zmdi zmdi-search"></i>
                                                 </button>
