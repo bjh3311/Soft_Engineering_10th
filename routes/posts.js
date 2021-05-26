@@ -20,7 +20,7 @@ var storage  = multer.diskStorage({ // 2
 
 
   //create
-router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, res){
+router.post('/',util.isLoggedin, checkPermission, uploadWithOriginalFilename.single('attachment'), function(req, res){
   var query = req.body;
   query['file']={
     name : req.file.filename,
@@ -38,7 +38,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   });
 
   // show
-  router.get('/:id', function(req, res){
+  router.get('/:id', util.isLoggedin, checkPermission, function(req, res){
     Post.findOne({_id:req.params.id})
       .exec(function(err, post){
         if(err) return res.json(err);
@@ -49,7 +49,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
 
   // edit
-  router.get('/:id/edit',function(req, res){
+  router.get('/:id/edit',util.isLoggedin, checkPermission, function(req, res){
     var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
     if(!post){
@@ -69,7 +69,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
 
 
   // update
-  router.put('/:id',uploadWithOriginalFilename.single('attachment'),function(req, res){
+  router.put('/:id',util.isLoggedin, checkPermission,uploadWithOriginalFilename.single('attachment'),function(req, res){
     var query = req.body;
     if(typeof req.file!="undefined"){
       query['file']={
@@ -87,7 +87,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
       res.redirect('/admin/table');
     });
   });
-  router.put('/:id/flag',function(req, res){
+  router.put('/:id/flag',util.isLoggedin, checkPermission, function(req, res){
     Post.findOneAndUpdate({_id:req.params.id}, {flag:req.body.flag}, function(err, post){
       if(err){
         req.flash('post', req.body);
@@ -98,7 +98,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     });
   });
 
-  router.get('/:id/destroy', function(req, res){
+  router.get('/:id/destroy',util.isLoggedin, checkPermission, function(req, res){
     var post = req.flash('post')[0];
     var errors = req.flash('errors')[0] || {};
     if(!post){
@@ -114,7 +114,7 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
   });
 
   // destroy
-  router.delete('/:id', function(req, res){
+  router.delete('/:id', util.isLoggedin, checkPermission,function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
 
@@ -122,3 +122,8 @@ router.post('/', uploadWithOriginalFilename.single('attachment'), function(req, 
     });
   });
 module.exports = router;
+
+function checkPermission(req, res, next){
+  if(req.user.right == false) return util.noPermission(req,res);
+  next();
+}
