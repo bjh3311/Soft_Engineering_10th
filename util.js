@@ -78,5 +78,4 @@ util.getProductQueryString = function(req, res, next){
   }
   next();
 }
-
 module.exports = util;

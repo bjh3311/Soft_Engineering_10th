@@ -221,6 +221,9 @@
                                                         <div class="col-12 col-md-9">
                                                             <input type="file" id="file-multiple-input" name="attachments" multiple="" class="form-control-file">
                                                         </div>
+                                                        <% if(files) { %>
+                                                            <span><%= files.error %></span>
+                                                        <% } %>
                                                     </div> 
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
