@@ -10,8 +10,10 @@ var upload = multer({ dest: './public/upload' });
   //create
 router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3), function(req, res){
     var query =req.body;
-    query['files'] = req.files;
-    query['img'] = req.files[0].filename;
+    if(!isEmptyArr(req.files)){
+      query['files'] = req.files;
+      query['img'] = req.files[0].filename; 
+    }
     Product.create(query, function(err, product){
       if(err){
         req.flash('producuts', req.query);
