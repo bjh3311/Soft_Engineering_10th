@@ -119,9 +119,9 @@
                                 <div class="toolbar-sorter-right">
                                     <span>Sort by </span>
                                     <select id="filter" name="filter" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="PriceSubmit();">
-                                      <option data-display="Select" value="-createAt">Nothing</option>
-                                      <option value="-price">High Price → Low Price</option>
-                                      <option value="price">Low Price → High Price</option>
+                                      <option data-display="Select" value="-createAt" <%= select=(sort=="-createAt")?"selected":""%>>Nothing</option>
+                                      <option value="-price" <%= select=(sort=="-price")?"selected":""%>>High Price → Low Price</option>
+                                      <option value="price"<%= select=(sort=="price")?"selected":""%>>Low Price → High Price</option>
                                     </select>
                                     <form action="/category" method="get" id="form_sort">
                                       <input type="hidden" name="amount_start" value="<%= amount_start %>">
