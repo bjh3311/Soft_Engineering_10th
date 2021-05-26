@@ -84,27 +84,36 @@
 	   <div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
                             <form class="card card-sm" action="/category" method="get">
+                              <div class="row">
+                                <div class="col-sm-5">
+                                  <select id="origin" name="origin" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                    <option data-display="Select" value="0">전체 카테고리</option>
+                                    <option value="4">입문자용 원두</option>
+                                    <option value="1">일반 원두</option>
+                                    <option value="3">고급 원두</option>
+                                  </select>
+                                </div>
+                                <div class="col-sm-5">
+                                  <div class="price-box-slider">
+                                      <div id="slider-range"></div>
+                                      <p>
+                                            <input type="text" size="8" id="amount_start" name="amount_start" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                             ~
+                                            <input type="text" size="8" id="amount_end" name="amount_end" readonly style="border:0; color:#fbb714; font-weight:bold;">원
+                                      </p>
+                                  </div>
+                                </div>
+                              </div>
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
                                     </div>
-                                    <!--end of col-->
                                         <div class="col">
                                           <input class="form-control form-control-lg form-control-borderless" name="searchText" value="" placeholder="Search here..." type="text">
                                         </div>
                                         <div vlass="col-auto">
                                           <button type="submit" class="btn btn-lg btn-success"> <i class="fa fa-search"></i> </button>
                                         </div>
-                                        <!-- <button type="submit" class="btn btn-lg btn-success"> <i class="fa fa-search"></i> </button>
-                                        <div class="col">
-                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
-                                        </div> -->
-                                        <!--end of col-->
-                                        <!-- <div class="col-auto">
-                                            <button class="btn btn-lg btn-success" type="submit">Search</button>
-                                        </div> -->
-
-                                    <!--end of col-->
                                 </div>
                             </form>
                         </div>
@@ -199,3 +208,27 @@
     </div>
     <!-- End Products  -->
 </body>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script>
+  $(function() {
+		$("#slider-range").slider({
+			range: true,
+			min: 0,
+			max: 60000,
+			values: [0, 60000],
+			slide: function(event, ui) {
+
+				// $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#amount_start").val(ui.values[0]);
+        $("#amount_end").val(ui.values[1]);
+			}
+		});
+
+    $("#amount_start").val($("#slider-range").slider("values",0));
+    $("#amount_end").val($("#slider-range").slider("values",1));
+		// $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+		// 	" - $" + $("#slider-range").slider("values", 1));
+
+	});
+</script>
