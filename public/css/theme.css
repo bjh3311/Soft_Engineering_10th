@@ -100,7 +100,7 @@ p {
 /*image 고정*/
 .carousel_img{
   height:300px;
-  object-fit:contain;
+  object-fit: contain;
 }
 
 /*pagination*/
