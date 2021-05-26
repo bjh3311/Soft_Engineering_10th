@@ -7,8 +7,6 @@ var Product = require('../models/Product');
 var Cart = require('../models/cart');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
-const { render } = require('ejs');
-const { request } = require('express');
 const cart = require('../models/cart');
 
 
@@ -17,7 +15,6 @@ const cart = require('../models/cart');
 router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-
   var limit = 4;
   var products = await Product.find()
     .where('flag').equals(true)
@@ -303,3 +300,4 @@ function createSearchQuery(queries){ // 4
   }
   return searchQuery;
 }
+

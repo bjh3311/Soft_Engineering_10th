@@ -9,9 +9,7 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 passport.deserializeUser(function(id, done) {
-  User.findOne({_id:id})
-  .select({right:1, username:1, name:1})
-  .exec(function(err, user){
+  User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -25,7 +23,7 @@ passport.use('local-login',
     },
     function(req, username, password, done) {
       User.findOne({username:username})
-        .select({password:1 , right:1})
+        .select({password:1})
         .exec(function(err, user) {
           if (err) return done(err);
 

@@ -57,12 +57,8 @@ app.use(session({
   }),
 }));
 
-// setting
-app.set('view engine','ejs'); // 1
 app.set('layout', './layout/full-width');
 app.set("layout extractScripts",true);
-
-
 // Passport
 
 app.use(passport.initialize());
@@ -75,6 +71,7 @@ app.use(function(req,res,next){
   res.locals.session = req.session;
   next();
 });
+
 // routes setting
 // app.use('/', require('./routes/main'));
 app.use('/', util.getProductQueryString, require('./routes/main'));
