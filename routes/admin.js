@@ -17,12 +17,14 @@ router.get('/index', util.isLoggedin, checkPermission,  function(req, res){
 router.get('/table', util.isLoggedin, checkPermission,  async function(req, res){
   var sort = req.query.sort?req.query.sort:'start';
   var searchQuery = createSearchQuery_(req.query);
+  console.log(req.query);
   posts = await Post.find(searchQuery)
     .sort(sort)
     .exec()
     res.render('admin/table', {
     posts:posts,
-    searchText:req.query.searchText,
+    startSearch:req.query.startSearch,
+    endSearch:req.query.endSearch,
     sort:sort,
     moment
   });
@@ -44,14 +46,14 @@ router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
       posts:posts,
       errors:errors,
       file:file
-    }); 
+    });
 });
 
 router.get('/form_update', util.isLoggedin, checkPermission, function(req, res){
   var errors = req.flash('errors')[0] || {};
     res.render('admin/form_update',{
       errors:errors
-    });   
+    });
 });
 
 router.get('/register', util.isLoggedin, checkPermission, function(req, res){
@@ -68,7 +70,7 @@ router.get('/detail', util.isLoggedin, checkPermission, function(req, res){
   res.render('admin/detail');
 });
 router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
-  var errors = req.flash('errors')[0] || {};  
+  var errors = req.flash('errors')[0] || {};
   res.render('admin/modify',{
     errors:errors
   });

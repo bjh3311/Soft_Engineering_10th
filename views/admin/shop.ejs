@@ -232,7 +232,8 @@
 
 
 </body>
-
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <script>
     if(<%= origin %>==4){
       document.getElementById("begin").className="list-group-item list-group-item-action active";
@@ -242,6 +243,29 @@
       document.getElementById("advanced").className="list-group-item list-group-item-action active";
     }
     document.write(<%= origin %>);
+
+    $(function() {
+  		$("#slider-range").slider({
+  			range: true,
+  			min: 0,
+  			max: 60000,
+  			values: [<%= amount_start %>, <%= amount_end %>],
+  			slide: function(event, ui) {
+
+
+  				// $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+          $("#amount_start").val(ui.values[0]);
+          $("#amount_end").val(ui.values[1]);
+  			}
+  		});
+
+      $("#amount_start").val($("#slider-range").slider("values",0));
+      $("#amount_end").val($("#slider-range").slider("values",1));
+  		// $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+  		// 	" - $" + $("#slider-range").slider("values", 1));
+
+  	});
+
 
     function PriceSubmit(){
       var sel=document.getElementById("filter");
