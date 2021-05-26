@@ -1,140 +1,201 @@
-<body class="animsition">
-  <!-- MENU SIDEBAR-->
-  <div class="menu-sidebar d-none d-lg-block">
-      <div class="menu-sidebar__content js-scrollbar1">
-          <nav class="navbar-sidebar">
-              <ul class="list-unstyled navbar__list">
-                  <li class="active">
-                     <a href ="/admin/index">
-                         <i class="fas fa-desktop"></i>관리자 메인 화면</a>
-                  </li>
-                  <li>
-                      <a href="/admin/shop">
-                          <i class="fas fa-chart-bar"></i>상품 관리</a>
-                  </li>
-                  <li>
-                      <a href="/admin/table">
-                          <i class="fas fa-table"></i>공지 이벤트</a>
-                  </li>
-                  <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                      <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                      <li>
-                        <a href="/admin/order_list">
-                          <i class="fas fa-tachometer-alt"></i>주문 내역 확인</a>
-                      </li>
-                      <li>
-                        <a href="/admin/sales_statistics">
-                          <i class="fas fa-tachometer-alt"></i>판매 정보 통계</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                      <a href="/users/logout">
-                          <i class="zmdi zmdi-power"></i>로그아웃</a>
-                  </li>
-
-                  </ul>
-          </nav>
-      </div>
-  </div>
-    <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="/admin/index">
-
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
+<body>
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container-fluid">
+                <div class="row" float="right">
+                    <% if(isAuthenticated){ %>
+                        <span><%= currentUser.username %> 환영합니다.</span>
+                        <button type="button" onclick="location.href='/users/logout'">Logout</button>
+                    <% } else { %>
+                        <div class="login">
+                            <form action="/users/login" method="post">
+                            ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
+                            PASSWORD <input type="password" name="password" id="password" placeholder="password">
+                            <input class="" type="submit" value="Submit">
+                            </form>
+                        </div>
+                        <div class="col-xs-12">
+                          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">회원가입</button>
+                        </div>
+                    <% } %>
                 </div>
             </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li>
-                            <a href="/admin/index">
-
-                              <i class="fas fa-desktop"></i>관리자 메인 화면</a>
-                        </li>
-                        <li>
-                            <a href="/admin/shop">
-                                <i class="fas fa-chart-bar"></i>상품 관리</a>
-                        </li>
-                        <li>
-                            <a href="/admin/table">
-                                <i class="fas fa-table"></i>공지 이벤트</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>상품 판매 정보 관리</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="/admin/order_list">주문 내역 확인</a>
-                                </li>
-                                <li>
-                                    <a href="/admin/sales_statistics">판매 정보 통계</a>
-                                </li>
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- End Header Navigation -->
+                <!--, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+	                              <li><a href="/category">Shoplist</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                                <li><a href="/order_list">Orderlist</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="/users/logout">
-                                <i class="zmdi zmdi-power"></i>로그아웃</a>
+                        <li class="dropdown">
+                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/notice">Notice</a></li>
+                              <li><a href="/contact-us">Contact Us</a></li>
+                          </ul>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
                     </ul>
                 </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav" style="padding-right: 10px;">
+                    <ul>
+                        <a href="/cart">
+                            <i class="fa fa-shopping-bag">
+                                <% if(session.cart){ %>
+                                    <span class="badge">
+                                        <%= session.cart.totalQty %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge">0</span>
+                                        <% } %>
+                            </i>
+                            My Cart
+                        </a>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
 
-
-
-        <!--PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- MAIN CONTENT-->
-            <!-- END MENU SIDEBAR-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-
-                            <div class="row">
-                                <div class="col-lg-6">
-
-                                    <!-- END USER DATA-->
-                                </div>
-                                <div class="col-lg-6">
-
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-xl-auto">
-                                    <!-- DATA TABLE -->
-                                    <h3 class="title-5 m-b-35">관리자 메인 화면 요구사항 생기면 구현하면 됨.</h3>
-                                    <div class="table-data__tool">
+    <div class="container">
+    <br/>
+	   <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm" action="/category" method="get">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
                                     </div>
-                                    <div class="table-responsive table-responsive-data2">
-                                    </div>
-                                    <!-- END DATA TABLE -->
-                                </div>
-                            </div>
-                            <div class="row m-t-30">
-                                <div class="col-md-12">
+                                    <!--end of col-->
+                                        <div class="col">
+                                          <input class="form-control form-control-lg form-control-borderless" name="searchText" value="" placeholder="Search here..." type="text">
+                                        </div>
+                                        <div vlass="col-auto">
+                                          <button type="submit" class="btn btn-lg btn-success"> <i class="fa fa-search"></i> </button>
+                                        </div>
+                                        <!-- <button type="submit" class="btn btn-lg btn-success"> <i class="fa fa-search"></i> </button>
+                                        <div class="col">
+                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                        </div> -->
+                                        <!--end of col-->
+                                        <!-- <div class="col-auto">
+                                            <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                        </div> -->
 
+                                    <!--end of col-->
                                 </div>
-                            </div>
+                            </form>
                         </div>
+                        <!--end of col-->
+                    </div>
+                  </div>
+
+
+
+    <!-- Start Slider -->
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <% posts.forEach(function(post) { %>
+            <li class="text-center">
+                <img src="/posts/<%= post.file.name %>" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong><%= post.body %></strong></h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           <% }) %>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+    <!-- Start Categories  -->
+    <div class="categories-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="/images/categories1.jpg" alt="" />
+                        <a class="btn hvr-hover" href="/category?origin=4">입문용 원두</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="/images/categories2.jpg" alt="" />
+                        <a class="btn hvr-hover" href="/category?origin=1">일반 원두</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="/images/categories3.jpg" alt="" />
+                        <a class="btn hvr-hover" href="/category?origin=3">고급 원두</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- End Categories -->
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>(New)</h1>
+                        <p>최근 6개월안에 새로 들어온 원두입니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row special-list">
+                <%  products.forEach(function(product) {  %>
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4"> -->
+                        <div class="products-single fix" style="height:300px; !important;">
+                            <div class="box-img-hover" style="height:70%; !important;">
+                              <div class="type-lb">
+                                  <p class="new">New</p>
+                              </div>
+                                <a href="/<%= product._id %>"><img src="/upload/<%= product.img %>" class="carousel_img" alt="Image"></a>
+                            </div>
+                            <div class="why-text" style="height:30%; !important;">
+                                <h4><%= product.name %></h4>
+                                <h5><%= product.weight %>당 <%= product.price %>원</h5>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>''
+                <% }) %>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Products  -->
 </body>
