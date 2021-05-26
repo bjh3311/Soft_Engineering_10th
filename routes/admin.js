@@ -39,9 +39,13 @@ router.get('/table_detail',util.isLoggedin, checkPermission, function(req,res){
 })
 
 router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
+  var posts = req.flash('posts')[0] || {};
   var errors = req.flash('errors')[0] || {};
+  var file = req.flash('file')[0] || {};
     res.render('admin/form_create',{
-      errors:errors
+      posts:posts,
+      errors:errors,
+      file:file
     });
 });
 
@@ -54,8 +58,11 @@ router.get('/form_update', util.isLoggedin, checkPermission, function(req, res){
 
 router.get('/register', util.isLoggedin, checkPermission, function(req, res){
     var errors = req.flash('errors')[0] || {};
+    var files = req.flash('files')[0] || {};
+    console.log(files);
     res.render('admin/register',{
-      errors:errors
+      errors:errors,
+      files:files
     });
 });
 
