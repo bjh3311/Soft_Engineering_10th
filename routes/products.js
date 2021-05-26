@@ -50,8 +50,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
   // update
   router.put('/:id',util.isLoggedin, checkPermission,  upload.array('attachments',3),function(req, res){
     var query =req.body;
-    if(typeof req.files != "undefined"){
-      
+    if(!isEmptyArr(req.files)){
           query['files'] = req.files;
           query['img'] = req.files[0].filename; 
     }
@@ -87,4 +86,11 @@ module.exports = router;
 function checkPermission(req, res, next){
   if(req.user.right == false) return util.noPermission(req,res);
   next();
+}
+function isEmptyArr(arr)  {
+  if(Array.isArray(arr) && arr.length === 0)  {
+    return true;
+  }
+  
+  return false;
 }
