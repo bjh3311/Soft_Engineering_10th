@@ -111,9 +111,9 @@
                                  <div class="toolbar-sorter-right">
                                      <span>Sort by </span>
                                      <select id="filter" name="filter" class="selectpicker show-tick form-control" data-placeholder="$ USD" onchange="PriceSubmit();">
-                                        <option data-display="Select" value="-createAt">Nothing</option>
-                                        <option value="-price">High Price → Low Price</option>
-                                        <option value="price">Low Price → High Price</option>
+                                        <option data-display="Select" value="-createAt" <%= select=(sort=="-createAt")?"selected":""%>>Nothing</option>
+                                      <option value="-price" <%= select=(sort=="-price")?"selected":""%>>High Price → Low Price</option>
+                                      <option value="price"<%= select=(sort=="price")?"selected":""%>>Low Price → High Price</option>
                                       </select>
                                       <form action="/admin/shop" method="get" id="form_sort">
                                         <input type="hidden" name="amount_start" value="<%= amount_start %>">
@@ -124,7 +124,6 @@
 
                                       </form>
                                  </div>
-                                 <p>Showing all 4 results</p>
                              </div>
                              <div class="col-12 col-sm-4 text-center text-sm-right">
                                <a href="/admin/register">
@@ -153,7 +152,7 @@
                                                         <h4><%= product.name %><% if(product.flag==false) { %>
                                                         <span>(삭제된 상품)</span>
                                                         <% } %></h4>
-                                                        <h5> <%= product.price %>won</h5>
+                                                        <h5><%= product.weight %>당 <%= product.price %> 원</h5>
                                                     </div>
                                                 </div>
                                             </div>

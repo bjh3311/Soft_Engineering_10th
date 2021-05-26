@@ -151,7 +151,15 @@
                         <h2><%= product.name %><% if(product.flag==false) { %>
                             <span>(삭제된 상품)</span>
                             <% } %></h2>
-                        <h5> <%= product.price %> won</h5>
+                            <h4><% if(product.origin==1){  %>
+                                일반 원두 
+                            <% } else if(product.origin==3){ %>
+                                고급 원두
+                            <% } else {%>
+                                입문자용 원두
+                            <%} %>
+                            </h4>
+                        <h5><%= product.weight %> 당 <%= product.price %> 원</h5>
                         <p class="available-stock"><span> Stock : <a href="#"><%= product.stock %> </a></span><p>
 						<h4>Short Description:</h4>
 						<p><%= product.body %> </p>

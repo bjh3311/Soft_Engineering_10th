@@ -11,16 +11,13 @@ var productSchema = mongoose.Schema({
   body:{type: String, required:[true, 'Body is required!'],trim:true},
   taste:{type:String},
   weight:{type:String, required:[true, 'Weight is reqired!'],trim:true},
-  origin:{type:String},
+  origin:{type:String, required:[true, 'Origin is required!']},
   sales:{type:Number, default:0, min:0},
   stock:{type:Number, default:1000, min:0},
   flag:{type:Boolean, default: true},
   createAt:{type: Date, default: Date.now},
   img : {type:String},
-  files:{
-
-  }
-  
+  files:{type:[Array],required:[true, 'files are reqired!']}
 });
 
 // model & export

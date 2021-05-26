@@ -11,9 +11,9 @@ var postSchema = mongoose.Schema({ // 1
   end:{type: Date, required:[true, "End date is required!"]},
   createdAt:{type:Date, default:Date.now}, 
   file:{
-    name : {type:String},
-    original : {type:String}
-  }
+      name : {type:String},
+      original : {type:String}
+    }
 });
 
 // model & export
