@@ -936,6 +936,7 @@
      margin: 0 auto;
      text-align: center;
      display: block;
+     object-fit :contain;
 }
 
 /* 삭제 이미지 */

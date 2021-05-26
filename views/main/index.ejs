@@ -177,24 +177,21 @@
             <div class="row special-list">
                 <%  products.forEach(function(product) {  %>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="new">New</p>
+                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4"> -->
+                        <div class="products-single fix" style="height:300px; !important;">
+                            <div class="box-img-hover" style="height:70%; !important;">
+                              <div class="type-lb">
+                                  <p class="new">New</p>
+                              </div>
+                                <a href="/<%= product._id %>"><img src="/upload/<%= product.img %>" class="carousel_img" alt="Image"></a>
                             </div>
-                            <img src="/upload/<%= product.img %>" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                </ul>
+                            <div class="why-text" style="height:30%; !important;">
+                                <h4><%= product.name %></h4>
+                                <h5><%= product.weight %>당 <%= product.price %>원</h5>
                             </div>
                         </div>
-                        <div class="why-text">
-                            <h4><%= product.name %></h4>
-                            <h5><%= product.weight %>당 <%= product.price %>원</h5>
-                        </div>
-                    </div>
-                </div>
+                    <!-- </div> -->
+                </div>''
                 <% }) %>
 
             </div>
