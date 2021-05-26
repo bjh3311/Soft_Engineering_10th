@@ -56,6 +56,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
   // update
   router.put('/:id',util.isLoggedin, checkPermission,  upload.array('attachments',3),function(req, res){
     var query =req.body;
+    query['files'] = new Array();
     if(!isEmptyArr(req.files)){
           query['files'] = req.files;
           query['img'] = req.files[0].filename; 
