@@ -41,7 +41,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
   router.get('/:id/edit', util.isLoggedin, checkPermission, function(req, res){
     var product = req.flash('product')[0];
     var errors = req.flash('errors')[0] || {};
-    if(!product){
+    if(!product|| isEmptyArr(product.files)){
       Product.findOne({_id:req.params.id}, function(err, product){
           if(err) return res.json(err);
           res.render('admin/modify', { product:product, errors:errors });
@@ -62,6 +62,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
     }
     Product.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, product){
       if(err){
+        query['files']=[];
         req.flash('product', query);
         req.flash('errors', util.parseError_(err));
         return res.redirect('/products/'+req.params.id+'/edit');
