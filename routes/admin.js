@@ -105,11 +105,15 @@ router.get('/shop',util.isLoggedin, checkPermission,  async function(req,res){
 
   if(origin == 0){
   var products = await Product.find(searchQuery)
+    .where('price').gte(amount_start)
+    .where('price').lte(amount_end)
     .sort(sort)
     .exec();
   }else{
     var products = await Product.find(searchQuery)
     .where('origin').equals(origin)
+    .where('price').gte(amount_start)
+    .where('price').lte(amount_end)
     .sort(sort)
     .exec();
   }

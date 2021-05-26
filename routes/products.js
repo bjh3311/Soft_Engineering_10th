@@ -18,6 +18,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
       req.flash('files', {error: "files are required!"})
       return res.redirect('/admin/register');
     }
+    console.log(query);
     Product.create(query, function(err, product){
       if(err){
         req.flash('producuts', req.query);
@@ -56,10 +57,11 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
   // update
   router.put('/:id',util.isLoggedin, checkPermission,  upload.array('attachments',3),function(req, res){
     var query =req.body;
-    query['files'] = new Array();
     if(!isEmptyArr(req.files)){
           query['files'] = req.files;
           query['img'] = req.files[0].filename; 
+    }else{
+      return res.redirect('/products/'+req.params.id+'/edit');
     }
     Product.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, product){
       if(err){

@@ -17,7 +17,8 @@ var productSchema = mongoose.Schema({
   flag:{type:Boolean, default: true},
   createAt:{type: Date, default: Date.now},
   img : {type:String},
-  files:{type:[Array],required:[true, 'files are reqired!']}
+  files:{
+  }
 });
 
 // model & export
