@@ -124,7 +124,6 @@
 
                                       </form>
                                  </div>
-                                 <p>Showing all 4 results</p>
                              </div>
                              <div class="col-12 col-sm-4 text-center text-sm-right">
                                <a href="/admin/register">
@@ -153,7 +152,7 @@
                                                         <h4><%= product.name %><% if(product.flag==false) { %>
                                                         <span>(삭제된 상품)</span>
                                                         <% } %></h4>
-                                                        <h5> <%= product.price %>won</h5>
+                                                        <h5><%= product.weight %>당 <%= product.price %> 원</h5>
                                                     </div>
                                                 </div>
                                             </div>
