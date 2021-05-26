@@ -8,7 +8,7 @@ var upload = multer({ dest: './public/upload' });
 
 
   //create
-router.post('/', upload.array('attachments',3), function(req, res){
+router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3), function(req, res){
     var query =req.body;
     query['files'] = req.files;
     query['img'] = req.files[0].filename;
@@ -23,7 +23,7 @@ router.post('/', upload.array('attachments',3), function(req, res){
   });
 
   // show
-  router.get('/:id', function(req, res){
+  router.get('/:id', util.isLoggedin, checkPermission,  function(req, res){
     Product.findOne({_id:req.params.id})
       .exec(function(err, product){
         if(err) return res.json(err);
@@ -32,7 +32,7 @@ router.post('/', upload.array('attachments',3), function(req, res){
   });
 
   // edit
-  router.get('/:id/edit', function(req, res){
+  router.get('/:id/edit', util.isLoggedin, checkPermission, function(req, res){
     var product = req.flash('product')[0];
     var errors = req.flash('errors')[0] || {};
     if(!product){
@@ -48,13 +48,13 @@ router.post('/', upload.array('attachments',3), function(req, res){
   });
 
   // update
-  router.put('/:id', upload.array('attachments',3),function(req, res){
+  router.put('/:id',util.isLoggedin, checkPermission,  upload.array('attachments',3),function(req, res){
     var query =req.body;
     if(typeof req.files != "undefined"){
+      
           query['files'] = req.files;
           query['img'] = req.files[0].filename; 
     }
-    
     Product.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, product){
       if(err){
         req.flash('product', query);
@@ -65,7 +65,7 @@ router.post('/', upload.array('attachments',3), function(req, res){
     });
   });
 
-  router.put('/:id/flag',function(req, res){
+  router.put('/:id/flag',util.isLoggedin, checkPermission, function(req, res){
     Product.findOneAndUpdate({_id:req.params.id}, {flag:false}, function(err, product){
       if(err){
         req.flash('product', req.body);
@@ -76,10 +76,15 @@ router.post('/', upload.array('attachments',3), function(req, res){
     });
   });
   // destroy
-  router.delete('/:id', function(req, res){
+  router.delete('/:id', util.isLoggedin, checkPermission, function(req, res){
     Post.deleteOne({_id:req.params.id}, function(err){
       if(err) return res.json(err);
       res.redirect('/admin/shop');
     });
   });
 module.exports = router;
+
+function checkPermission(req, res, next){
+  if(req.user.right == false) return util.noPermission(req,res);
+  next();
+}
