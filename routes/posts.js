@@ -22,15 +22,16 @@ var storage  = multer.diskStorage({ // 2
   //create
 router.post('/',util.isLoggedin, checkPermission, uploadWithOriginalFilename.single('attachment'), function(req, res){
   var query = req.body;
-  query['file']={
-    name : req.file.filename,
-    original : req.file.originalname
-  };
+  if(typeof req.file!="undefined"){
+    query['file']={
+      name : req.file.filename,
+      original : req.file.originalname
+    }
+  }
   Post.create(query, function(err, post){
       if(err){
         req.flash('posts', req.body);
-        req.flash('errors', util.parseError(err));
-        console.log(err);
+        req.flash('errors', util.parseError_(err));
         return res.redirect('/admin/form_create');
       }
       res.redirect('/admin/table');
