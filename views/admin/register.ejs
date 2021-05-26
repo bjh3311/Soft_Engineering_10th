@@ -173,6 +173,9 @@
                                                         <option value="600g">600g</option>
                                                         <option value="1.2kg">1.2kg</option>
                                                     </select>
+                                                    <% if(errors.weight) { %>
+                                                        <span><%= errors.weight.message %></span>
+                                                    <%}  %>
                                                 </div>
                                             </div>
                                                    <div class="row form-group">
@@ -185,6 +188,9 @@
                                                                 <option value="3">고급 원두</option>
                                                                 <option value="4">입문용 원두</option>
                                                             </select>
+                                                            <% if(errors.origin) { %>
+                                                                <span><%= errors.origin.message %></span>
+                                                            <%}  %>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">

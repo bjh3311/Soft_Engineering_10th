@@ -228,6 +228,9 @@
                                     selected="selected"
                                 <% } %>>1.2kg</option>
                             </select>
+                            <% if(errors.weight) { %>
+                                <span><%= errors.weight.message %></span>
+                            <%}  %>
                         </div>
                     </div>
                            <div class="row form-group">
@@ -246,6 +249,9 @@
                                             selected="selected"
                                         <% } %>>입문자용 원두</option>
                                     </select>
+                                    <% if(errors.origin) { %>
+                                        <span><%= errors.origin.message %></span>
+                                    <%}  %>
                                 </div>
                             </div>
                             <div class="row form-group">

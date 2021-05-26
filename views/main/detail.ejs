@@ -146,6 +146,14 @@
                 <div class="col-xl-7 col-lg-7 col-md-6">
                     <div class="single-product-details">
                         <h2><%= product.name %></h2>
+                        <h4><% if(product.origin==1){  %>
+                            일반 원두 
+                        <% } else if(product.origin==3){ %>
+                            고급 원두
+                        <% } else {%>
+                            입문자용 원두
+                        <%} %>
+                        </h4>
                         <h5><%= product.weight %>당 <%= product.price %>원</h5>
                   <h4>Short Description:</h4>
                   <p><%= product.body %>
@@ -154,7 +162,7 @@
                         <ul>
                             <li>
                                 <div class="form-group quantity-box">
-                                        <label class="control-label">수량(100g당 1개로 센다)
+                                        <label class="control-label">수량
                                             <input class="form-control" value="0" min="0" max="20" type="number" name="count">
                                         </label>
                                 </div>
