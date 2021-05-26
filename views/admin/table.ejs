@@ -149,15 +149,23 @@
                                   <div class="col-xl-auto">
                                     <div class="table-data__tool">
                                         <div class="table-data__tool-left">
-                                            <div class="rs-select2--light rs-select2--md">
-                                              <form class="form-header" action="/admin/table" method="get">
-                                                  <input class="au-input au-input--xl" type="text" name="searchText" placeholder="Search for datas &amp; reports..." />
-                                                  <input type="hidden" name="sort" id="sort" value="<%= sort %>">
-                                                  <button class="au-btn--submit" type="submit">
-                                                      <i class="zmdi zmdi-search"></i>
-                                                  </button>
-                                              </form>
-                                            </div>
+                                          <div class="col-xl-auto">
+                                            <form class="form-header" action="/admin/table" method="get">
+                                              <input type="hidden" name="sort" id="sort" value="<%= sort %>">
+                                              <div class="col-sm-6">
+                                                시작 날짜로 검색
+                                                <input type="date" id="startSearch" name="startSearch" value="<%= startSearch %>" class="form-control">
+                                              </div>
+                                              <div class="col-sm-6">
+                                                끝나는 날짜로 검색
+                                                <input  type="date" id="endSearch" name="endSearch" value="<%= endSearch %>" class="form-control">
+                                              </div>
+
+                                                <button class="au-btn--submit" type="submit">
+                                                    <i class="zmdi zmdi-search"></i>
+                                                </button>
+                                            </form>
+                                          </div>
                                           </div>
                                         </div>
                                   </div>
