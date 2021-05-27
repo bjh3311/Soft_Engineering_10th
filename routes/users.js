@@ -59,7 +59,6 @@ router.get('/:username', util.isLoggedin, checkPermission, function(req, res){
     res.render('users/show', {user:user});
   });
 });
-
 // edit
 router.get('/:username/edit',util.isLoggedin, checkPermission, function(req, res){
   var user = req.flash('user')[0];
@@ -74,21 +73,18 @@ router.get('/:username/edit',util.isLoggedin, checkPermission, function(req, res
     res.render('users/edit', { username:req.params.username, user:user, errors:errors });
   }
 });
-
 // update
 router.put('/:username', util.isLoggedin, checkPermission, function(req, res, next){
   User.findOne({username:req.params.username})
     .select('password')
     .exec(function(err, user){
       if(err) return res.json(err);
-
       // update user object
       user.originalPassword = user.password;
       user.password = req.body.newPassword? req.body.newPassword : user.password;
       for(var p in req.body){
         user[p] = req.body[p];
       }
-
       // save updated user
       user.save(function(err, user){
         if(err){
@@ -134,6 +130,10 @@ router.post('/login',
 ));
 
 router.get('/check', function(req,res){
+
+console.log("check");
+  console.log(req.user);
+
   if(typeof req.user == "undefined"){
     res.redirect('/users/logout');
   }
@@ -147,6 +147,7 @@ router.get('/check', function(req,res){
 
 // Logout // 4
 router.get('/logout', function(req, res) {
+  console.log("logout")
   req.logout();
   res.redirect('/');
 });

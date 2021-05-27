@@ -15,6 +15,7 @@ const cart = require('../models/cart');
 
 // Main
 router.get('/', async function(req, res){
+  console.log(req.flash('username'));
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
@@ -83,6 +84,9 @@ router.get('/about',function(req,res){
 
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
+
+  console.log(username);
+  console.log(errors);
 
   res.render('main/about',{
     username:username,
