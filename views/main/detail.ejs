@@ -197,65 +197,73 @@
             </div>
         </div>
         <div class="row my-5">
-          <div class="card card-outline-secondary my-4" style="margin:100px">
+          <div class="card card-outline-secondary my-4" style="margin:100px; width:100%;">
             <div class="card-header">
               <h2>Product Reviews</h2>
             </div>
             <div class="card-body">
               <div class="media mb-3">
-                <div class="mr-2">
-                </div>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-12">
-                      추천
-                      <select class="form-select" aria-label="Default select example">
-                        <option value="1">추천</option>
-                        <option value="2">보통</option>
-                        <option value="3">비추천</option>
-                      </select>
-                      배송평가
-                      <select class="form-select" aria-label="Default select example">
-                        <option value="1">매우 빠름</option>
-                        <option value="2">빠름</option>
-                        <option value="3">보통</option>
-                      </select>
-                      별점
-                      <select class="form-select" aria-label="Default select example">
-                        <option value="5">★★★★★</option>
-                        <option value="4">★★★★☆</option>
-                        <option value="3">★★★☆☆</option>
-                        <option value="2">★★☆☆☆</option>
-                        <option value="1">★☆☆☆☆</option>
-                      </select>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="media-body">
-                        <label for="body" class=" form-control-label">후기</label>
-                        <% if(isAuthenticated){ %>
-                        <textarea name="body" id="body" rows="6" class="form-control"></textarea>
-                        <% } else { %>
-                        <textarea name="body" id="body" rows="6" class="form-control" readonly>로그인 후 상품평 등록 가능합니다.</textarea>
-                        <% } %>
-                        <small class="text-muted" id="counter">(0 / 최대 200자)</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                      <form action="/test" method="post" id="form_review" class="media-body" onSubmit="return checkForm();">
+                        <div class="col-md-12">
+                          추천
+                          <select class="form-select" name="recommend" aria-label="Default select example">
+                            <option value="1">추천</option>
+                            <option value="2">보통</option>
+                            <option value="3">비추천</option>
+                          </select>
+                          배송평가
+                          <select class="form-select" name="delivery" aria-label="Default select example">
+                            <option value="1">매우 빠름</option>
+                            <option value="2">빠름</option>
+                            <option value="3">보통</option>
+                          </select>
+                          별점
+                          <select class="form-select" name="star" aria-label="Default select example">
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="3">★★★☆☆</option>
+                            <option value="2">★★☆☆☆</option>
+                            <option value="1">★☆☆☆☆</option>
+                          </select>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="media-body">
+                            후기
+                            <label for="body" class="form-control-label"></label>
+                            <% if(isAuthenticated){ %>
+                            <textarea name="body" id="body" rows="6" class="form-control" style="resize: none;"></textarea>
+                            <% } else { %>
+                            <textarea name="body" id="body" rows="6" class="form-control" style="resize: none;" readonly>로그인 후 상품평 등록 가능합니다.</textarea>
+                            <% } %>
+                            <small class="text-muted" id="counter">(0 / 최대 200자)</small>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success btn-lg">리뷰 등록</button>
+                      </form>
               </div>
               <hr>
               <div class="media mb-3">
-                <div class="mr-2">
-                  user님
+                <div class="col-md-9">
+                  <div class="media-body">
+                    <p>별점</p>
+                    <p>등록 리뷰</p>
+                  </div>
                 </div>
-                <div class="media-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                  <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                <div class="col-md-3">
+                  작성자
+                  <p>작성자</p>
+                  등록 일자
+                  <p>YYYY.MM.DD</p>
                 </div>
               </div>
+
+
               <hr>
-              <a href="#" class="btn hvr-hover">리뷰 답변 달기</a>
+              <nav class="col-8">
+                <nav class="col-8">
+                  페이지네이션 위치
+                  </nav>
+                </nav>
             </div>
             </div>
         </div>
@@ -275,5 +283,14 @@
           $('#counter').html("(200 / 최대 200자)");
       }
   });
+
+  function checkForm(){
+    var content=$('#body').val();
+
+    if(content.length<10){
+      alert("10자 이상 입력해주세요.");
+      return false;
+    }
+  }
 
 </script>
