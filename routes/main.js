@@ -18,6 +18,8 @@ router.get('/', async function(req, res){
   var limit = 4;
   var products = await Product.find()
     .where('flag').equals(true)
+    .where('price').gte(0)
+    .where('price').lte(60000)
     .sort('-createAt')
     .limit(limit) // 8
     .exec();
@@ -80,6 +82,9 @@ router.get('/about',function(req,res){
 
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
+
+  console.log(username);
+  console.log(errors);
 
   res.render('main/about',{
     username:username,
@@ -155,14 +160,14 @@ router.get('/category', async function(req,res){
   var origin = Math.max(0,parseInt(req.query.origin));
 
   var amount_start = Math.max(0,parseInt(req.query.amount_start));
-  var amount_end = Math.min(1000000,parseInt(req.query.amount_end));
+  var amount_end = Math.min(60000,parseInt(req.query.amount_end));
   var sort = req.query.sort?req.query.sort:'-createAt';
 
   page = !isNaN(page)?page:1;
   limit = !isNaN(limit)?limit:3;
   origin =!isNaN(origin)?origin:0;
   amount_start = !isNaN(amount_start)?amount_start:0;
-  amount_end = !isNaN(amount_end)?amount_end:1000000;
+  amount_end = !isNaN(amount_end)?amount_end:60000;
 
   var searchQuery = createSearchQuery(req.query);
   var skip = (page-1)*limit; // 4
