@@ -188,7 +188,14 @@
             </div>
 
         </div>
-
+        <div class="d-flex justify-content-center">
+            <div class="content text-center">
+                <div class="ratings"> <span class="product-rating">4.6</span><span>/5</span>
+                    <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                    <div class="rating-text"> <span>46 ratings & 15 reviews</span> </div>
+                </div>
+            </div>
+        </div>
         <div class="row my-5">
           <div class="card card-outline-secondary my-4" style="margin:100px">
             <div class="card-header">
@@ -201,28 +208,36 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12">
+                      추천
                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">추천</option>
+                        <option value="2">보통</option>
+                        <option value="3">비추천</option>
                       </select>
+                      배송평가
                       <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">매우 빠름</option>
+                        <option value="2">빠름</option>
+                        <option value="3">보통</option>
+                      </select>
+                      별점
+                      <select class="form-select" aria-label="Default select example">
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="1">★☆☆☆☆</option>
                       </select>
                     </div>
                     <div class="col-md-12">
                       <div class="media-body">
-                        <label for="body" class=" form-control-label"></label>
+                        <label for="body" class=" form-control-label">후기</label>
                         <% if(isAuthenticated){ %>
                         <textarea name="body" id="body" rows="6" class="form-control"></textarea>
                         <% } else { %>
                         <textarea name="body" id="body" rows="6" class="form-control" readonly>로그인 후 상품평 등록 가능합니다.</textarea>
                         <% } %>
-                        <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                        <small class="text-muted" id="counter">(0 / 최대 200자)</small>
                       </div>
                     </div>
                   </div>
@@ -247,3 +262,18 @@
 
     <!-- End Cart -->
 </body>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script>
+  $('#body').keyup(function (e){
+      var content = $(this).val();
+      $('#counter').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+
+      if (content.length > 200){
+          alert("최대 200자까지 입력 가능합니다.");
+          $(this).val(content.substring(0, 200));
+          $('#counter').html("(200 / 최대 200자)");
+      }
+  });
+
+</script>
