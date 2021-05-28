@@ -243,6 +243,9 @@
                                                           <i class="fa fa-ban"></i> 상품 등록 안함
                                                       </button>
                                                       </a>
+                                                      <% if(errors.unhandle){ %>
+                                                        <span><%= errors.unhandle %></span>
+                                                    <%}%>
                                                   </div>
                                                 </form>
                                             </div>
