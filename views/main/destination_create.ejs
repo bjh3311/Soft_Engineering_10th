@@ -64,7 +64,7 @@
                                <div class="card-header">
                                    <strong>배송지</strong>
                                </div>
-                               <form action="/test" method="post" class="form-horizontal">
+                               <form action="/destination" method="POST" class="form-horizontal">
                                 <!-- <form action="/test" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
                                   <div class="card-body card-block">
                                           <div class="row form-group">
@@ -77,21 +77,30 @@
                                           </div>
                                           <div class="row form-group">
                                               <div class="col col-md-3">
-                                                  배송지 주소
+                                                  배송지 주소 
                                                   <label for="postcode" class=" form-control-label"></label>
                                                   <label for="roadAddress" class=" form-control-label"></label>
-                                                  <label for="jibunAddress" class=" form-control-label"></label>
+                                                  <!--<label for="jibunAddress" class=" form-control-label"></label>-->
                                                   <label for="detailAddress" class=" form-control-label"></label>
-                                                  <label for="extraAddress" class=" form-control-label"></label>
+                                                  <!--<label for="extraAddress" class=" form-control-label"></label>-->
                                               </div>
                                               <div class="col-12 col-md-9">
                                                <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호">
+                                               <% if(errors.post){ %>
+                                                    <span><%= errors.post.message %></span>
+                                                <% } %>
                                                <input class="btn btn-outline-primary btn-sm" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                                                <input class="form-control" type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소">
-                                               <input class="form-control" type="text" id="jibunAddress" name="jibunAddress" placeholder="지번주소">
+                                               <% if(errors.roadAddress){ %>
+                                                    <span><%= errors.roadAddress.message %></span>
+                                                <% } %>
+                                               <!--<input class="form-control" type="text" id="jibunAddress" name="jibunAddress" placeholder="지번주소">-->
                                                <span id="guide" style="color:#999;display:none"></span>
                                                <input class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
-                                               <input class="form-control" type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">
+                                               <% if(errors.detailAddress){ %>
+                                                    <span><%= errors.detailAddress.message %></span>
+                                                <% } %>
+                                               <!--<input class="form-control" type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">-->
                                               </div>
                                           </div>
                                           <div class="row form-group">
@@ -99,24 +108,26 @@
                                                   <label for="destination_number" class=" form-control-label">배송지 연락처</label>
                                               </div>
                                               <div class="col-12 col-md-9">
-                                                  <input type="text" id="destination_number" name="destination_number" placeholder="Text" class="form-control">
+                                                  <input type="text" id="destination_number" name="destination_number" placeholder="010-0000-0000" class="form-control">
+                                                  <% if(errors.contact){ %>
+                                                    <span><%= errors.contact.message %></span>
+                                                    <% } %>
                                               </div>
                                           </div>
                                   </div>
                                   <div class="card-footer">
-                                      <button type="submit" class="btn btn-primary btn-sm" onclick="location.href='/admin/table'">
-                                          <i class="fa fa-dot-circle-o"></i> 등록
-                                      </button>
+
+                                    <button type="submit" class="btn btn-primary btn-sm" name='username' value="<%= username %>">
+                                        <i class="fa fa-dot-circle-o"></i> 등록
+                                    </button>
                                       <button type="reset" class="btn btn-danger btn-sm" onclick="window.close();">
                                           <i class="fa fa-ban"></i> 취소
                                       </button>
                                   </div>
                                 </form>
-
                            </div>
                </div>
            </div>
-
     </div>
 
 

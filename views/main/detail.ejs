@@ -115,11 +115,12 @@
                     <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
                             <% product.files.forEach(function(file,index){ %>
-                            <div class="carousel-item <% if(index==0) {%>
-                                active"
-                                <%}else { %>
-                                    "
-                                 <% } %>> <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
+                            <div class="carousel-item" class=<% if(index==0) {%>
+                                "active"
+                                <% }else { %>
+                                ""
+                                <%} %>>
+                                 <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
                             <% }) %>
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
@@ -172,7 +173,11 @@
                             <div class="cart-and-bay-btn">
                                     <a class="btn hvr-hover" data-fancybox-close="" href="#">바로 구매 </a>
                                     <input type="submit" class="btn hvr-hover" style="float:right" data-fancybox-close="" value="장바구니 담기">
-                                    <a class="btn hvr-hover" data-fancybox-close="" onclick="showDestination()">배송지 선택</a>
+                                    <% if(isAuthenticated){ %>
+                                            <a class="btn hvr-hover" data-fancybox-close="" onclick="showDestination()">배송지 선택</a>
+                                    <% } else {%>
+                                        <a class="btn hvr-hover" data-fancybox-close="" onclick="alert('로그인을 하고 진행해주세요!')">배송지 선택</a>
+                                    <% } %>
                                 <!-- <form>
                                 <select name="배송지">
                                     <option value="none">기본 배송지</option>
