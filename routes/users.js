@@ -101,38 +101,16 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
 // Post Login // 3
 
 router.post('/login',
-  function(req,res,next){
-    var errors = {};
-    var isValid = true;
-
-    if(!req.body.username){
-      isValid = false;
-      errors.username = 'Username is required!';
-    }
-    if(!req.body.password){
-      isValid = false;
-      errors.password = 'Password is required!';
-    }
-    if(isValid){
-      next();
-    }
-    else {
-      req.flash('errors',errors);
-      res.redirect('/');
-    }
-  },
   passport.authenticate('local-login', {
-    successRedirect : '/users/check',
+    successRedirect : '/user/check',
     failureRedirect : '/'
   }
 ));
 
 router.get('/check', function(req,res){
-
   if(typeof req.user == "undefined"){
-    res.redirect('/users/logout');
+    res.redirect('/users/login');
   }
-
   if(req.user.right==true){
     res.redirect('/admin/index');
   }
@@ -143,7 +121,6 @@ router.get('/check', function(req,res){
 
 // Logout // 4
 router.get('/logout', function(req, res) {
-  console.log("logout")
   req.logout();
   res.redirect('/');
 });
