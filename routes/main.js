@@ -81,6 +81,39 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
+// 문의하기 화면
+router.get('/inquire', function(req, res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire',{
+    username:username,
+    errors:errors,
+  });
+});
+
+//문의내역 화면
+router.get('/inquire_list',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_list',{
+    username:username,
+    errors:errors,
+  });
+})
+//문의내역 상세화면
+router.get('/inquire_detail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_detail',{
+    username:username,
+    errors:errors,
+  });
+})
+
+
 // 배송지 선택
 router.get('/destination_select', function (req, res) {
   var username = req.user.username;
