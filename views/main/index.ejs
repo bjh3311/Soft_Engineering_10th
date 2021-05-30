@@ -206,6 +206,41 @@
             </div>
         </div>
     </div>
+
+    <!-- 인기 상품 -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>(The most popular products)</h1>
+                        <p>인기 상품</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row special-list">
+                <%  products.forEach(function(product) {  %>
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4"> -->
+                        <div class="products-single fix" style="height:300px; !important;">
+                            <div class="box-img-hover" style="height:70%; !important;">
+                              <div class="type-lb">
+                                  <p class="new">BEST</p>
+                              </div>
+                                <a href="/<%= product._id %>"><img src="/upload/<%= product.img %>" class="carousel_img" alt="Image"></a>
+                            </div>
+                            <div class="why-text" style="height:30%; !important;">
+                                <h4><%= product.name %></h4>
+                                <h5><%= product.weight %>당 <%= product.price %>원</h5>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>''
+                <% }) %>
+
+            </div>
+        </div>
+    </div>
     <!-- End Products  -->
 </body>
 <script src="/js/jquery-3.2.1.min.js"></script>
