@@ -31,7 +31,7 @@ var userSchema = mongoose.Schema({
       default:false
   },
   address:{
-    type:[String]
+    type: String,
   }
 },{
   toObject:{virtuals:true}
