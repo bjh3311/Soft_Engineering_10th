@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+
+
 // schema // 1
 var userSchema = mongoose.Schema({
   username:{
@@ -31,7 +33,7 @@ var userSchema = mongoose.Schema({
       default:false
   },
   address:{
-    type: String,
+    type : String
   }
 },{
   toObject:{virtuals:true}

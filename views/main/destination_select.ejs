@@ -93,8 +93,11 @@
                                                 <td><%= key.contact %></td>
                                                 <td>
                                                     <class class="table-data-feature">
-                                                        <button type="button"
+                                                        <form action="/destination/<%= key._id %>/select" method="POST">
+                                                            <button type="submit"
                                                             class="btn btn-outline-success btn-sm">선택</button>
+                                                        </form>
+
                                                         <form action="/destination/<%= key._id %>" method="GET">
                                                             <button type="input"
                                                             class="btn btn-outline-primary btn-sm" name="destinationId" value="<%= key._id %>">수정</button>

@@ -49,7 +49,7 @@ app.use(flash()); // 2
 
 app.use(session({
   secret:'MySecret',
-  resave:false,
+  resave:true,
   saveUninitialized:true,
   store: MongoStore.create({
   mongoUrl : mongoose.connection._connectionString,
