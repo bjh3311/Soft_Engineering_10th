@@ -102,7 +102,7 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
 
 router.post('/login',
   passport.authenticate('local-login', {
-    successRedirect : '/user/check',
+    successRedirect : '/users/check',
     failureRedirect : '/'
   }
 ));

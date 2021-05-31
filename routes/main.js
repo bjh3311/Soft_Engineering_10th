@@ -17,7 +17,6 @@ router.get('/', async function(req, res){
   var errors = req.flash('errors')[0] || {};
   var limit = 4;
   try{
-    console.log(req.user);
   var products = await Product.find()
     .where('flag').equals(true)
     .where('price').gte(0)
