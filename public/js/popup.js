@@ -23,3 +23,9 @@ function showNewDestination(){
 function EditDestination(){
   window.open("/destination_edit","edit","width=800,height=500,top=400");
 }
+
+// 리뷰이벤트
+
+function createReview(){
+  window.open("/review","user_review","width=800,height=500,top=400");
+}

@@ -39,6 +39,17 @@ router.get('/', async function(req, res){
     });
 });
 
+//구매 페이지
+router.get('/review',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/review',{
+    username:username,
+    errors:errors,
+  });
+})
+
 
 //구매 페이지
 router.get('/orderform',function(req,res){
@@ -143,7 +154,7 @@ res.render('main/destination_create',{
 
 // 배송지 수정
 router.get('/destination_edit', function(req, res){
-  
+
 });
 
 router.post('/destination_edit', function(req, res){
