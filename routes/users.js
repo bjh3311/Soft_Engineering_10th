@@ -101,6 +101,28 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
 // Post Login // 3
 
 router.post('/login',
+  function(req,res,next){
+
+
+    var errors = {};
+    var isValid = true;
+
+    if(!req.body.username){
+      isValid = false;
+      errors.username = 'Username is required!';
+    }
+    if(!req.body.password){
+      isValid = false;
+      errors.password = 'Password is required!';
+    }
+    if(isValid){
+      next();
+    }
+    else {
+      req.flash('errors',errors);
+      res.redirect('/');
+    }
+  },
   passport.authenticate('local-login', {
     successRedirect : '/users/check',
     failureRedirect : '/'

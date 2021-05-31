@@ -83,6 +83,8 @@ app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
 app.use('/posts', require('./routes/posts'));
 app.use('/pay', require('./routes/pay'));
+app.use('/destination', require('./routes/destination'));
+
 
 // port setting
 var port = 3000;

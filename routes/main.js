@@ -5,6 +5,7 @@ var router = express.Router();
 var passport = require('../config/passport');
 var Product = require('../models/Product');
 var Cart = require('../models/cart');
+var Destination = require('../models/Destination');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
@@ -43,6 +44,29 @@ router.get('/', async function(req, res){
     });
 });
 
+//구매 페이지
+router.get('/review',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/review',{
+    username:username,
+    errors:errors,
+  });
+})
+
+
+//구매 페이지
+router.get('/orderform',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/orderform',{
+    username:username,
+    errors:errors,
+  });
+})
+
 //게시판
 router.get('/notice',function(req,res){
   var username = req.flash('username')[0];
@@ -73,20 +97,80 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
-router.get('/destination_select',function(req,res){
-  res.render('main/destination_select');
+// 문의하기 화면
+router.get('/inquire', function(req, res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire',{
+    username:username,
+    errors:errors,
+  });
 });
 
-// 배송지 추가/수정
-router.get('/destination_create',function(req,res){
-  res.render('main/destination_create');
+//문의내역 화면
+router.get('/inquire_list',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_list',{
+    username:username,
+    errors:errors,
+  });
+})
+//문의내역 상세화면
+router.get('/inquire_detail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_detail',{
+    username:username,
+    errors:errors,
+  });
+})
+
+
+// 배송지 선택
+router.get('/destination_select', function (req, res) {
+  var username = req.user.username;
+  var errors = req.flash('errors')[0] || {};
+  Destination.find({user: req.user.username })
+    .exec(function (err, destination) {
+      if (err) return res.json(err);
+      res.render('main/destination_select', {
+        destination: destination,
+        username: username,
+        errors: errors
+      });
+    });
 });
+
+// 배송지 추가
+router.get('/destination_create', function(req,res){
+var username = req.user.username;
+var errors = req.flash('errors')[0] || {};
+
+res.render('main/destination_create',{
+  username:username,
+  errors:errors
+});
+});
+
+
+// 배송지 수정
+router.get('/destination_edit', function(req, res){
+
+});
+
+router.post('/destination_edit', function(req, res){
+  var destinationID = req.body.destinationId;
+})
+
 
 //about us --
 router.get('/about',function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-
   res.render('main/about',{
     username:username,
     errors:errors,
