@@ -21,5 +21,5 @@ function showNewDestination(){
 // 배송지 수정
 
 function EditDestination(){
-  window.open("/destination_create","new","width=800,height=500,top=400");
+  window.open("/destination_edit","edit","width=800,height=500,top=400");
 }

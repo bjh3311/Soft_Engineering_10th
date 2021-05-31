@@ -56,89 +56,77 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-      <!-- MAIN CONTENT-->
+        <!-- MAIN CONTENT-->
         <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="row">
-
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                            <!-- END USER DATA-->
-                        </div>
-                        <div class="col-lg-6">
-
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="col-xl-auto">
-                            <!-- DATA TABLE -->
-                            <div class="table-responsive table-responsive-data2">
-                                <table class="table table-data2">
-                                    <thead>
-                                        <tr>
-                                            <th>배송지 이름</th>
-                                            <th>배송 주소</th>
-                                            <th>배송지 연락처</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="tr-shadow">
-                                            <td>집</td>
-                                            <td class="desc">서울시 송파구 삼전동</td>
-                                            <td>010-1111-1111</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                  <button type="button" class="btn btn-outline-success btn-sm">선택</button>
-
-                                                  <button type="button" onclick="EditDestination()"class="btn btn-outline-primary btn-sm">수정</button>
-
-                                                  <button type="button" class="btn btn-outline-danger btn-sm">삭제</button>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                    </tbody>
-                                    <tbody>
-                                        <tr class="tr-shadow">
-                                            <td>집</td>
-                                            <td class="desc">서울시 송파구 삼전동</td>
-                                            <td>010-1111-1111</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                  <button type="button" class="btn btn-outline-success btn-sm">선택</button>
-                                                  <button type="button" onclick="EditDestination()" class="btn btn-outline-primary btn-sm">수정</button>
-                                                  <button type="button" class="btn btn-outline-danger btn-sm">삭제</button>
-                                                </div>
-                                            </td>
-                                            <td>
-                                              <button type="button" class="btn btn-secondary btn-sm">기본 배송지</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                    </tbody>
-                                </table>
+    
+                        <div class="row">
+                            <div class="col-lg-6">
+    
+                                <!-- END USER DATA-->
                             </div>
-                            <!-- END DATA TABLE -->
-                            <button type="button" onclick="showNewDestination()" class="btn btn-success btn-lg btn-block">추가 등록</button>
+                            <div class="col-lg-6">
+    
+                            </div>
                         </div>
-                    </div>
-                    <div class="row m-t-30">
                         <div class="col-md-12">
-
+                            <div class="col-xl-auto">
+                                <!-- DATA TABLE -->
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>배송지 이름</th>
+                                                <th>배송 주소</th>
+                                                <th>배송지 연락처</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% destination.forEach(function(key){ %>
+                                            <tr class="tr-shadow">
+                                                <td><%= key.name %></td>
+                                                <td class="desc"><%= key.roadAddress %> <%= key.detailAddress %></td>
+                                                <td><%= key.contact %></td>
+                                                <td>
+                                                    <class class="table-data-feature">
+                                                        <button type="button"
+                                                            class="btn btn-outline-success btn-sm">선택</button>
+                                                        <form action="/destination/<%= key._id %>" method="GET">
+                                                            <button type="input"
+                                                            class="btn btn-outline-primary btn-sm" name="destinationId" value="<%= key._id %>">수정</button>
+                                                        </form>
+                                                        <form action="/destination/<%= key._id %>?_method=delete" method="POST">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm">삭제</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                                <button type="button" onclick="showNewDestination()"
+                                    class="btn btn-success btn-lg btn-block">추가 등록</button>
+                            </div>
+                        </div>
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+    
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-    </div>
 
 
 
