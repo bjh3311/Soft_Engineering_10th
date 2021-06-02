@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+const Destination = require('./Destination');
 
 
 // schema // 1
@@ -32,9 +33,7 @@ var userSchema = mongoose.Schema({
       type:Boolean,
       default:false
   },
-  address:{
-    type : String
-  }
+  address: {type : String}
 },{
   toObject:{virtuals:true}
 });

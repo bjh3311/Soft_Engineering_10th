@@ -85,13 +85,17 @@ router.get('/policy', function(req, res){
 router.get('/destination_select', function (req, res) {
   var username = req.user.username;
   var errors = req.flash('errors')[0] || {};
+
   Destination.find({user: req.user.username })
     .exec(function (err, destination) {
       if (err) return res.json(err);
+      var addressDefault = req.user.address;
+
       res.render('main/destination_select', {
         destination: destination,
         username: username,
-        errors: errors
+        errors: errors,
+        addressDefault : addressDefault
       });
     });
 });
@@ -107,15 +111,6 @@ res.render('main/destination_create',{
 });
 });
 
-
-// 배송지 수정
-router.get('/destination_edit', function(req, res){
-  
-});
-
-router.post('/destination_edit', function(req, res){
-  var destinationID = req.body.destinationId;
-})
 
 
 //about us --
@@ -317,7 +312,7 @@ router.post('/down', function(req,res,next){
   req.session.cart = cart;
 
   res.redirect('/cart');
-});
+});                              
 
 // cart item remove
 router.post('/remove', function(req, res, next){
@@ -328,6 +323,13 @@ router.post('/remove', function(req, res, next){
 
   res.redirect('/cart');
 });
+
+// 바로 구매
+router.get('/direct_buy', function(req, res){
+  res.render('main/direct_buy');
+});
+
+
 
 module.exports = router;
 

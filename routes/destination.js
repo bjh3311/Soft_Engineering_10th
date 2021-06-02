@@ -92,12 +92,22 @@ router.delete('/:id', function(req, res){
   });
 });
 
-// 기본 배송지 선택
-router.post('/:id/select', function(req, res){
+//기본 배송지 선택
+router.post('/:id/select', function (req, res) {
   var userID = req.user.id;
   var destinationID = req.params.id;
 
-  res.send('<button type="button" class="btn btn-secondary btn-sm">기본 배송지</button>');
+  Destination.findOne({ _id: destinationID }).exec((err, data) => {
+    User.findOne({ _id: userID }, function (err, userdata) {
+      if (err) return res.json(err);
+
+      User.findOneAndUpdate({_id : userID}, { address : data._id}, function(err, data){
+         if (err) return res.json(err);
+        res.redirect('/destination_select');
+      
+      });
+    });
+  });
 });
 
 
