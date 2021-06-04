@@ -39,6 +39,16 @@ router.get('/', async function(req, res){
     });
 });
 
+router.get('/direct_buy',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/orderform',{
+    username:username,
+    errors:errors,
+  });
+})
+
 //구매 페이지
 router.get('/review',function(req,res){
   var username = req.flash('username')[0];
