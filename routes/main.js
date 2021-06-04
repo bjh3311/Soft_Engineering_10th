@@ -10,7 +10,7 @@ var Destination = require('../models/Destination');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
-
+const Mongoose = require('mongoose');
 
 
 // Main
@@ -316,6 +316,10 @@ router.get('/:id', async function(req, res){
 
   var skip = (page-1)*limit; 
   var count = await Review.countDocuments({product:req.params.id});
+  var sum = await Review.aggregate([
+    { $match : { product : new Mongoose.Types.ObjectId(req.params.id) }},
+    { $group : { _id: null, count : {$sum : "$star" }}}
+  ])
   var maxPage = Math.ceil(count/limit);
 
   var product = await Product.findOne({_id:req.params.id})
@@ -331,7 +335,8 @@ router.get('/:id', async function(req, res){
     errors: errors,
     currentPage:page,
     maxPage:maxPage,
-    limit:limit
+    limit:limit,
+    sum:sum[0].count
   })
 });
 
