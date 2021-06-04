@@ -360,11 +360,8 @@ router.get('/:id', async function(req, res){
     currentPage:page,
     maxPage:maxPage,
     limit:limit,
-<<<<<<< HEAD
-    moment
-=======
+    moment,
     sum:sum[0].count
->>>>>>> main
   })
 });
 
