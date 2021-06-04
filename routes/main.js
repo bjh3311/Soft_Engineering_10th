@@ -361,7 +361,8 @@ router.get('/:id', async function(req, res){
     maxPage:maxPage,
     limit:limit,
     moment,
-    sum:sum[0].count
+    sum:sum[0].count/count,
+    count
   })
 });
 

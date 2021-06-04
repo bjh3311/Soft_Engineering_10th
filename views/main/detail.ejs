@@ -196,8 +196,20 @@
         <div class="d-flex justify-content-center">
             <div class="content text-center">
                 <div class="ratings"> <span class="product-rating"><%= sum %></span><span>/5</span>
-                    <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                    <div class="rating-text"> <span>46 ratings & 15 reviews</span> </div>
+
+                    <div class="stars">
+                      <% if(sum <=1){ %>
+                        <i class="fa fa-star"></i>
+                      <% } else if(sum<=2){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=3){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=4){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=5){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% }%>
+                    </div>
                 </div>
             </div>
         </div>
