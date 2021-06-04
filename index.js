@@ -9,6 +9,8 @@ var util = require('./util');
 var app = express();
 var moment = require('moment');
 const MongoStore = require('connect-mongo');
+var favicon = require('serve-favicon');
+var path = require('path');
 
 //layouts
 var expressLayouts = require('express-ejs-layouts');
@@ -39,8 +41,12 @@ db.on('error', function(err){
 
 
 // setting
+
 app.set('view engine','ejs'); // 1
+app.set('layout', './layout/full-width');
+app.set("layout extractScripts",true);
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(path.join(__dirname, '/public/images', 'favicon.ico')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -49,7 +55,7 @@ app.use(flash()); // 2
 
 app.use(session({
   secret:'MySecret',
-  resave:false,
+  resave:true,
   saveUninitialized:true,
   store: MongoStore.create({
   mongoUrl : mongoose.connection._connectionString,
@@ -57,8 +63,6 @@ app.use(session({
   }),
 }));
 
-app.set('layout', './layout/full-width');
-app.set("layout extractScripts",true);
 // Passport
 
 app.use(passport.initialize());
@@ -73,14 +77,13 @@ app.use(function(req,res,next){
 });
 
 // routes setting
-// app.use('/', require('./routes/main'));
 app.use('/', util.getProductQueryString, require('./routes/main'));
 app.use('/admin', require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
 app.use('/posts', require('./routes/posts'));
 app.use('/destination', require('./routes/destination'));
-
+app.use('/review', require('./routes/review'));
 
 
 // port setting
