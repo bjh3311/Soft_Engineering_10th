@@ -111,7 +111,7 @@
     <!-- Start Cart  -->
     <div class="cart-box-main">
         <div class="container">
-
+            <form action="/pay" method="POST">
             <div class="row">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="checkout-address">
@@ -126,45 +126,44 @@
                               </div>
                             </div>
                             <div class="row">
+                                <% destination.forEach(function(key){ %> 
                                 <div class="col-md-12 mb-3">
                                     <label for="firstName">주소 *</label>
                                     <div class="row">
                                       <div class="col-md-3 mb-3">
-                                        <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호">
+                                        <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호" value="<%= key.post %>">
                                       </div>
                                       <div class="col-md-3 mb-3">
-                                          <input class="btn btn-outline-primary btn-md form-contol" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                          <input class="btn btn-outline-primary btn-sm" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                                       </div>
                                       <div class="col-md-3 mb-3">
-                                          <button class="btn btn-outline-primary btn-md form-contol" data-fancybox-close="" onclick="showDestination()">배송지 선택</button>
+                                          <button class="btn btn-outline-primary btn-sm" data-fancybox-close="" onclick="showDestination()">배송지 선택</button>
                                       </div>
                                     </div>
                                     <div class="invalid-feedback"> Valid first name is required. </div>
 
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                   <div class="col-md-9 mb-3">
                                     <label for="postcode" class=" form-control-label"></label>
                                     <label for="roadAddress" class=" form-control-label"></label>
-                                    <label for="jibunAddress" class=" form-control-label"></label>
                                     <label for="detailAddress" class=" form-control-label"></label>
-                                    <label for="extraAddress" class=" form-control-label"></label>
-                                    <input class="form-control" type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소">
-                                    <input class="form-control" type="text" id="jibunAddress" name="jibunAddress" placeholder="지번주소">
+                                    <input class="form-control" type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소" value="<%= key.roadAddress %>">
                                     <span id="guide" style="color:#999;display:none"></span>
-                                    <input class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
-                                    <input class="form-control" type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">
+                                    <input class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" value="<%= key.detailAddress %>">
                                       <div class="invalid-feedback"> Valid first name is required. </div>
                                   </div>
                                 </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="firstName">휴대전화 *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName">휴대전화 *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="" value="<%= key.contact %>" required>
+                                        <div class="invalid-feedback"> Valid first name is required. </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <% }) %>
                             <div class="row">
                                 <div class="col-md-9 mb-3">
                                     <label for="firstName">배송 메시지</label>
@@ -183,21 +182,13 @@
                                     <h3>주문 내역</h3>
                                 </div>
                                 <div class="rounded p-2 bg-light">
+                                    <% productArray.forEach(function(key){ %>
                                     <div class="media mb-2 border-bottom">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $80.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $80.00</div>
+                                        <div class="media-body"> <a href="/<%= key.item._id %>"> <%= key.item.name %></a>
+                                            <div class="small text-muted">Price: <%= key.item.price %> <span class="mx-2">|</span> Qty: <%= key.sales %> <span class="mx-2">|</span> Subtotal: <%= key.price %>원</div>
                                         </div>
                                     </div>
-                                    <div class="media mb-2 border-bottom">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $60.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $60.00</div>
-                                        </div>
-                                    </div>
-                                    <div class="media mb-2">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $40.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $40.00</div>
-                                        </div>
-                                    </div>
+                                    <% }) %>
                                 </div>
                             </div>
                         </div>
@@ -213,24 +204,26 @@
                                 <hr class="my-1">
                                 <div class="d-flex">
                                     <h4>총 주문금액</h4>
-                                    <div class="ml-auto font-weight-bold"> 440 원 </div>
+                                    <div class="ml-auto font-weight-bold"> <%= totalPrice %></div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>총 할인금액</h4>
-                                    <div class="ml-auto font-weight-bold"> 40 원 </div>
+                                    <div class="ml-auto font-weight-bold"> 쿠폰 없음 </div>
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>총 결제 금액</h5>
-                                    <div class="ml-auto h5"> 388 원 </div>
+                                    <div class="ml-auto h5"> <%= totalPrice %> 원 </div>
                                 </div>
                                 <hr> </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order</a> </div>
+                        <div class="col-12 d-flex shopping-box">
+                            <button type="submit" class="ml-auto btn hvr-hover" style="color: aliceblue;">최종 결제하기</button> 
+                        </div>
                     </div>
                 </div>
             </div>
-
+            </form>
         </div>
     </div>
     <!-- End Cart -->

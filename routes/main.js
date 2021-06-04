@@ -9,6 +9,8 @@ var Destination = require('../models/Destination');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
+const User = require('../models/User');
+
 
 
 
@@ -158,7 +160,9 @@ router.get('/cart',function(req,res){
     username:username,
     errors:errors,
     productArray : cart.generateArray(),
-    totalPrice : cart.totalPrice
+    totalPrice : cart.totalPrice,
+    userid : req.user._id,
+    address : req.user.address
   });
 })
 
@@ -325,11 +329,38 @@ router.post('/remove', function(req, res, next){
 });
 
 // 바로 구매
-router.get('/direct_buy', function(req, res){
+router.get('/direct_buy',function(req,res){
   res.render('main/direct_buy');
 });
 
 
+
+// 결제하기
+router.post('/orderform/:id', function(req, res){
+  if(!req.user.address){
+    return res.redirect('/cart');
+  }
+  else{
+  Destination.findOne({_id : req.user.address}, function(err, destination){
+      if(err) return res.redirect('main/cart');
+      res.redirect('/orderform/' + req.params.id); 
+  });
+}
+});
+
+
+router.get('/orderform/:id', function(req, res){
+  var cart = new Cart(req.session.cart);
+  Destination.findOne({_id : req.user.address})
+    .exec(function(err, destination){
+      if(err) return res.json(err);
+      res.render('main/orderform', {
+        destination : [destination],
+        productArray  :cart.generateArray(),
+        totalPrice : cart.totalPrice
+    });
+  });
+});
 
 module.exports = router;
 

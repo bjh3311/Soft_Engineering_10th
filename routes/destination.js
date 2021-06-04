@@ -103,12 +103,12 @@ router.post('/:id/select', function (req, res) {
 
       User.findOneAndUpdate({_id : userID}, { address : data._id}, function(err, data){
          if (err) return res.json(err);
-        res.redirect('/destination_select');
-      
+         res.send("<script>window.opener.location.reload();window.close(); </script>");
       });
     });
   });
 });
+
 
 
 module.exports = router;
