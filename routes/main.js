@@ -11,6 +11,9 @@ var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
 
+var moment = require('moment');
+
+
 
 
 // Main
@@ -33,7 +36,7 @@ router.get('/', async function(req, res){
     .where('flag').equals(true)
     .sort('start')
     .exec();
-  
+
   }catch(err){
     res.json(err);
   }
@@ -223,7 +226,7 @@ router.get('/cart',function(req,res){
       username:username,
       errors:errors
     });
-  } 
+  }
   var cart = new Cart(req.session.cart);
   //console.log(cart);
   /*cart.generateArray().forEach(function(element){
@@ -335,14 +338,14 @@ router.get('/:id', async function(req, res){
   page = !isNaN(page)?page:1;
   limit = !isNaN(limit)?limit:1;
 
-  var skip = (page-1)*limit; 
+  var skip = (page-1)*limit;
   var count = await Review.countDocuments({product:req.params.id});
   var maxPage = Math.ceil(count/limit);
 
   var product = await Product.findOne({_id:req.params.id})
     .exec();
   var review = await Review.find({product:req.params.id})
-    .skip(skip)   
+    .skip(skip)
     .limit(limit)
     .exec();
   res.render('main/detail',{
@@ -352,7 +355,8 @@ router.get('/:id', async function(req, res){
     errors: errors,
     currentPage:page,
     maxPage:maxPage,
-    limit:limit
+    limit:limit,
+    moment
   })
 });
 
