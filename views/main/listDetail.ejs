@@ -1,0 +1,224 @@
+<body>
+
+  <!-- Start Main Top -->
+  <header class="main-header">
+      <!-- Start Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+          <div class="container-fluid">
+              <div class="row" float="right">
+                  <% if(isAuthenticated){ %>
+                      <span><%= currentUser.username %> 환영합니다.</span>
+                      <button type="button" onclick="location.href='/users/logout'">Logout</button>
+                  <% } else { %>
+                      <div class="login">
+                          <form action="/users/login" method="post">
+                          ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
+                          PASSWORD <input type="password" name="password" id="password" placeholder="password">
+                          <input class="" type="submit" value="Submit">
+                          </form>
+                      </div>
+                      <div class="col-xs-12">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">회원가입</button>
+                      </div>
+                  <% } %>
+              </div>
+          </div>
+          <div class="container">
+              <!-- Start Header Navigation -->
+              <div class="navbar-header">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                      <i class="fa fa-bars"></i>
+                  </button>
+              </div>
+              <!-- End Header Navigation -->
+              <!--, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="navbar-menu">
+                  <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
+                      <li class="dropdown active">
+                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/category">Shoplist</a></li>
+                              <li><a href="/cart">Cart</a></li>
+                              <li><a href="/order_list">Orderlist</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/notice">Notice</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+              <!-- Start Atribute Navigation -->
+              <div class="attr-nav" style="padding-right: 10px;">
+                  <ul>
+                      <a href="/cart">
+                          <i class="fa fa-shopping-bag">
+                              <% if(session.cart){ %>
+                                  <span class="badge">
+                                      <%= session.cart.totalQty %>
+                                  </span>
+                                  <% } else { %>
+                                      <span class="badge">0</span>
+                                      <% } %>
+                          </i>
+                          My Cart
+                      </a>
+                  </ul>
+              </div>
+              <!-- End Atribute Navigation -->
+          </div>
+      </nav>
+      <!-- End Navigation -->
+  </header>
+  <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Order form</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Order form</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Cart  -->
+    <div class="cart-box-main">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="checkout-address">
+                      <div class="title-left">
+                          <h3>주문 상태</h3>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                              <p>주문 상태 넣어주시면 됩니다.</p>
+                              <div class="invalid-feedback"> Valid first name is required. </div>
+                          </div>
+                        </div>
+                        <div class="title-left">
+                            <h3>배달 정보</h3>
+                          </div>
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                  <label for="firstName">받으시는 분</label>
+                                  <p>이름 넣어주시면 됩니다.</p>
+                                  <div class="invalid-feedback"> Valid first name is required. </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="firstName">주소</label>
+                                    <div class="row">
+                                    </div>
+                                    <div class="invalid-feedback"> Valid first name is required. </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-9 mb-3">
+                                    <p>주소 넣어주시면 됩니다.</p>
+                                  </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">휴대전화</label>
+                                    <p>010-0000-0000 넣어주시면 됩니다.</p>
+                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 mb-3">
+                                    <label for="firstName">배송 메시지</label>
+                                    <p>메시지 넣어주시면 됩니다.</p>
+                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                </div>
+                            </div>
+                            <hr class="mb-4">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="odr-box">
+                                <div class="title-left">
+                                    <h3>주문 내역</h3>
+                                </div>
+                                <div class="rounded p-2 bg-light">
+                                    <div class="media mb-2 border-bottom">
+                                        <div class="media-body"> <a href="detail.html"> 상품이름</a>
+                                            <div class="small text-muted">상품가격 <span class="mx-2">|</span> 구매개수 <span class="mx-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="order-box">
+                                <div class="title-left">
+                                    <h3>결제 금액</h3>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="font-weight-bold">Product</div>
+                                    <div class="ml-auto font-weight-bold">Total</div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="d-flex">
+                                    <h4>총 주문금액</h4>
+                                    <div class="ml-auto font-weight-bold"> 440 원 </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>총 할인금액</h4>
+                                    <div class="ml-auto font-weight-bold"> 40 원 </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex gr-total">
+                                    <h5>총 결제 금액</h5>
+                                    <div class="ml-auto h5"> 388 원 </div>
+                                </div>
+                                <hr> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Cart -->
+
+
+
+
+
+
+
+
+</body>
