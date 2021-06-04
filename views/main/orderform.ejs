@@ -136,7 +136,7 @@
                             <div class="row">
                               <div class="col-md-6 mb-3">
                                   <label for="firstName">받으시는 분 *</label>
-                                  <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                  <input type="text" class="form-control" id="firstName" name="deliverName"placeholder="" value="" required>
                                   <div class="invalid-feedback"> Valid first name is required. </div>
                               </div>
                             </div>
@@ -148,10 +148,10 @@
                                       <div class="col-md-3 mb-3">
                                         <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호" value="<%= key.post %>">
                                       </div>
-                                      <div class="col-md-3 mb-3">
+                                      <div class="col-md-3 mb-3" style="position: relative; margin-left:1%;">
                                           <input class="btn btn-outline-primary btn-sm" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                                       </div>
-                                      <div class="col-md-3 mb-3">
+                                      <div class="col-md-3 mb-3" style="position: relative; margin-left: 5%;">
                                           <button class="btn btn-outline-primary btn-sm" data-fancybox-close="" onclick="showDestination()">배송지 선택</button>
                                       </div>
                                     </div>
@@ -174,7 +174,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="firstName">휴대전화 *</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="" value="<%= key.contact %>" required>
+                                        <input type="text" class="form-control" id="firstName" placeholder="" name="contact"value="<%= key.contact %>" required>
                                         <div class="invalid-feedback"> Valid first name is required. </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                             <div class="row">
                                 <div class="col-md-9 mb-3">
                                     <label for="firstName">배송 메시지</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" name="message">
                                     <div class="invalid-feedback"> Valid first name is required. </div>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12">
-                            <div class="order-box">
+                            <div class="odr-box">
                                 <div class="title-left">
                                     <h3>결제 예정 금액</h3>
                                 </div>

@@ -6,6 +6,7 @@ var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
+var Order = require('../models/Order');
 
 
 
@@ -80,7 +81,15 @@ router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
 
 // 주문 내역
 router.get('/order_list',util.isLoggedin, checkPermission, function(req,res){
-  res.render('admin/order_list');
+  var errors = req.flash('errors')[0] || {};
+
+  Order.find(function(err, order){
+    if (err) return res.json(err);
+    res.render('admin/order_list',{
+      errors:errors,
+      order : order
+    });
+  });
 });
 
 // 판매 정보 통계

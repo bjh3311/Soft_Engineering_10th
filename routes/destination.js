@@ -16,7 +16,7 @@ router.post('/', function(req, res){
     detailAddress : req.body.detailAddress,
     contact : req.body.destination_number
   });
-  Destination.create(destination, function(err, post){
+  Destination.create(destination, function(err, destination){
     if(err){
       req.flash('destination', destination);
       req.flash('errors', util.parseError_(err));

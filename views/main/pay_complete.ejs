@@ -1,1 +1,178 @@
-결제가 완료되었습니다.
+<body>
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container-fluid">
+                <div class="row" float="right">
+                    <% if(isAuthenticated){ %>
+                        <span>
+                            <%= currentUser.username %> 환영합니다.
+                        </span>
+                        <button type="button" onclick="location.href='/users/logout'">Logout</button>
+                        <% } else { %>
+                            <div class="login">
+                                <form action="/users/login" method="post">
+                                    ID <input type="text" name="username" id="username" value="<%= username %>"
+                                        placeholder="id">
+                                    PASSWORD <input type="password" name="password" id="password"
+                                        placeholder="password">
+                                    <input class="" type="submit" value="Submit">
+                                </form>
+                            </div>
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    onclick="location.href='/users/signup'">회원가입</button>
+                            </div>
+                            <% } %>
+                </div>
+            </div>
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- End Header Navigation -->
+                <!--, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                        <!--about.html -> /about-->
+                        <li class="dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/category">Shoplist</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                                <li><a href="/order_list">Orderlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/notice">Notice</a></li>
+                                <li><a href="/contact-us">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav" style="padding-right: 10px;">
+                    <ul>
+                        <% if(isAuthenticated){ %>
+                            <a href="/cart">
+                                <i class="fa fa-shopping-bag">
+                                    <% if(session.cart){ %>
+                                        <span class="badge">
+                                            <%= session.cart.totalQty %>
+                                        </span>
+                                        <% } else { %>
+                                            <span class="badge">0</span>
+                                            <% } %>
+                                </i>
+                                My Cart
+                            </a>
+                            <% } else { %>
+                                <a href="#" onclick="alert('로그인을 진행해주세요')">
+                                    <i class="fa fa-shopping-bag">
+                                        <% if(session.cart){ %>
+                                            <span class="badge">
+                                                <%= session.cart.totalQty %>
+                                            </span>
+                                            <% } else { %>
+                                                <span class="badge">0</span>
+                                                <% } %>
+                                    </i>
+                                    My Cart
+                                </a>
+                                <% } %>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>결제 완료</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active" style="color: white">결제 완료</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start pay_complete  -->
+    <div class="cart-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 style="text-align: center;">결제가 정상적으로 완료되었습니다</h1>
+                </div>
+                <br><br><br><br>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table" style="width: 50%; text-align: center; margin: auto;">
+                        <tbody>
+                          <tr class="tr-shadow">
+                            <th scope="row">주문 번호</th>
+                              <td><%= orderNum %></td>
+                          </tr>
+                            <tr class="tr-shadow">
+                                <th scope="row">총 결제금액</th>
+                                <td><%= totalPrice %>원</td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container" style="margin:100px;">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-outline-primary btn-block" onclick="location.href='/category'">쇼핑 계속하기</button>
+
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-outline-secondary btn-block" onclick="location.href='/order_list'">구매내역 확인</button>
+                    </div>
+                  </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<!-- End Cart -->
