@@ -78,6 +78,17 @@ router.get('/orderform',function(req,res){
   });
 })
 
+//구매 페이지
+router.get('/listDetail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/listDetail',{
+    username:username,
+    errors:errors,
+  });
+})
+
 //게시판
 router.get('/notice',function(req,res){
   var username = req.flash('username')[0];
