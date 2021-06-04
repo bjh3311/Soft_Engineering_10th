@@ -10,7 +10,10 @@ var Destination = require('../models/Destination');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
+
+var moment = require('moment');
 const Mongoose = require('mongoose');
+
 
 
 // Main
@@ -33,7 +36,7 @@ router.get('/', async function(req, res){
     .where('flag').equals(true)
     .sort('start')
     .exec();
-  
+
   }catch(err){
     res.json(err);
   }
@@ -223,7 +226,7 @@ router.get('/cart',function(req,res){
       username:username,
       errors:errors
     });
-  } 
+  }
   var cart = new Cart(req.session.cart);
   //console.log(cart);
   /*cart.generateArray().forEach(function(element){
@@ -335,7 +338,7 @@ router.get('/:id', async function(req, res){
   page = !isNaN(page)?page:1;
   limit = !isNaN(limit)?limit:1;
 
-  var skip = (page-1)*limit; 
+  var skip = (page-1)*limit;
   var count = await Review.countDocuments({product:req.params.id});
   var sum = await Review.aggregate([
     { $match : { product : new Mongoose.Types.ObjectId(req.params.id) }},
@@ -346,7 +349,7 @@ router.get('/:id', async function(req, res){
   var product = await Product.findOne({_id:req.params.id})
     .exec();
   var review = await Review.find({product:req.params.id})
-    .skip(skip)   
+    .skip(skip)
     .limit(limit)
     .exec();
   res.render('main/detail',{
@@ -357,7 +360,9 @@ router.get('/:id', async function(req, res){
     currentPage:page,
     maxPage:maxPage,
     limit:limit,
-    sum:sum[0].count
+    moment,
+    sum:sum[0].count/count,
+    count
   })
 });
 

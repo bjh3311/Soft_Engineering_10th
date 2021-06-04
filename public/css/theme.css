@@ -106,6 +106,33 @@ p {
 /*pagination*/
 .pagination {
    justify-content: center;
+}.pagination > li > a
+{
+    background-color: #DDDDDD;
+    color: #5A4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: blue !Important;
+    border: solid 1px blue !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: blue !Important;
+    border: solid 1px blue;
 }
 
 /*rating*/
@@ -115,6 +142,8 @@ p {
      border: 1px solid rgba(0, 0, 0, 0.1);
      box-shadow: 0px 10px 10px #E0E0E0
  }
+
+
 
  .product-rating {
      font-size: 50px

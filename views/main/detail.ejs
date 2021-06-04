@@ -196,8 +196,20 @@
         <div class="d-flex justify-content-center">
             <div class="content text-center">
                 <div class="ratings"> <span class="product-rating"><%= sum %></span><span>/5</span>
-                    <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                    <div class="rating-text"> <span>46 ratings & 15 reviews</span> </div>
+
+                    <div class="stars">
+                      <% if(sum <=1){ %>
+                        <i class="fa fa-star"></i>
+                      <% } else if(sum<=2){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=3){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=4){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% } else if(sum<=5){ %>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                      <% }%>
+                    </div>
                 </div>
             </div>
         </div>
@@ -213,26 +225,35 @@
                 <div class="col-md-9">
                   <div class="media-body">
                     <div class="row">
-                        <p><%= data.star %></p>
-                        <p><%= data.recommend %></p>
-                      <p><%= data.delivery %></p>
+                        <p>별점 : <%= data.star %> &nbsp; </p>
+                        <p>  추천 : <%= data.recommend %>  &nbsp;</p>
+                      <p>  배송 : <%= data.delivery %> &nbsp;</p>
                     </div>
                     <p><%= data.body %></p>
                   </div>
                 </div>
                 <div class="col-md-3">
                   작성자
-                  <p><%= data.user %></p>
+
+                    <%
+                    var result = ""; %>
+                    <% var sLength =  data.user.length; %>
+                    <% for(var i = 0; i < sLength; i++){ %>
+                        <% result += i < sLength - 4 ? "*" : data.user.charAt(i); %>
+                      <% } %>
+                      <p><%= result %></p>
+
                   등록 일자
-                  <p><%= data.createdAt %></p>
+
+                  <p>  <%= moment(data.createdAt).format('YYYY-MM-DD') %></p>
                 </div>
               </div>
               <% }) %>
 
               <hr>
-              
+
                 <nav class="col-8">
-                    <% 
+                    <%
                     var offset = 2;
                     var previousBtnEnabled = currentPage>1;
                     var nextBtnEnabled = currentPage<maxPage;
@@ -251,7 +272,7 @@
                     <a class="page-link" href="/<%= product._id %><%= getProductQueryString(false, {page:currentPage+1}) %>" <%= nextBtnEnabled?'':'tabindex=-1' %>>»</a>
                   </li>
                 </ul>
-                 
+
                 </nav>
             </div>
             </div>
@@ -261,3 +282,10 @@
 </body>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
+<script>
+
+
+
+
+
+</script>
