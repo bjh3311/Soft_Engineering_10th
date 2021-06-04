@@ -58,20 +58,35 @@
               <!-- /.navbar-collapse -->
               <!-- Start Atribute Navigation -->
               <div class="attr-nav" style="padding-right: 10px;">
-                  <ul>
-                      <a href="/cart">
-                          <i class="fa fa-shopping-bag">
-                              <% if(session.cart){ %>
-                                  <span class="badge">
-                                      <%= session.cart.totalQty %>
-                                  </span>
-                                  <% } else { %>
-                                      <span class="badge">0</span>
-                                      <% } %>
-                          </i>
-                          My Cart
-                      </a>
-                  </ul>
+                <ul>
+                    <% if(isAuthenticated){ %>
+                    <a href="/cart">
+                        <i class="fa fa-shopping-bag">
+                            <% if(session.cart){ %>
+                                <span class="badge">
+                                    <%= session.cart.totalQty %>
+                                </span>
+                                <% } else { %>
+                                    <span class="badge">0</span>
+                                    <% } %>
+                        </i>
+                        My Cart
+                    </a>
+                    <% } else { %>
+                        <a href="#" onclick="alert('로그인을 진행해주세요')">
+                            <i class="fa fa-shopping-bag">
+                                <% if(session.cart){ %>
+                                    <span class="badge">
+                                        <%= session.cart.totalQty %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge">0</span>
+                                        <% } %>
+                            </i>
+                            My Cart
+                        </a>
+                    <% } %>
+                </ul>
               </div>
               <!-- End Atribute Navigation -->
           </div>

@@ -144,6 +144,7 @@ router.get('/check', function(req,res){
 router.get('/logout', function(req, res) {
   console.log("logout")
   req.logout();
+  delete req.session.cart;
   res.redirect('/');
 });
 

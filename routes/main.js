@@ -328,12 +328,6 @@ router.post('/remove', function(req, res, next){
   res.redirect('/cart');
 });
 
-// 바로 구매
-router.get('/direct_buy',function(req,res){
-  res.render('main/direct_buy');
-});
-
-
 
 // 결제하기
 router.post('/orderform/:id', function(req, res){
