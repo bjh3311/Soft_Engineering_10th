@@ -23,8 +23,6 @@ router.post('/', function(req, res){
 });
 
 
-
-
 router.get('/pay_complete/:id', function(req, res){
   delete req.session.cart;
   Order.findOne({orderNum : req.params.id}, function(err, order){
@@ -34,7 +32,6 @@ router.get('/pay_complete/:id', function(req, res){
     });
   });
 });
-
 
 
 router.post('/direct_buy', function(req, res){
@@ -83,7 +80,6 @@ router.get('/:id/direct_buy', function(req, res){
 });
 
 
-
 router.get('/pay_complete_direct/:id', function(req, res){
   Order.findOne({orderNum : req.params.id}, function(err, order){
     res.render('main/pay_complete_direct',{
@@ -93,9 +89,6 @@ router.get('/pay_complete_direct/:id', function(req, res){
   });
   
 });
-
-
-
 
 
 
