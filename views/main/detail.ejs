@@ -186,7 +186,11 @@
                         </ul>
                         <div class="price-box-bar">
                             <div class="cart-and-bay-btn">
-                                    <a href="/cart"  onclick="alert('장바구니에 담고 진행해주세요')"class="btn hvr-hover" data-fancybox-close="" >바로 구매 </a>
+                                    <% if(isAuthenticated){ %>
+                                    <a href="/pay/<%= product.id %>/direct_buy" class="btn hvr-hover" data-fancybox-close="" >바로 구매 </a>
+                                        <% } else{ %> 
+                                            <a href="#" onclick="alert('로그인을 하고 구매해주세요')" class="btn hvr-hover" data-fancybox-close="" >바로 구매 </a>
+                                            <% } %>
                                     <input type="submit" class="btn hvr-hover" style="float:right" data-fancybox-close="" value="장바구니 담기">
                                     <% if(isAuthenticated){ %>
                                             <a class="btn hvr-hover" data-fancybox-close="" onclick="showDestination()">배송지 선택</a>

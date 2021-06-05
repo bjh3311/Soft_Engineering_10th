@@ -1,0 +1,309 @@
+<body>
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container-fluid">
+                <div class="row" float="right">
+                    <% if(isAuthenticated){ %>
+                        <span><%= currentUser.username %> 환영합니다.</span>
+                        <button type="button" onclick="location.href='/users/logout'">Logout</button>
+                    <% } else { %>
+                        <div class="login">
+                            <form action="/users/login" method="post">
+                            ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
+                            PASSWORD <input type="password" name="password" id="password" placeholder="password">
+                            <input class="" type="submit" value="Submit">
+                            </form>
+                        </div>
+                        <div class="col-xs-12">
+                          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">회원가입</button>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- End Header Navigation -->
+                <!--, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
+                        <li class="dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/category">Shoplist</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                                <li><a href="/order_list">Orderlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/notice">Notice</a></li>
+                              <li><a href="/contact-us">Contact Us</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav" style="padding-right: 10px;">
+                  <ul>
+                      <% if(isAuthenticated){ %>
+                      <a href="/cart">
+                          <i class="fa fa-shopping-bag">
+                              <% if(session.cart){ %>
+                                  <span class="badge">
+                                      <%= session.cart.totalQty %>
+                                  </span>
+                                  <% } else { %>
+                                      <span class="badge">0</span>
+                                      <% } %>
+                          </i>
+                          My Cart
+                      </a>
+                      <% } else { %>
+                          <a href="#" onclick="alert('로그인을 진행해주세요')">
+                              <i class="fa fa-shopping-bag">
+                                  <% if(session.cart){ %>
+                                      <span class="badge">
+                                          <%= session.cart.totalQty %>
+                                      </span>
+                                      <% } else { %>
+                                          <span class="badge">0</span>
+                                          <% } %>
+                              </i>
+                              My Cart
+                          </a>
+                      <% } %>
+                  </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+  
+      <!-- Start Top Search -->
+      <div class="top-search">
+          <div class="container">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+              </div>
+          </div>
+      </div>
+      <!-- End Top Search -->
+  
+      <!-- Start All Title Box -->
+      <div class="all-title-box">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <h2>바로 구매하기</h2>
+                      <ul class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                          <li class="breadcrumb-item active">바로 구매</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- End All Title Box -->
+  
+      <!-- Start Cart  -->
+      <div class="cart-box-main">
+          <div class="container">
+              <form action="/pay/direct_buy" method="POST">
+              <div class="row">
+                  <div class="col-sm-6 col-lg-6 mb-3">
+                      <div class="checkout-address">
+                          <div class="title-left">
+                              <h3>배달 정보</h3>
+                            </div>
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">받으시는 분 *</label>
+                                    <input type="text" class="form-control" id="firstName" name="deliverName"placeholder="" value="" required>
+                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <% destination.forEach(function(key){ %>
+                                  <div class="col-md-12 mb-3">
+                                      <label for="firstName">주소 *</label>
+                                      <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                          <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호" value="<%= key.post %>" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3" style="position: relative; margin-left:1%;">
+                                            <input class="btn btn-outline-primary btn-sm" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                        </div>
+                                        <div class="col-md-3 mb-3" style="position: relative; margin-left: 5%;">
+                                            <button class="btn btn-outline-primary btn-sm" data-fancybox-close="" onclick="showDestination()">배송지 선택</button>
+                                        </div>
+                                      </div>
+                                      <div class="invalid-feedback"> Valid first name is required. </div>
+  
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="row">
+                                    <div class="col-md-9 mb-3">
+                                      <label for="postcode" class=" form-control-label"></label>
+                                      <label for="roadAddress" class=" form-control-label"></label>
+                                      <label for="detailAddress" class=" form-control-label"></label>
+                                      <input class="form-control" type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소" value="<%= key.roadAddress %>" required>
+                                      <span id="guide" style="color:#999;display:none"></span>
+                                      <input class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" value="<%= key.detailAddress %>" required>
+                                        <div class="invalid-feedback"> Valid first name is required. </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 mb-3">
+                                          <label for="firstName">휴대전화 *</label>
+                                          <input type="text" class="form-control" id="firstName" placeholder="" name="contact"value="<%= key.contact %>" required>
+                                          <div class="invalid-feedback"> Valid first name is required. </div>
+                                      </div>
+                                  </div>
+                                  <% }) %>
+                              <div class="row">
+                                  <div class="col-md-9 mb-3">
+                                      <label for="firstName">배송 메시지</label>
+                                      <input type="text" class="form-control" id="firstName" placeholder="" value="" name="message">
+                                      <div class="invalid-feedback"> Valid first name is required. </div>
+                                  </div>
+                              </div>
+                              <hr class="mb-4">* 필수입력사항
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-6 mb-3">
+                      <div class="row">
+                          <div class="col-md-12 col-lg-12">
+                              <div class="odr-box">
+                                  <div class="title-left">
+                                      <h3>주문 내역</h3>
+                                  </div>
+                                  <div class="rounded p-2 bg-light">
+                                      
+                                      <div class="media mb-2 border-bottom">
+                                          <div class="media-body"> <a href="/<%= product._id %>"><%= product.name %></a>
+                                            <input type="hidden" name="productID" value="<%= product._id %>">
+                                            <input type="hidden" name="productName" value="<%= product.name %>">
+                                            <div class="small text-muted">Price:<%= product.price %>  <span class="mx-2">|</span> Qty: 
+                                                        <input type="hidden" id="price" value="<%= product.price %>">
+                                                        <input type="text" style="width: 10%;" id="Qty" value="1" onkeyup="total(this.value)" name="count">
+                                                    <span class="mx-2">|</span>
+                                                    Subtotal: <input type="text" id="result" value="<%= product.price %>" name="totalPrice" readonly>원</div>
+                                            </div>
+                                      </div>
+                                      <p style="font-size: small;">상품 재고 : <%= product.stock %></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12">
+                              <div class="odr-box">
+                                  <br>
+                                </div>
+                          </div>
+                          <div class="col-12 d-flex shopping-box">
+                              <button type="submit" class="ml-auto btn hvr-hover" style="color: aliceblue;">최종 결제하기</button> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </form>
+          </div>
+      </div>
+      <!-- End Cart -->
+  
+  
+  
+  
+  
+  
+  
+  
+  </body>
+  <!-- 카카오 API-->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+      //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+      function sample4_execDaumPostcode() {
+          new daum.Postcode({
+              oncomplete: function(data) {
+                  // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+  
+                  // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                  // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                  var roadAddr = data.roadAddress; // 도로명 주소 변수
+                  var extraRoadAddr = ''; // 참고 항목 변수
+  
+                  // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                  // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                  if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                      extraRoadAddr += data.bname;
+                  }
+                  // 건물명이 있고, 공동주택일 경우 추가한다.
+                  if(data.buildingName !== '' && data.apartment === 'Y'){
+                     extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                  }
+                  // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                  if(extraRoadAddr !== ''){
+                      extraRoadAddr = ' (' + extraRoadAddr + ')';
+                  }
+  
+                  // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                  document.getElementById('postcode').value = data.zonecode;
+                  document.getElementById("roadAddress").value = roadAddr;
+                  document.getElementById("jibunAddress").value = data.jibunAddress;
+  
+                  // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                  if(roadAddr !== ''){
+                      document.getElementById("extraAddress").value = extraRoadAddr;
+                  } else {
+                      document.getElementById("extraAddress").value = '';
+                  }
+  
+                  var guideTextBox = document.getElementById("guide");
+                  // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                  if(data.autoRoadAddress) {
+                      var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                      document.getElementById("roadAddress").value=extraRoadAddr;
+                      // guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                      // guideTextBox.style.display = 'block';
+  
+                  } else if(data.autoJibunAddress) {
+                      var expJibunAddr = data.autoJibunAddress;
+                      document.getElementById("jibunAddress").value=expJibunAddr;
+                      // guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                      // guideTextBox.style.display = 'block';
+                  } else {
+                      guideTextBox.innerHTML = '';
+                      guideTextBox.style.display = 'none';
+                  }
+              }
+          }).open();
+      }
+
+        function total(value){
+            var result, price;
+            price = document.getElementById('price').value;
+            result = price * value;
+            document.getElementById('result').value = result;
+        }
+ 
+</script>
+  
