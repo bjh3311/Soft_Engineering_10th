@@ -52,7 +52,7 @@ router.post('/direct_buy', function(req, res){
           price : req.body.totalPrice
         }
       },
-      totalQty : req.body.count,
+      totalQty : 1,
       totalPrice : req.body.totalPrice
     },
     deliverName : req.body.deliverName,
