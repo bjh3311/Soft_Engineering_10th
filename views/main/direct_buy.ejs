@@ -143,7 +143,7 @@
                               <div class="row">
                                 <% destination.forEach(function(key){ %>
                                   <div class="col-md-12 mb-3">
-                                      <label for="firstName">주소 *</label>
+                                      <label for="firstName">주소 *</label> <span style="font-size: xx-small;">기본 배송지를 변경하실 거라면 배송지를 먼저 선택하고 나머지를 입력해주세요.</span>
                                       <div class="row">
                                         <div class="col-md-3 mb-3">
                                           <input class="form-control" type="text" id="postcode" name="postcode" placeholder="우편번호" value="<%= key.post %>" required>
@@ -182,7 +182,7 @@
                               <div class="row">
                                   <div class="col-md-9 mb-3">
                                       <label for="firstName">배송 메시지</label>
-                                      <input type="text" class="form-control" id="firstName" placeholder="" value="" name="message">
+                                      <input type="text" class="form-control" id="firstName" placeholder="" value="" name="message" required>
                                       <div class="invalid-feedback"> Valid first name is required. </div>
                                   </div>
                               </div>

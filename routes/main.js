@@ -194,7 +194,18 @@ router.get('/order_list',function(req,res){
       order : order
     });
   });
-})
+});
+
+// 사용자가 구매 확정
+router.post('/order_list/:id/end', function(req, res){
+  var update = { flag : '구매확정'};
+
+  Order.findOneAndUpdate({_id : req.params.id}, update, function(err, order){
+    if(err) return res.json(err);
+    res.redirect('/order_list');
+  });
+});
+
 
 
 // 주문 내역 상세 보기

@@ -151,7 +151,7 @@
                                             </a>
                                         </td>
                                         <td class="name-pr">
-                                                <a href="/listDetail/<%= key._id %>" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 200px;">
+                                                <a href="/listDetail/<%= key._id %>" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">
                                                         <% var itemName = Object.values(key.cart.items) %>
                                                         <% itemName.forEach(function(rekey){ %> 
                                                             <%= rekey.item.name %>
@@ -167,7 +167,17 @@
                                         </td>
                                         <td class="quantity-box"><%= key.flag %></td>
                                         <td class="add-pr">
-                                            <a class="btn hvr-hover" href="#">문의하기</a>
+                                            <% if( key.flag == '결제완료' || key.flag =='배송중'){ %>
+                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">문의하기</a>
+                                            <% } %>
+                                            <% if (key.flag =='배송완료') { %>
+                                                <form action="/order_list/<%= key._id %>/end" method="POST">
+                                                    <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">구매확정</a>
+                                                </form>
+                                            <% } %>
+                                            <% if(key.flag =='구매확정') { %> 
+                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</a>
+                                            <% } %>
                                         </td>
                                     </tr>
                                  <% }) %>

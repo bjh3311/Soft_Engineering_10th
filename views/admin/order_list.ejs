@@ -144,7 +144,7 @@
                                                                          </a>
                                                                      </td>
                                                                      <td class="name-pr">
-                                                                             <a href="#" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 200px;">
+                                                                             <a href="#" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">
                                                                                 
                                                                                      <% var itemName = Object.values(key.cart.items) %>
                                                                                      <% itemName.forEach(function(rekey){ %> 
@@ -162,7 +162,21 @@
                                                                      </td>
                                                                      <td class="quantity-box"><%= key.flag %></td>
                                                                      <td class="add-pr">
-                                                                         <a class="btn hvr-hover" href="#">문의하기</a>
+                                                                         <% if(key.flag === "결제완료") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/complete" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">배송하기</button>
+                                                                            </form>
+                                                                        <% } %>
+                                                                        <% if(key.flag === "배송중") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/ing" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover" style="color: aliceblue;">배송완료</button>
+                                                                            </form>
+                                                                        <% } %>
+                                                                        <% if(key.flag === "배송완료" || key.flag === "구매확정") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/end" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover" style="color: aliceblue;">상품평</button>
+                                                                            </form>
+                                                                        <% } %>
                                                                      </td>
                                                                  </tr>
                                                               <% }) %>
