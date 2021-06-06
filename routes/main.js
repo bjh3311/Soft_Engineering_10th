@@ -457,6 +457,7 @@ router.post('/down', function(req,res,next){
   cart.reduceByOne(req.body.down);
   req.session.cart = cart;
 
+
   res.redirect('/cart');
 });
 
