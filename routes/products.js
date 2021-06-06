@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/Product');
+var Review = require('../models/Review');
 var multer = require('multer');
 var util = require('../util');
-
+var moment = require('moment');
 var upload = multer({ dest: './public/upload' });
-
+const Mongoose = require('mongoose');
 
   //create
 router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3), function(req, res){
@@ -29,12 +30,36 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
   });
 
   // show
-  router.get('/:id', util.isLoggedin, checkPermission,  function(req, res){
-    Product.findOne({_id:req.params.id})
-      .exec(function(err, product){
-        if(err) return res.json(err);
-        res.render('admin/detail', {product:product});
-      });
+  router.get('/:id', util.isLoggedin, checkPermission,  async function(req, res){
+    var page = Math.max(1, parseInt(req.query.page));
+  var limit = Math.max(1, parseInt(req.query.limit));
+  page = !isNaN(page)?page:1;
+  limit = !isNaN(limit)?limit:1;
+
+  var skip = (page-1)*limit;
+  var count = await Review.countDocuments({product:req.params.id});
+  var sum = await Review.aggregate([
+    { $match : { product : new Mongoose.Types.ObjectId(req.params.id) }},
+    { $group : { _id: null, count : {$sum : "$star" }}}
+  ])
+  var maxPage = Math.ceil(count/limit);
+
+  var product = await Product.findOne({_id:req.params.id})
+    .exec();
+  var review = await Review.find({product:req.params.id})
+    .skip(skip)
+    .limit(limit)
+    .exec();
+    res.render('admin/detail',{
+      product:product,
+      review:review,
+      currentPage:page,
+      maxPage:maxPage,
+      limit:limit,
+      moment,
+      sum:sum[0].count/count,
+      count
+    })
   });
 
   // edit

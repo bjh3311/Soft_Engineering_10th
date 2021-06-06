@@ -78,7 +78,7 @@ app.use(function(req,res,next){
 
 // routes setting
 app.use('/', util.getProductQueryString, require('./routes/main'));
-app.use('/admin', require('./routes/admin'));
+app.use('/admin',util.getProductQueryString, require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
 app.use('/posts', require('./routes/posts'));

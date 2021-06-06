@@ -7,7 +7,7 @@ var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
 var Order = require('../models/Order');
-
+const Mongoose = require('mongoose');
 
 
 // Index
@@ -80,16 +80,33 @@ router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
 });
 
 // 주문 내역
-router.get('/order_list',util.isLoggedin, checkPermission, function(req,res){
+router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,res){
   var errors = req.flash('errors')[0] || {};
+
+
+  var page = Math.max(1, parseInt(req.query.page));   // 2
+  var limit = Math.max(1, parseInt(req.query.limit)); // 2
+
+  page = !isNaN(page)?page:1;                         // 3
+  limit = !isNaN(limit)?limit:8;                     // 3
+  var skip = (page-1)*limit; // 4
+  var count = await Order.countDocuments(); // 5
+  var maxPage = Math.ceil(count/limit); // 6
+  var order = await Order.find()
+            .skip(skip)   // 8
+            .limit(limit) // 8
+            .sort('-payDate')
+            .exec();
+
   
-  Order.find(function(err, order){
-    if (err) return res.json(err);
+
     res.render('admin/order_list',{
       errors:errors,
-      order : order
+      order : order,
+      currentPage : page,
+      maxPage : maxPage,
+      limit: limit
     });
-  });
 });
 
 // 주문 내역 결제완료 -> 배송중
@@ -111,7 +128,6 @@ router.post('/order_list/:id/ing', function(req, res){
     res.redirect('/admin/order_list');
   });
 });
-
 
 
 // 판매 정보 통계
