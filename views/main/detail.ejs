@@ -258,7 +258,7 @@
                     var result = ""; %>
                     <% var sLength =  data.user.length; %>
                     <% for(var i = 0; i < sLength; i++){ %>
-                        <% result += i < sLength - 4 ? "*" : data.user.charAt(i); %>
+                        <% result += i < sLength - 1 ? "*" : data.user.charAt(i); %>
                       <% } %>
                       <p><%= result %></p>
 
