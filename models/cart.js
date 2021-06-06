@@ -17,7 +17,7 @@ module.exports = function Cart(oldCart) {
   }
 
   this.reduceByOne = function (id) {
-    if (this.items[id].sales <= 0) return;
+    if (this.items[id].sales <= 1) return;
     this.items[id].sales--;
     this.items[id].price -= this.items[id].item.price;
     this.totalPrice -= this.items[id].item.price;

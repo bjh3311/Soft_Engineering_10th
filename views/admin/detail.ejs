@@ -123,7 +123,7 @@
                                 <%}else { %>
                                     "
                                  <% } %>> <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>"> </div>
-                                 
+
                             <% }) %>
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
@@ -153,7 +153,7 @@
                             <span>(삭제된 상품)</span>
                             <% } %></h2>
                             <h4><% if(product.origin==1){  %>
-                                일반 원두 
+                                일반 원두
                             <% } else if(product.origin==3){ %>
                                 고급 원두
                             <% } else {%>
@@ -184,20 +184,20 @@
             <div class="d-flex justify-content-center">
                 <div class="content text-center">
                     <div class="ratings"> <span class="product-rating"><%= sum %></span><span>/5</span>
-    
-                        <div class="stars">
-                          <% if(sum <=1){ %>
-                            <i class="fa fa-star"></i>
-                          <% } else if(sum<=2){ %>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                          <% } else if(sum<=3){ %>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                          <% } else if(sum<=4){ %>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                          <% } else if(sum<=5){ %>
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                          <% }%>
-                        </div>
+                      <div class="stars">
+                        <% if(sum ==0){ %>
+                        <% } else if(sum <=1){ %>
+                          <i class="fa fa-star"></i>
+                        <% } else if(sum<=2){ %>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <% } else if(sum<=3){ %>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <% } else if(sum<=4){ %>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <% } else if(sum<=5){ %>
+                          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <% }%>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
                       </div>
                       <div class="col-md-3">
                         작성자
-      
+
                           <%
                           var result = ""; %>
                           <% var sLength =  data.user.length; %>
@@ -230,16 +230,16 @@
                               <% result += i < sLength - 4 ? "*" : data.user.charAt(i); %>
                             <% } %>
                             <p><%= result %></p>
-      
+
                         등록 일자
-      
+
                         <p>  <%= moment(data.createdAt).format('YYYY-MM-DD') %></p>
                       </div>
                     </div>
                     <% }) %>
-      
+
                     <hr>
-      
+
                       <nav class="col-8">
                           <%
                           var offset = 2;
@@ -260,7 +260,7 @@
                           <a class="page-link" href="/<%= product._id %><%= getProductQueryString(false, {page:currentPage+1}) %>" <%= nextBtnEnabled?'':'tabindex=-1' %>>»</a>
                         </li>
                       </ul>
-      
+
                       </nav>
                   </div>
                   </div>

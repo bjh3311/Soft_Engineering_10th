@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const destinationSchema = new Schema({
   user: {type: String, required : true}, // 유저랑 엮어놓은것.
-  name : {type : String}, // 배송지 이름
+  name : {type : String, required : [true, "배송지 이름을 입력해주세요"]}, // 배송지 이름
   post : {
     type : Number, 
     required : [true, "우편번호를 입력해주세요"],
