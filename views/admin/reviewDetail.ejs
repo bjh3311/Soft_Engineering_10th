@@ -1,0 +1,59 @@
+<body>
+
+    <!-- Start Shop Detail  -->
+    <div class="shop-detail-box-main">
+
+        <div class="row my-5">
+          <div class="card card-outline-secondary my-4" style="margin:100px; width:100%;">
+            <div class="card-header">
+              <h2>Product Reviews</h2>
+            </div>
+            <div class="card-body">
+              <hr>
+              <% review.forEach(function(data){ %>
+              <div class="media mb-3">
+                <div class="col-md-9">
+                  <div class="media-body">
+                    <div class="row">
+                        <p>별점 : <%= data.star %> &nbsp; </p>
+                        <p>  추천 : <%= data.recommend %>  &nbsp;</p>
+                      <p>  배송 : <%= data.delivery %> &nbsp;</p>
+                    </div>
+                    <p><%= data.body %></p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  작성자
+
+                    <%
+                    var result = ""; %>
+                    <% var sLength =  data.user.length; %>
+                    <% for(var i = 0; i < sLength; i++){ %>
+                        <% result += i < sLength - 4 ? "*" : data.user.charAt(i); %>
+                      <% } %>
+                      <p><%= result %></p>
+
+                  등록 일자
+
+                  <p>  <%= moment(data.createdAt).format('YYYY-MM-DD') %></p>
+                </div>
+              </div>
+              <% }) %>
+
+              <hr>
+
+            </div>
+            </div>
+        </div>
+
+    <!-- End Cart -->
+</body>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script>
+
+
+
+
+
+</script>

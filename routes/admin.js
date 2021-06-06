@@ -41,6 +41,8 @@ router.get('/table_detail',util.isLoggedin, checkPermission, function(req,res){
   res.render('admin/table_detail')
 })
 
+
+
 router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
   var posts = req.flash('posts')[0] || {};
   var errors = req.flash('errors')[0] || {};
@@ -101,7 +103,7 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
   .sort('-payDate')
   .exec();
 
-  
+
 
     res.render('admin/order_list',{
       startSearch:startSearch,
@@ -131,6 +133,32 @@ router.post('/order_list/:id/ing', function(req, res){
   Order.findOneAndUpdate({_id : req.params.id}, update, function(err, order){
     if(err) return res.json(err);
     res.redirect('/admin/order_list');
+  });
+});
+
+// 상품평 보여주기
+router.post('/order_list/:id/end', function(req, res){
+
+  var order= await Order.findOne({_id:req.params.id}).exec();
+
+
+
+  var product = await Product.findOne({_id:req.params.id})
+    .exec();
+  var review = await Review.find({product:req.params.id})
+    .skip(skip)
+    .limit(limit)
+    .exec();
+
+
+
+
+
+  Order.findOne({_id : req.params.id}, function(err, order){
+    res.render('admin/reviewDetail',{
+      order : order,
+      product : Object.values(order.cart.items)
+    });
   });
 });
 

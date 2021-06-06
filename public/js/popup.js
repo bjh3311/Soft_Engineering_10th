@@ -29,3 +29,7 @@ function EditDestination(){
 function createReview(){
   window.open("/review","user_review","width=800,height=500,top=400");
 }
+
+function createInquire(){
+  window.open("/inquire","user_review","width=800,height=500,top=400");
+}
