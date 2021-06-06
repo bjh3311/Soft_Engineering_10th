@@ -274,7 +274,7 @@
                                     <input type="file" id="file-multiple-input" name="attachments" multiple="" class="form-control-file">
                                 </div>
                             </div> 
-                            <class class="row form-group">
+                            <div class="row form-group">
                                 <div class="col col-md-3">
                                     <label for="stock" class=" form-control-label">재고</label>
                                 </div>
@@ -282,7 +282,22 @@
                                     <input type="number" id="stock" name="stock" placeholder="0" class="form-control" value="<%= product.stock %>">
                                     <small class="help-block form-text">상품 재고 입력</small>
                                 </div>
-                            </class>
+                                <% if(errors.stock) { %>
+                                    <span><%= errors.stock.message %></span>
+                                <% } %>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="tax" class=" form-control-label">택배비</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="number" id="tax" name="tax" placeholder="1000" class="form-control" value="<%= product.tax %>">
+                                    <small class="help-block form-text">택배비 입력</small>
+                                </div>
+                                <% if(errors.tax) { %>
+                                    <span><%= errors.tax.message %></span>
+                                <% } %>
+                            </div>
                                 <input type="hidden" id="flag" name="flag" value="true">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> 상품 수정
