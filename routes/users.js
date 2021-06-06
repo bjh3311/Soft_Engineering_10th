@@ -102,6 +102,8 @@ router.put('/:username', util.isLoggedin, checkPermission, function(req, res, ne
 
 router.post('/login',
   function(req,res,next){
+
+
     var errors = {};
     var isValid = true;
 
@@ -129,7 +131,7 @@ router.post('/login',
 
 router.get('/check', function(req,res){
   if(typeof req.user == "undefined"){
-    res.redirect('/users/logout');
+    res.redirect('/users/login');
   }
 
   if(req.user.right == true){
@@ -142,7 +144,6 @@ router.get('/check', function(req,res){
 
 // Logout // 4
 router.get('/logout', function(req, res) {
-  console.log("logout")
   req.logout();
   delete req.session.cart;
   res.redirect('/');

@@ -1,0 +1,108 @@
+<body>
+
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+
+
+    <!-- Start All Title Box -->
+        <div class="row my-5">
+          <div class="card card-outline-secondary my-4" style="margin:100px; width:100%;">
+            <div class="card-header">
+              <h2>Product Reviews</h2>
+              <h3><%= product.name %></h3>
+            </div>
+            <div class="card-body">
+              <div class="media mb-3">
+                      <form action="/review/<%= product._id %>" method="post" id="form_review" class="media-body" onSubmit="return checkForm();">
+                        <div class="col-md-12">
+                          추천
+                          <select class="form-select" name="recommend" aria-label="Default select example">
+                            <option value="추천">추천</option>
+                            <option value="보통">보통</option>
+                            <option value="비추천">비추천</option>
+                          </select>
+                          <% if(errors.recommend) { %>
+
+                            <span><%= errors.recommend.message %></span>
+                        <% } %> 
+                          배송평가
+                          <select class="form-select" name="delivery" aria-label="Default select example">
+                            <option value="매우빠름">매우 빠름</option>
+                            <option value="빠름">빠름</option>
+                            <option value="보통">보통</option>
+                          </select>
+                          <% if(errors.delivery) { %>
+
+                            <span><%= errors.delivery.message %></span>
+                        <% } %> 
+                          별점
+                          <select class="form-select" name="star" aria-label="Default select example">
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="3">★★★☆☆</option>
+                            <option value="2">★★☆☆☆</option>
+                            <option value="1">★☆☆☆☆</option>
+                          </select>
+                          <% if(errors.star) { %>
+
+                            <span><%= errors.star.message %></span>
+                        <% } %> 
+                        </div>
+                        <div class="col-md-12">
+                          <div class="media-body">
+                            후기
+                            <label for="body" class="form-control-label"></label>
+                            <textarea name="body" id="body" rows="6" class="form-control" style="resize: none;"></textarea>
+
+                            <small class="text-muted" id="counter">(0 / 최대 200자)</small>
+                            <% if(errors.body) { %>
+
+                              <span><%= errors.body.message %></span>
+                          <% } %> 
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success btn-lg">리뷰 등록</button>
+                      </form>
+              </div>
+              <hr>
+            </div>
+            </div>
+        </div>
+
+    <!-- End Cart -->
+</body>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script>
+  $('#body').keyup(function (e){
+      var content = $(this).val();
+      $('#counter').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+
+      if (content.length > 200){
+          alert("최대 200자까지 입력 가능합니다.");
+          $(this).val(content.substring(0, 200));
+          $('#counter').html("(200 / 최대 200자)");
+      }
+  });
+
+  function checkForm(){
+    var content=$('#body').val();
+
+    if(content.length<10){
+      alert("10자 이상 입력해주세요.");
+      return false;
+    }
+  }
+
+</script>

@@ -1,6 +1,7 @@
 // routes/home.js
 var express = require('express');
 const Post = require('../models/Post');
+var Review = require('../models/Review');
 var router = express.Router();
 var passport = require('../config/passport');
 var Product = require('../models/Product');
@@ -13,6 +14,9 @@ const cart = require('../models/cart');
 const User = require('../models/User');
 var moment = require('moment');
 
+var moment = require('moment');
+const Mongoose = require('mongoose');
+
 
 
 // Main
@@ -20,6 +24,7 @@ router.get('/', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
   var limit = 4;
+  try{
   var products = await Product.find()
     .where('flag').equals(true)
     .where('price').gte(0)
@@ -34,13 +39,38 @@ router.get('/', async function(req, res){
     .where('flag').equals(true)
     .sort('start')
     .exec();
-      res.render('main/index', {
+
+  }catch(err){
+    res.json(err);
+  }
+  res.render('main/index', {
       username:username,
       errors:errors,
       products:products,
       posts:posts
     });
 });
+
+router.get('/direct_buy',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/orderform',{
+    username:username,
+    errors:errors,
+  });
+})
+
+//구매 페이지
+router.get('/review',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/review',{
+    username:username,
+    errors:errors,
+  });
+})
 
 
 //구매 페이지
@@ -49,6 +79,17 @@ router.get('/orderform',function(req,res){
   var errors = req.flash('errors')[0] || {};
 
   res.render('main/orderform',{
+    username:username,
+    errors:errors,
+  });
+})
+
+//구매 페이지
+router.get('/listDetail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/listDetail',{
     username:username,
     errors:errors,
   });
@@ -84,6 +125,39 @@ router.get('/policy', function(req, res){
   res.render('main/policy');
 });
 
+// 문의하기 화면
+router.get('/inquire', function(req, res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire',{
+    username:username,
+    errors:errors,
+  });
+});
+
+//문의내역 화면
+router.get('/inquire_list',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_list',{
+    username:username,
+    errors:errors,
+  });
+})
+//문의내역 상세화면
+router.get('/inquire_detail',function(req,res){
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+
+  res.render('main/inquire_detail',{
+    username:username,
+    errors:errors,
+  });
+})
+
+
 // 배송지 선택
 router.get('/destination_select', function (req, res) {
   var username = req.user.username;
@@ -115,16 +189,10 @@ res.render('main/destination_create',{
 });
 
 
-
 //about us --
 router.get('/about',function(req,res){
-
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-
-  console.log(username);
-  console.log(errors);
-
   res.render('main/about',{
     username:username,
     errors:errors,
@@ -157,6 +225,10 @@ router.get('/cart',function(req,res){
     });
   }
   var cart = new Cart(req.session.cart);
+  //console.log(cart);
+  /*cart.generateArray().forEach(function(element){
+    console.log(element);
+  })*/
   res.render('main/cart', {
     username:username,
     errors:errors,
@@ -296,18 +368,41 @@ router.get('/category', async function(req,res){
 
 
 
-router.get('/:id', function(req, res){
+router.get('/:id', async function(req, res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
-  Product.findOne({_id:req.params.id})
-    .exec(function(err, product){
-      if(err) return res.json(err);
-      res.render('main/detail', {
-        username:username,
-        errors:errors,
-        product:product
-      });
-    });
+
+  var page = Math.max(1, parseInt(req.query.page));
+  var limit = Math.max(1, parseInt(req.query.limit));
+  page = !isNaN(page)?page:1;
+  limit = !isNaN(limit)?limit:1;
+
+  var skip = (page-1)*limit;
+  var count = await Review.countDocuments({product:req.params.id});
+  var sum = await Review.aggregate([
+    { $match : { product : new Mongoose.Types.ObjectId(req.params.id) }},
+    { $group : { _id: null, count : {$sum : "$star" }}}
+  ])
+  var maxPage = Math.ceil(count/limit);
+
+  var product = await Product.findOne({_id:req.params.id})
+    .exec();
+  var review = await Review.find({product:req.params.id})
+    .skip(skip)
+    .limit(limit)
+    .exec();
+  res.render('main/detail',{
+    username:username,
+    product:product,
+    review:review,
+    errors: errors,
+    currentPage:page,
+    maxPage:maxPage,
+    limit:limit,
+    moment,
+    sum:sum[0].count/count,
+    count
+  })
 });
 
 
@@ -404,4 +499,3 @@ function createSearchQuery(queries){ // 4
   }
   return searchQuery;
 }
-
