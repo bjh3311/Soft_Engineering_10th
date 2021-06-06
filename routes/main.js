@@ -182,16 +182,29 @@ router.get('/gallery',function(req,res){
 
 
 // order_list
-router.get('/order_list',function(req,res){
+router.get('/order_list', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
+
+  var page = Math.max(1, parseInt(req.query.page));   // 2
+  var limit = Math.max(1, parseInt(req.query.limit)); // 2
+  
+  page = !isNaN(page)?page:1;                         // 3
+  limit = !isNaN(limit)?limit:10;                     // 3
+
+  var skip = (page-1)*limit; // 4
+  var count = await Order.countDocuments({}); // 5
+  var maxPage = Math.ceil(count/limit); // 6
 
   Order.find({user : req.user._id}, function(err, order){
     if (err) return res.json(err);
     res.render('main/order_list',{
       username:username,
       errors:errors,
-      order : order
+      order : order,
+      currentPage : page,
+      maxPage : maxPage,
+      limit: limit
     });
   });
 });
