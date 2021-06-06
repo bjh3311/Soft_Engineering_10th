@@ -225,10 +225,26 @@
                                     <h4>총 할인금액</h4>
                                     <div class="ml-auto font-weight-bold"> 쿠폰 없음 </div>
                                 </div>
+                                <hr> 
+                                <div class="d-flex">
+                                    <h4> 배송비 </h4>
+                                    <div class="ml-auto font-weight-bold">
+                                        <% deliverPay.forEach(function(key){ %> 
+                                            <% var arr = []; %>
+                                            <% arr.push(key.item.tax); %>
+                                            
+                                            <% maxValue = Math.max(arr); %>
+                                        <% }) %>
+                                        <%= maxValue %> 원
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>총 결제 금액</h5>
-                                    <div class="ml-auto h5"> <%= totalPrice %> 원 </div>
+                                    <div class="ml-auto h5"> 
+                                        <% var totalPrice = totalPrice - maxValue; %>
+                                        <%= totalPrice %>원 
+                                    </div>
                                 </div>
                                 <hr> </div>
                         </div>
