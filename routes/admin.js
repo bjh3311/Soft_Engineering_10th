@@ -6,6 +6,7 @@ var util = require('../util');
 var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
+var Order = require('../models/Order');
 
 
 
@@ -80,8 +81,38 @@ router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
 
 // 주문 내역
 router.get('/order_list',util.isLoggedin, checkPermission, function(req,res){
-  res.render('admin/order_list');
+  var errors = req.flash('errors')[0] || {};
+
+  Order.find(function(err, order){
+    if (err) return res.json(err);
+    res.render('admin/order_list',{
+      errors:errors,
+      order : order
+    });
+  });
 });
+
+// 주문 내역 결제완료 -> 배송중
+router.post('/order_list/:id/complete', function(req, res){
+  var update = { flag : '배송중'};
+
+  Order.findOneAndUpdate({_id : req.params.id}, update, function(err, order){
+    if(err) return res.json(err);
+    res.redirect('/admin/order_list');
+  });
+});
+
+// 주문 내역 배송중 -> 배송완료
+router.post('/order_list/:id/ing', function(req, res){
+  var update = { flag : '배송완료'};
+
+  Order.findOneAndUpdate({_id : req.params.id}, update, function(err, order){
+    if(err) return res.json(err);
+    res.redirect('/admin/order_list');
+  });
+});
+
+
 
 // 판매 정보 통계
 router.get('/sales_statistics',util.isLoggedin, checkPermission, function(req,res){

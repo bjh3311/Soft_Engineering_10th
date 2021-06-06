@@ -121,72 +121,72 @@
     	                               <input type="date">~<input type="date">&nbsp&nbsp<input type="submit" value="Submit"></form>
 
                                      <div class="wishlist-box-main">
-                                       <div class="container">
-                                         <div class="row">
-                                           <div class="col-lg-12">
-                                             <div class="table-main table-responsive">
-                                               <table class="table">
-                                                 <thead>
-                                                   <tr>
-                                                     <th>날짜</th>
-                                                     <th>상품명 </th>
-                                                     <th>가격 </th>
-                                                     <th>주문 상태</th>
-                                                     <th>비고</th>
-                                                   </tr>
-                                                 </thead>
-                                                 <tbody>
-                                                   <tr>
-                                                     <td class="thumbnail-img">
-                                                       <a href="#">2021-05-05</a>
-                                                      </td>
-                                                      <td class="name-pr">
-                                                        <a href="#">루왁커피원두</a>
-                                                      </td>
-                                                      <td class="price-pr">
-                                                        <p>100만원</p>
-                                                      </td>
-                                                      <td class="quantity-box">결제완료</td>
-                                                      <td class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">배송하기</a>
-                                                      </td>
-                                                    </tr>
-                                                    <tr>
-                                                      <td class="thumbnail-img">
-                                                        <a href="#">2021-05-04</a>
-                                                      </td>
-                                                      <td class="name-pr">
-                                                        <a href="#">르완다 버번</a>
-                                                      </td>
-                                                      <td class="price-pr">
-                                                        <p>1000원</p>
-                                                      </td>
-                                                      <td class="quantity-box">배송완료</td>
-                                                      <td class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">상품평가</a>
-                                                      </td>
-                                                    </tr>
-                                                    <tr>
-                                                      <td class="thumbnail-img">
-                                                        <a href="#">2021-05-03</a>
-                                                      </td>
-                                                      <td class="name-pr">
-                                                        <a href="#">예가체프</a>
-                                                      </td>
-                                                      <td class="price-pr">
-                                                        <p>3000원</p>
-                                                      </td>
-                                                      <td class="quantity-box">구매 확정</td>
-                                                      <td class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">상품평가</a>
-                                                      </tr>
-                                                    </tbody>
-                                                  </table>
-                                                </div>
+                                      <div class="container">
+                                          <div class="row">
+                                              <div class="col-lg-12">
+                                                  <div class="table-main table-responsive">
+                                                      <table class="table" style="text-align: center;">
+                                                          <thead>
+                                                              <tr>
+                                                                  <th>날짜</th>
+                                                                  <th>상품명 </th>
+                                                                  <th>가격 </th>
+                                                                  <th>주문 상태</th>
+                                                                  <th>비고</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                              <% order.forEach(function(key){ %> 
+                                                                 <tr>
+                                                                     <td class="thumbnail-img">
+                                                                         <a href="#">
+                                                                             <%= key.payDate %>
+                                                                         </a>
+                                                                     </td>
+                                                                     <td class="name-pr">
+                                                                             <a href="#" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">
+                                                                                
+                                                                                     <% var itemName = Object.values(key.cart.items) %>
+                                                                                     <% itemName.forEach(function(rekey){ %> 
+                                                                                         <%= rekey.item.name %>
+                                                                                     <% }) %> 
+                                                                            
+                                                                             </a>
+                                                                          외 &nbsp;
+                                                                         <span style="text-align: right;">
+                                                                             <%= (key.cart.totalQty) -1 %> 개
+                                                                         </span>
+                                                                     </td>
+                                                                     <td class="price-pr">
+                                                                         <p><%= key.cart.totalPrice %></p>
+                                                                     </td>
+                                                                     <td class="quantity-box"><%= key.flag %></td>
+                                                                     <td class="add-pr">
+                                                                         <% if(key.flag === "결제완료") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/complete" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">배송하기</button>
+                                                                            </form>
+                                                                        <% } %>
+                                                                        <% if(key.flag === "배송중") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/ing" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover" style="color: aliceblue;">배송완료</button>
+                                                                            </form>
+                                                                        <% } %>
+                                                                        <% if(key.flag === "배송완료" || key.flag === "구매확정") { %>
+                                                                            <form action="/admin/order_list/<%= key._id %>/end" method="POST">
+                                                                                <button type="submit" class="btn hvr-hover" style="color: aliceblue;">상품평</button>
+                                                                            </form>
+                                                                        <% } %>
+                                                                     </td>
+                                                                 </tr>
+                                                              <% }) %>
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
                                               </div>
-                                            </div>
                                           </div>
-                                        </div>
+                                      </div>
+                                  </div>
     <!-- End Wishlist -->
                                 </h3>
                                 <div class="table-data__tool">
