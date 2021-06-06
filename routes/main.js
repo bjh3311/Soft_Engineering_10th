@@ -16,7 +16,21 @@ var moment = require('moment');
 
 const Mongoose = require('mongoose');
 
+//구매 페이지
+router.get('/review_list/:id',function(req,res){
 
+  var username = req.flash('username')[0];
+  var errors = req.flash('errors')[0] || {};
+  
+  Order.findOne({_id : req.params.id}, function(err, order){
+    res.render('main/review_list',{
+      order : order,
+      product : Object.values(order.cart.items),
+      username:username,
+      errors:errors,
+    });
+  });
+})
 
 // Main
 router.get('/', async function(req, res){
@@ -38,13 +52,13 @@ router.get('/', async function(req, res){
     .where('flag').equals(true)
     .sort('start')
     .exec();
-  
+
   var best = await Product.find()
   .where('flag').equals(true)
     .where('price').gte(0)
     .where('price').lte(60000)
     .sort('-sales')
-    .limit(limit) // 
+    .limit(limit) //
   .exec();
   }catch(err){
     res.json(err);
@@ -278,7 +292,7 @@ router.get('/order_list', async function(req,res){
             .limit(limit) // 8
             .exec();
 
-  
+
     res.render('main/order_list',{
       username:username,
       errors:errors,
@@ -494,7 +508,7 @@ router.post('/orderform/:id', function(req, res){
 // 구매하기위한 마지막 단계
 router.get('/orderform/:id', function(req, res){
   var cart = new Cart(req.session.cart);
-  
+
   Destination.findOne({_id : req.user.address})
     .exec(function(err, destination){
       if(err) return res.json(err);

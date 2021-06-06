@@ -13,7 +13,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
     var query =req.body;
     if(!isEmptyArr(req.files)){
       query['files'] = req.files;
-      query['img'] = req.files[0].filename; 
+      query['img'] = req.files[0].filename;
     }else{
       req.flash('producuts', req.query);
       req.flash('files', {error: "files are required!"})
@@ -50,6 +50,13 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
     .skip(skip)
     .limit(limit)
     .exec();
+
+    if(sum[0]===undefined){
+      var rating=0;
+    }else{
+      var rating=sum[0].count/count;
+    }
+
     res.render('admin/detail',{
       product:product,
       review:review,
@@ -57,7 +64,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
       maxPage:maxPage,
       limit:limit,
       moment,
-      sum:sum[0].count/count,
+      sum:rating,
       count
     })
   });
@@ -83,7 +90,7 @@ router.post('/', util.isLoggedin, checkPermission ,upload.array('attachments',3)
     var query =req.body;
     if(!isEmptyArr(req.files)){
           query['files'] = req.files;
-          query['img'] = req.files[0].filename; 
+          query['img'] = req.files[0].filename;
     }
     Product.findOneAndUpdate({_id:req.params.id}, query,{runValidators: true }, function(err, product){
       if(err){
@@ -123,6 +130,6 @@ function isEmptyArr(arr)  {
   if(Array.isArray(arr) && arr.length === 0)  {
     return true;
   }
-  
+
   return false;
 }

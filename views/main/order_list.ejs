@@ -143,7 +143,7 @@
                                  </tr>
                              </thead>
                              <tbody>
-                                 <% order.forEach(function(key){ %> 
+                                 <% order.forEach(function(key){ %>
                                     <tr>
                                         <td class="thumbnail-img">
                                             <a href="#">
@@ -153,9 +153,9 @@
                                         <td class="name-pr">
                                                 <a href="/listDetail/<%= key._id %>" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">
                                                         <% var itemName = Object.values(key.cart.items) %>
-                                                        <% itemName.forEach(function(rekey){ %> 
+                                                        <% itemName.forEach(function(rekey){ %>
                                                             <%= rekey.item.name %>
-                                                        <% }) %> 
+                                                        <% }) %>
                                                 </a>
                                              외 &nbsp;
                                             <span style="text-align: right;">
@@ -175,29 +175,29 @@
                                                     <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">구매확정</a>
                                                 </form>
                                             <% } %>
-                                            <% if(key.flag =='구매확정') { %> 
-                                                <form action="/review/<%= key._id %>" method="POST">
+                                            <% if(key.flag =='구매확정') { %>
+                                                <form action="/review_list/<%= key._id %>" method="GET">
                                                     <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</button></a>
                                                 </form>
                                             <% } %>
                                         </td>
                                     </tr>
                                  <% }) %>
-                                
+
                              </tbody>
                          </table>
                      </div>
                  </div>
              </div>
          </div>
-     </div> 
+     </div>
      <!-- End Wishlist -->
      <nav class="col-8">
         <!-- 2 -->
         <%   var offset = 2; %>
         <%   var previousBtnEnabled = currentPage > 1; %>
         <%  var nextBtnEnabled = currentPage < maxPage; %>
-         
+
 <!-- 3 --><ul class="pagination pagination-sm justify-content-center align-items-center h-100 mb-0">            <li class="page-item <%= previousBtnEnabled?'':'disabled' %>">
             <a class="page-link" href="/order_list?page=<%= currentPage-1 %>&limit=<%= limit %>" <%= previousBtnEnabled?'':'tabindex=-1' %>>«</a>
           </li>

@@ -132,29 +132,34 @@
                          <table class="table" style="text-align: center;">
                              <thead>
                                  <tr>
-                                     <th>날짜</th>
                                      <th>상품명 </th>
                                      <th>가격 </th>
-                                     <th>주문 상태</th>
+                                     <th>구매개수</th>
+                                     <th>총 가격</th>
                                      <th>비고</th>
                                  </tr>
                              </thead>
                              <tbody>
-                                <tr>
-                                <td> 20201</td>
-                                <td> 먊ㅇㄹ </td>
-                                <td> 2천원</td>
-                                <td> 구매확정</td>
-                                <td><a href="/review"><button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</a>
-                                </tr>
+                               <% product.forEach(function(key){ %>
+                                 <tr>
+                                   <form action="/review/<%= key.item._id %>" method="GET">
+                                     <td> <a href="/<%= key.item._id %>"> <%= key.item.name %></td>
+                                         <td><%= key.item.price %></td>
+                                           <td><%= key.sales %></td>
+                                           <td><%= key.price %>원</td>
+                                             <td><button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</a>
+                                     </form>
+
+                                    </tr>
+                               <% }) %>
                              </tbody>
                          </table>
                      </div>
                  </div>
              </div>
          </div>
-     </div> 
-    </div>
+     </div>
+
 </body>
 <script>
 
