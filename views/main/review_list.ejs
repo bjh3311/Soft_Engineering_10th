@@ -112,10 +112,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>주문 내역 확인</h2>
+                    <h2>상품평 각각 넣기</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">주문</a></li>
-                        <li class="breadcrumb-item active" style="color: white">주문 내역 확인</li>
+                        <li class="breadcrumb-item"><a href="#">상품평</a></li>
+                        <li class="breadcrumb-item active" style="color: white"> 상품평 각각 넣기</li>
                     </ul>
                 </div>
             </div>
@@ -124,9 +124,6 @@
     <!-- End All Title Box -->
 
     <!-- Start Wishlist  -->
-     기간:
-     <form method="post">
-         <input type="date">~<input type="date">&nbsp&nbsp<input type="submit" value="Submit"></form>
      <div class="wishlist-box-main">
          <div class="container">
              <div class="row">
@@ -143,47 +140,13 @@
                                  </tr>
                              </thead>
                              <tbody>
-                                 <% order.forEach(function(key){ %> 
-                                    <tr>
-                                        <td class="thumbnail-img">
-                                            <a href="#">
-                                                <%= key.payDate %>
-                                            </a>
-                                        </td>
-                                        <td class="name-pr">
-                                                <a href="/listDetail/<%= key._id %>" style="display:block;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; width: 100px;">
-                                                        <% var itemName = Object.values(key.cart.items) %>
-                                                        <% itemName.forEach(function(rekey){ %> 
-                                                            <%= rekey.item.name %>
-                                                        <% }) %> 
-                                                </a>
-                                             외 &nbsp;
-                                            <span style="text-align: right;">
-                                                <%= (key.cart.totalQty) -1 %> 개
-                                            </span>
-                                        </td>
-                                        <td class="price-pr">
-                                            <p><%= key.cart.totalPrice %></p>
-                                        </td>
-                                        <td class="quantity-box"><%= key.flag %></td>
-                                        <td class="add-pr">
-                                            <% if( key.flag == '결제완료' || key.flag =='배송중'){ %>
-                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">문의하기</a>
-                                            <% } %>
-                                            <% if (key.flag =='배송완료') { %>
-                                                <form action="/order_list/<%= key._id %>/end" method="POST">
-                                                    <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">구매확정</a>
-                                                </form>
-                                            <% } %>
-                                            <% if(key.flag =='구매확정') { %> 
-                                                <form action="/review/<%= key._id %>" method="POST">
-                                                    <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</button></a>
-                                                </form>
-                                            <% } %>
-                                        </td>
-                                    </tr>
-                                 <% }) %>
-                                
+                                <tr>
+                                <td> 20201</td>
+                                <td> 먊ㅇㄹ </td>
+                                <td> 2천원</td>
+                                <td> 구매확정</td>
+                                <td><a href="/review"><button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</a>
+                                </tr>
                              </tbody>
                          </table>
                      </div>
@@ -191,29 +154,6 @@
              </div>
          </div>
      </div> 
-     <!-- End Wishlist -->
-     <nav class="col-8">
-        <!-- 2 -->
-        <%   var offset = 2; %>
-        <%   var previousBtnEnabled = currentPage > 1; %>
-        <%  var nextBtnEnabled = currentPage < maxPage; %>
-         
-<!-- 3 --><ul class="pagination pagination-sm justify-content-center align-items-center h-100 mb-0">            <li class="page-item <%= previousBtnEnabled?'':'disabled' %>">
-            <a class="page-link" href="/order_list?page=<%= currentPage-1 %>&limit=<%= limit %>" <%= previousBtnEnabled?'':'tabindex=-1' %>>«</a>
-          </li>
-          <% for(i=1;i<=maxPage;i++){ %>
-            <% if(i==1 || i==maxPage || (i>=currentPage-offset && i<=currentPage+offset)){ %>
-              <li class="page-item <%= currentPage==i?'active':'' %>"><a class="page-link" href="/order_list?page=<%= i %>&limit=<%= limit %>"> <%= i %> </a></li>
-            <% } else if(i==2 || i==maxPage-1){ %>
-              <li><a class="page-link">...</a></li>
-            <% } %>
-          <% } %>
-          <li class="page-item <%= nextBtnEnabled?'':'disabled' %>">
-            <a class="page-link" href="/order_list?page=<%= currentPage+1 %>&limit=<%= limit %>" <%= nextBtnEnabled?'':'tabindex=-1' %>>»</a>
-          </li>
-        </ul>
-      </nav>
-
     </div>
 </body>
 <script>
