@@ -188,7 +188,7 @@
                             <div class="cart-and-bay-btn">
                                     <% if(isAuthenticated){ %>
                                     <a href="/pay/<%= product.id %>/direct_buy" class="btn hvr-hover" data-fancybox-close="" >바로 구매 </a>
-                                        <% } else{ %> 
+                                        <% } else{ %>
                                             <a href="#" onclick="alert('로그인을 하고 구매해주세요')" class="btn hvr-hover" data-fancybox-close="" >바로 구매 </a>
                                             <% } %>
                                     <input type="submit" class="btn hvr-hover" style="float:right" data-fancybox-close="" value="장바구니 담기">
@@ -217,7 +217,8 @@
                 <div class="ratings"> <span class="product-rating"><%= sum %></span><span>/5</span>
 
                     <div class="stars">
-                      <% if(sum <=1){ %>
+                      <% if(sum ==0){ %>
+                      <% } else if(sum <=1){ %>
                         <i class="fa fa-star"></i>
                       <% } else if(sum<=2){ %>
                         <i class="fa fa-star"></i><i class="fa fa-star"></i>
