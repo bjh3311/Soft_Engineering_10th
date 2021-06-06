@@ -235,7 +235,8 @@ router.get('/cart',function(req,res){
     productArray : cart.generateArray(),
     totalPrice : cart.totalPrice,
     userid : req.user._id,
-    address : req.user.address
+    address : req.user.address,
+    deliverPay : Object.values(cart.items)
   });
 })
 
