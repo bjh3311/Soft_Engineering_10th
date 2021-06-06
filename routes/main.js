@@ -7,9 +7,12 @@ var passport = require('../config/passport');
 var Product = require('../models/Product');
 var Cart = require('../models/cart');
 var Destination = require('../models/Destination');
+var Order = require('../models/Order');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const cart = require('../models/cart');
+const User = require('../models/User');
+var moment = require('moment');
 
 var moment = require('moment');
 const Mongoose = require('mongoose');
@@ -159,13 +162,17 @@ router.get('/inquire_detail',function(req,res){
 router.get('/destination_select', function (req, res) {
   var username = req.user.username;
   var errors = req.flash('errors')[0] || {};
+
   Destination.find({user: req.user.username })
     .exec(function (err, destination) {
       if (err) return res.json(err);
+      var addressDefault = req.user.address;
+
       res.render('main/destination_select', {
         destination: destination,
         username: username,
-        errors: errors
+        errors: errors,
+        addressDefault : addressDefault
       });
     });
 });
@@ -180,16 +187,6 @@ res.render('main/destination_create',{
   errors:errors
 });
 });
-
-
-// 배송지 수정
-router.get('/destination_edit', function(req, res){
-
-});
-
-router.post('/destination_edit', function(req, res){
-  var destinationID = req.body.destinationId;
-})
 
 
 //about us --
@@ -236,7 +233,9 @@ router.get('/cart',function(req,res){
     username:username,
     errors:errors,
     productArray : cart.generateArray(),
-    totalPrice : cart.totalPrice
+    totalPrice : cart.totalPrice,
+    userid : req.user._id,
+    address : req.user.address
   });
 })
 
@@ -253,17 +252,57 @@ router.get('/gallery',function(req,res){
   });
 })
 
-// order_list
-router.get('/order_list',function(req,res){
 
+// order_list
+router.get('/order_list', async function(req,res){
   var username = req.flash('username')[0];
   var errors = req.flash('errors')[0] || {};
 
-  res.render('main/order_list',{
-    username:username,
-    errors:errors,
+  var page = Math.max(1, parseInt(req.query.page));   // 2
+  var limit = Math.max(1, parseInt(req.query.limit)); // 2
+  
+  page = !isNaN(page)?page:1;                         // 3
+  limit = !isNaN(limit)?limit:10;                     // 3
+
+  var skip = (page-1)*limit; // 4
+  var count = await Order.countDocuments({}); // 5
+  var maxPage = Math.ceil(count/limit); // 6
+
+  Order.find({user : req.user._id}, function(err, order){
+    if (err) return res.json(err);
+    res.render('main/order_list',{
+      username:username,
+      errors:errors,
+      order : order,
+      currentPage : page,
+      maxPage : maxPage,
+      limit: limit
+    });
   });
-})
+});
+
+// 사용자가 구매 확정
+router.post('/order_list/:id/end', function(req, res){
+  var update = { flag : '구매확정'};
+
+  Order.findOneAndUpdate({_id : req.params.id}, update, function(err, order){
+    if(err) return res.json(err);
+    res.redirect('/order_list');
+  });
+});
+
+
+
+// 주문 내역 상세 보기
+router.get('/listDetail/:id', function(req, res){
+  Order.findOne({_id : req.params.id}, function(err, order){
+    res.render('main/listDetail',{
+      order : order,
+      product : Object.values(order.cart.items)
+    });
+  });
+});
+
 
 router.get('/category', async function(req,res){
   var username = req.flash('username')[0];
@@ -366,16 +405,6 @@ router.get('/:id', async function(req, res){
   })
 });
 
-// Post Login
-// 주문 내역
-router.get('/order_list',function(req,res){
-  var username = req.flash('username')[0];
-  var errors = req.flash('errors')[0] || {};
-  res.render('main/order_list',{
-    username:username,
-    errors:errors
-  });
-});
 
 // cart
 router.post('/Addcart/:id', function(req,res,next){
@@ -413,7 +442,7 @@ router.post('/down', function(req,res,next){
   req.session.cart = cart;
 
   res.redirect('/cart');
-});
+});                              
 
 // cart item remove
 router.post('/remove', function(req, res, next){
@@ -423,6 +452,34 @@ router.post('/remove', function(req, res, next){
   req.session.cart = cart;
 
   res.redirect('/cart');
+});
+
+
+// 결제하기
+router.post('/orderform/:id', function(req, res){
+  if(!req.user.address){
+    return res.redirect('/cart');
+  }
+  else{
+  Destination.findOne({_id : req.user.address}, function(err, destination){
+      if(err) return res.redirect('main/cart');
+      res.redirect('/orderform/' + req.params.id); 
+  });
+}
+});
+
+// 구매하기위한 마지막 단계
+router.get('/orderform/:id', function(req, res){
+  var cart = new Cart(req.session.cart);
+  Destination.findOne({_id : req.user.address})
+    .exec(function(err, destination){
+      if(err) return res.json(err);
+      res.render('main/orderform', {
+        destination : [destination],
+        productArray  :cart.generateArray(),
+        totalPrice : cart.totalPrice
+    });
+  });
 });
 
 module.exports = router;

@@ -133,7 +133,8 @@ router.get('/check', function(req,res){
   if(typeof req.user == "undefined"){
     res.redirect('/users/login');
   }
-  if(req.user.right==true){
+
+  if(req.user.right == true){
     res.redirect('/admin/index');
   }
   else{
@@ -144,6 +145,7 @@ router.get('/check', function(req,res){
 // Logout // 4
 router.get('/logout', function(req, res) {
   req.logout();
+  delete req.session.cart;
   res.redirect('/');
 });
 

@@ -57,19 +57,34 @@
               <!-- /.navbar-collapse -->
               <!-- Start Atribute Navigation -->
               <div class="attr-nav" style="padding-right: 10px;">
-                  <ul>
-                      <a href="/cart">
-                          <i class="fa fa-shopping-bag">
-                              <% if(session.cart){ %>
-                                  <span class="badge">
-                                      <%= session.cart.totalQty %>
-                                  </span>
-                                  <% } else { %>
-                                      <span class="badge">0</span>
-                                      <% } %>
-                          </i>
+                <ul>
+                    <% if(isAuthenticated){ %>
+                    <a href="/cart">
+                        <i class="fa fa-shopping-bag">
+                            <% if(session.cart){ %>
+                                <span class="badge">
+                                    <%= session.cart.totalQty %>
+                                </span>
+                                <% } else { %>
+                                    <span class="badge">0</span>
+                                    <% } %>
+                        </i>
                         My Cart
                     </a>
+                    <% } else { %>
+                        <a href="#" onclick="alert('로그인을 진행해주세요')">
+                            <i class="fa fa-shopping-bag">
+                                <% if(session.cart){ %>
+                                    <span class="badge">
+                                        <%= session.cart.totalQty %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge">0</span>
+                                        <% } %>
+                            </i>
+                            My Cart
+                        </a>
+                    <% } %>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
@@ -221,7 +236,14 @@
                         <hr>
                     </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="/checkout" class="ml-auto btn hvr-hover">결제하기</a>
+                <div class="col-12 d-flex shopping-box"  style="margin-left: 88%;">
+                    <form action="/orderform/<%= userid %>" method="POST">
+                        <% if(address == undefined || address == null) { %>
+                            <button onclick="alert('기본 배송지를 먼저 지정하고 결제를 진행해주세요')" class="ml-auto btn hvr-hover" style="color: aliceblue;">결제하기</button>
+                        <% } else { %>
+                            <button type="submit" class="ml-auto btn hvr-hover" style="color: aliceblue;">결제하기</button>
+                        <% } %>
+                    </form>
                 </div>
             </div>
         </div>
