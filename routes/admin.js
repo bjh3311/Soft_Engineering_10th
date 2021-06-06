@@ -41,8 +41,6 @@ router.get('/table_detail',util.isLoggedin, checkPermission, function(req,res){
   res.render('admin/table_detail')
 })
 
-
-
 router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
   var posts = req.flash('posts')[0] || {};
   var errors = req.flash('errors')[0] || {};
@@ -85,7 +83,6 @@ router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
 router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,res){
   var errors = req.flash('errors')[0] || {};
 
-
   var page = Math.max(1, parseInt(req.query.page));   // 2
   var limit = Math.max(1, parseInt(req.query.limit)); // 2
   var startSearch = req.query.startSearch?req.query.startSearch:"2021-01-01";
@@ -93,6 +90,7 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
   page = !isNaN(page)?page:1;                         // 3
   limit = !isNaN(limit)?limit:8;                     // 3
   var skip = (page-1)*limit; // 4
+  
   var count = await Order.countDocuments(); // 5
   var maxPage = Math.ceil(count/limit); // 6
   var order = await Order.find()
@@ -102,8 +100,6 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
   .limit(limit) // 8
   .sort('-payDate')
   .exec();
-
-
 
     res.render('admin/order_list',{
       startSearch:startSearch,
@@ -134,11 +130,6 @@ router.post('/order_list/:id/ing', function(req, res){
     if(err) return res.json(err);
     res.redirect('/admin/order_list');
   });
-});
-
-// 상품평 보여주기
-router.post('/order_list/:id/end', function(req, res){
-
 });
 
 
