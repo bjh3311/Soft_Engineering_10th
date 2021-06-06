@@ -83,6 +83,7 @@ router.get('/modify',util.isLoggedin, checkPermission,  function(req, res){
 router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,res){
   var errors = req.flash('errors')[0] || {};
 
+
   var page = Math.max(1, parseInt(req.query.page));   // 2
   var limit = Math.max(1, parseInt(req.query.limit)); // 2
 
@@ -98,6 +99,7 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
             .exec();
 
   
+
     res.render('admin/order_list',{
       errors:errors,
       order : order,

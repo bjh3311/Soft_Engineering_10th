@@ -224,13 +224,21 @@
                         </div>
                         <div class="d-flex">
                             <h4>배송비</h4>
-                            <div class="ml-auto font-weight-bold"> Free </div>
+                            <div class="ml-auto font-weight-bold"> 
+                                <% var arr = []; %>
+                                <% deliverPay.forEach(function(key){ %> 
+                                    <% arr.push(key.item.tax); %>
+                                    <% maxValue = Math.max.apply(null, arr);; %>
+                                <% }) %>
+                                <%= maxValue %> 원
+                            </div>
                         </div>
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>총 합계</h5>
                             <div class="ml-auto h5">
-                                <%= totalPrice %> 원
+                                <% var totalPrice = totalPrice - maxValue; %>
+                                <%= totalPrice %>원 
                             </div>
                         </div>
                         <hr>

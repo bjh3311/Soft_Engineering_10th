@@ -241,7 +241,8 @@ router.get('/cart',function(req,res){
     productArray : cart.generateArray(),
     totalPrice : cart.totalPrice,
     userid : req.user._id,
-    address : req.user.address
+    address : req.user.address,
+    deliverPay : Object.values(cart.items)
   });
 })
 
@@ -493,13 +494,15 @@ router.post('/orderform/:id', function(req, res){
 // 구매하기위한 마지막 단계
 router.get('/orderform/:id', function(req, res){
   var cart = new Cart(req.session.cart);
+  
   Destination.findOne({_id : req.user.address})
     .exec(function(err, destination){
       if(err) return res.json(err);
       res.render('main/orderform', {
         destination : [destination],
         productArray  :cart.generateArray(),
-        totalPrice : cart.totalPrice
+        totalPrice : cart.totalPrice,
+        deliverPay : Object.values(cart.items)
     });
   });
 });
