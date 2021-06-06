@@ -7,7 +7,7 @@ var Product = require('../models/Product');
 var Post = require('../models/Post');
 var moment = require('moment');
 var Order = require('../models/Order');
-
+const Mongoose = require('mongoose');
 
 
 // Index
@@ -111,7 +111,6 @@ router.post('/order_list/:id/ing', function(req, res){
     res.redirect('/admin/order_list');
   });
 });
-
 
 
 // 판매 정보 통계

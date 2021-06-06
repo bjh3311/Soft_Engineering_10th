@@ -176,7 +176,9 @@
                                                 </form>
                                             <% } %>
                                             <% if(key.flag =='구매확정') { %> 
-                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</a>
+                                                <form action="/review/<%= key._id %>" method="POST">
+                                                    <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">상품평</button></a>
+                                                </form>
                                             <% } %>
                                         </td>
                                     </tr>

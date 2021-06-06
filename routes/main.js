@@ -14,7 +14,6 @@ const cart = require('../models/cart');
 const User = require('../models/User');
 var moment = require('moment');
 
-var moment = require('moment');
 const Mongoose = require('mongoose');
 
 
@@ -263,9 +262,8 @@ router.get('/order_list', async function(req,res){
   
   page = !isNaN(page)?page:1;                         // 3
   limit = !isNaN(limit)?limit:10;                     // 3
-
   var skip = (page-1)*limit; // 4
-  var count = await Order.countDocuments({}); // 5
+  var count = await Order.countDocuments({{user : req.user._id}}); // 5
   var maxPage = Math.ceil(count/limit); // 6
 
   Order.find({user : req.user._id}, function(err, order){
