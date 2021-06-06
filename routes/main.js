@@ -67,7 +67,8 @@ router.get('/', async function(req, res){
       username:username,
       errors:errors,
       products:products,
-      posts:posts
+      posts:posts,
+      best:best
     });
 });
 
@@ -285,15 +286,24 @@ router.get('/order_list', async function(req,res){
   page = !isNaN(page)?page:1;                         // 3
   limit = !isNaN(limit)?limit:5;                     // 3
   var skip = (page-1)*limit; // 4
+
+  var startSearch = req.query.startSearch?req.query.startSearch:"2021-01-01";
+  var endSearch = req.query.endSearch?req.query.endSearch:"2099-12-31";
   var count = await Order.countDocuments({user : req.user._id}); // 5
   var maxPage = Math.ceil(count/limit); // 6
+  
   var order = await Order.find({user : req.user._id})
+            .where('payDate').gte(startSearch)
+            .where('payDate').lte(endSearch)
             .skip(skip)   // 8
             .limit(limit) // 8
+            .sort('-payDate')
             .exec();
 
 
     res.render('main/order_list',{
+      startSearch:startSearch,
+      endSearch:endSearch,
       username:username,
       errors:errors,
       order : order,
