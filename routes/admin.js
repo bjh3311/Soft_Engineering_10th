@@ -139,27 +139,6 @@ router.post('/order_list/:id/ing', function(req, res){
 // 상품평 보여주기
 router.post('/order_list/:id/end', function(req, res){
 
-  var order= await Order.findOne({_id:req.params.id}).exec();
-
-
-
-  var product = await Product.findOne({_id:req.params.id})
-    .exec();
-  var review = await Review.find({product:req.params.id})
-    .skip(skip)
-    .limit(limit)
-    .exec();
-
-
-
-
-
-  Order.findOne({_id : req.params.id}, function(err, order){
-    res.render('admin/reviewDetail',{
-      order : order,
-      product : Object.values(order.cart.items)
-    });
-  });
 });
 
 
