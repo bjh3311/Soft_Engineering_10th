@@ -86,21 +86,26 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
 
   var page = Math.max(1, parseInt(req.query.page));   // 2
   var limit = Math.max(1, parseInt(req.query.limit)); // 2
-
+  var startSearch = req.query.startSearch?req.query.startSearch:"2021-01-01";
+  var endSearch = req.query.endSearch?req.query.endSearch:"2099-12-31";
   page = !isNaN(page)?page:1;                         // 3
   limit = !isNaN(limit)?limit:8;                     // 3
   var skip = (page-1)*limit; // 4
   var count = await Order.countDocuments(); // 5
   var maxPage = Math.ceil(count/limit); // 6
   var order = await Order.find()
-            .skip(skip)   // 8
-            .limit(limit) // 8
-            .sort('-payDate')
-            .exec();
+  .where('payDate').gte(startSearch)
+  .where('payDate').lte(endSearch)
+  .skip(skip)   // 8
+  .limit(limit) // 8
+  .sort('-payDate')
+  .exec();
 
   
 
     res.render('admin/order_list',{
+      startSearch:startSearch,
+      endSearch:endSearch,
       errors:errors,
       order : order,
       currentPage : page,
