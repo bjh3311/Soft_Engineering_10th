@@ -8,6 +8,7 @@ var Post = require('../models/Post');
 var moment = require('moment');
 var Order = require('../models/Order');
 const Mongoose = require('mongoose');
+var Review = require('../models/Review');
 
 
 // Index
@@ -130,6 +131,27 @@ router.post('/order_list/:id/ing', function(req, res){
     if(err) return res.json(err);
     res.redirect('/admin/order_list');
   });
+});
+
+
+// 상품평 보여주기
+router.get('/order_list/:id/end', async function(req, res){
+
+    var order = await Order.find({_id : req.params.id});
+
+    console.log(order);
+
+    console.log(order[0].orderNum);
+
+    var review = await Review.find({ orderNum : order[0].orderNum });
+
+    console.log(review);
+
+    res.render('admin/reviewDetail', {
+      review : review,
+      moment
+    });
+
 });
 
 
