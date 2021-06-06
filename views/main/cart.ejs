@@ -225,11 +225,10 @@
                         <div class="d-flex">
                             <h4>배송비</h4>
                             <div class="ml-auto font-weight-bold"> 
+                                <% var arr = []; %>
                                 <% deliverPay.forEach(function(key){ %> 
-                                    <% var arr = []; %>
                                     <% arr.push(key.item.tax); %>
-                                    
-                                    <% maxValue = Math.max(arr); %>
+                                    <% maxValue = Math.max.apply(null, arr);; %>
                                 <% }) %>
                                 <%= maxValue %> 원
                             </div>
