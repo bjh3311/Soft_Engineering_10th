@@ -10,15 +10,16 @@ const { checkout } = require('./products');
 router.get('/:id', util.isLoggedin, async function(req,res){
     console.log("Get Review");
 
-    var review = req.flash('review')[0];
+    var review = req.flash('review')[0]; 
     var errors = req.flash('errors')[0] || {};
-
+    var orderNum=req.query.orderNum;
     var product = await Product.findById({_id:req.params.id});
     res.render('main/review',{
         user:req.user,
         product:product,
         review:review,
         errors:errors,
+        orderNum:orderNum
     });
 })          
 
@@ -31,7 +32,7 @@ router.post('/:product_id',util.isLoggedin, function(req, res){
         if(err){
           req.flash('review', query);
           req.flash('errors', util.parseError_(err));
-          return res.redirect('/review/'+req.params.product_id);
+          return res.redirect('/review/'+req.params.product_id+'?'+req.body.orderNum);
         }
         res.redirect('/'+req.params.product_id);
       });
