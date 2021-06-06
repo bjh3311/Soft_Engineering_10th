@@ -129,36 +129,35 @@
                 <div class="col-xl-5 col-lg-5 col-md-6">
                     <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            <% product.files.forEach(function(file,index){ %>
-                            <div class="carousel-item" class=<% if(index==0) {%>
-                                "active"
-                                <% }else { %>
-                                ""
-                                <%} %>>
-                                 <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
-                            <% }) %>
-                        </div>
-                        <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
-						<i class="fa fa-angle-left" aria-hidden="true"></i>
-						<span class="sr-only">Previous</span>
-					</a>
-                        <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-						<span class="sr-only">Next</span>
-					</a>
-                        <ol class="carousel-indicators">
-                            <% product.files.forEach(function(file,index){ %>
-                            <li data-target="#carousel-example-1" data-slide-to="0" class=<% if(index==0) {%>
-                                "active"
-                                <% }else { %>
-                                ""
-                                <%} %>>
-                                <img class="d-block w-100 img-fluid" src="/upload/<%= file.filename %>" alt="" />
-                            </li>
-                            <%})%>
-                        </ol>
-                    </div>
-                </div>
+                          <% product.files.forEach(function(file,index){ %>
+<div class="carousel-item <% if(index==0) {%>
+    active"
+    <%}else { %>
+        "
+     <% } %>> <img class="carousel_img" src="/upload/<%= file.filename %>" alt="<%= file.filename %>.jpg"> </div>
+<% }) %>
+</div>
+<a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+<i class="fa fa-angle-left" aria-hidden="true"></i>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+<i class="fa fa-angle-right" aria-hidden="true"></i>
+<span class="sr-only">Next</span>
+</a>
+<ol class="carousel-indicators">
+<% product.files.forEach(function(file,index){ %>
+<li data-target="#carousel-example-1" data-slide-to="0" class=<% if(index==0) {%>
+    "active"
+    <% }else { %>
+    ""
+    <%} %>>
+    <img class="d-block w-100 img-fluid" src="/upload/<%= file.filename %>" alt="" />
+</li>
+<%})%>
+</ol>
+</div>
+</div>
                 <div class="col-xl-7 col-lg-7 col-md-6">
                     <div class="single-product-details">
                         <h2><%= product.name %></h2>
