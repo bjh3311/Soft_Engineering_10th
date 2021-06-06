@@ -259,7 +259,7 @@ router.get('/order_list', async function(req,res){
 
   var page = Math.max(1, parseInt(req.query.page));   // 2
   var limit = Math.max(1, parseInt(req.query.limit)); // 2
-  
+
   page = !isNaN(page)?page:1;                         // 3
   limit = !isNaN(limit)?limit:10;                     // 3
   var skip = (page-1)*limit; // 4
@@ -377,6 +377,13 @@ router.get('/:id', async function(req, res){
 
   var skip = (page-1)*limit;
   var count = await Review.countDocuments({product:req.params.id});
+
+  // if(count==0){
+  //   count=1;
+  // }
+  //
+  // console.log(count);
+
   var sum = await Review.aggregate([
     { $match : { product : new Mongoose.Types.ObjectId(req.params.id) }},
     { $group : { _id: null, count : {$sum : "$star" }}}
@@ -389,6 +396,15 @@ router.get('/:id', async function(req, res){
     .skip(skip)
     .limit(limit)
     .exec();
+
+
+
+  if(sum[0]===undefined){
+    var rating=0;
+  }else{
+    var rating=sum[0].count/count;
+  }
+
   res.render('main/detail',{
     username:username,
     product:product,
@@ -398,8 +414,7 @@ router.get('/:id', async function(req, res){
     maxPage:maxPage,
     limit:limit,
     moment,
-    sum:sum[0].count/count,
-    count
+    sum:rating,
   })
 });
 
@@ -440,7 +455,7 @@ router.post('/down', function(req,res,next){
   req.session.cart = cart;
 
   res.redirect('/cart');
-});                              
+});
 
 // cart item remove
 router.post('/remove', function(req, res, next){
@@ -461,7 +476,7 @@ router.post('/orderform/:id', function(req, res){
   else{
   Destination.findOne({_id : req.user.address}, function(err, destination){
       if(err) return res.redirect('main/cart');
-      res.redirect('/orderform/' + req.params.id); 
+      res.redirect('/orderform/' + req.params.id);
   });
 }
 });
