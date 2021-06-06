@@ -7,6 +7,10 @@ function DeleteEvent(path){
   window.open(`/posts/${path}/destroy`,"admin_delete","width=400, height=200,top=400");
 }
 
+function showAdminReview(id){
+  window.open(`/admin/order_list/${id}/end`,"admin_delete","width=400, height=200,top=400");
+}
+
 // detail -> 배송지 선택
 function showDestination(){
   window.open("/destination_select","a","width=1200,height=500,top=500");
