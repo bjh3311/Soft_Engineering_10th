@@ -38,7 +38,14 @@ router.get('/', async function(req, res){
     .where('flag').equals(true)
     .sort('start')
     .exec();
-
+  
+  var best = await Product.find()
+  .where('flag').equals(true)
+    .where('price').gte(0)
+    .where('price').lte(60000)
+    .sort('-sales')
+    .limit(limit) // 
+  .exec();
   }catch(err){
     res.json(err);
   }
@@ -261,13 +268,16 @@ router.get('/order_list', async function(req,res){
   var limit = Math.max(1, parseInt(req.query.limit)); // 2
 
   page = !isNaN(page)?page:1;                         // 3
-  limit = !isNaN(limit)?limit:10;                     // 3
+  limit = !isNaN(limit)?limit:5;                     // 3
   var skip = (page-1)*limit; // 4
-  var count = await Order.countDocuments({{user : req.user._id}}); // 5
+  var count = await Order.countDocuments({user : req.user._id}); // 5
   var maxPage = Math.ceil(count/limit); // 6
+  var order = await Order.find({user : req.user._id})
+            .skip(skip)   // 8
+            .limit(limit) // 8
+            .exec();
 
-  Order.find({user : req.user._id}, function(err, order){
-    if (err) return res.json(err);
+  
     res.render('main/order_list',{
       username:username,
       errors:errors,
@@ -276,7 +286,6 @@ router.get('/order_list', async function(req,res){
       maxPage : maxPage,
       limit: limit
     });
-  });
 });
 
 // 사용자가 구매 확정
