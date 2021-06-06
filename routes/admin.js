@@ -41,6 +41,8 @@ router.get('/table_detail',util.isLoggedin, checkPermission, function(req,res){
   res.render('admin/table_detail')
 })
 
+
+
 router.get('/form_create', util.isLoggedin, checkPermission, function(req, res){
   var posts = req.flash('posts')[0] || {};
   var errors = req.flash('errors')[0] || {};
@@ -101,7 +103,7 @@ router.get('/order_list',util.isLoggedin, checkPermission,  async function(req,r
   .sort('-payDate')
   .exec();
 
-  
+
 
     res.render('admin/order_list',{
       startSearch:startSearch,
@@ -132,6 +134,11 @@ router.post('/order_list/:id/ing', function(req, res){
     if(err) return res.json(err);
     res.redirect('/admin/order_list');
   });
+});
+
+// 상품평 보여주기
+router.post('/order_list/:id/end', function(req, res){
+
 });
 
 

@@ -126,10 +126,10 @@
     <!-- Start Wishlist  -->
      기간:
      <form class="form-header" action="/order_list" method="get">
-      
+
           <input type="date" id="startSearch" name="startSearch" value="" >
           <input  type="date" id="endSearch" name="endSearch" value="" >
-      
+
           <button class="au-btn--submit" type="submit">
               <i class="zmdi zmdi-search"></i>
           </button>
@@ -175,7 +175,7 @@
                                         <td class="quantity-box"><%= key.flag %></td>
                                         <td class="add-pr">
                                             <% if( key.flag == '결제완료' || key.flag =='배송중'){ %>
-                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;">문의하기</a>
+                                                <button type="submit" class="btn hvr-hover"  style="color: aliceblue;" onclick="createInquire();">문의하기</a>
                                             <% } %>
                                             <% if (key.flag =='배송완료') { %>
                                                 <form action="/order_list/<%= key._id %>/end" method="POST">

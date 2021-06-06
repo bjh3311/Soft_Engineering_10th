@@ -1,5 +1,98 @@
 <body>
-
+  <!-- Start Main Top -->
+  <header class="main-header">
+      <!-- Start Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+           <div class="container-fluid">
+          <div class="row" float="right">
+          <% if(isAuthenticated){ %>
+              <span><%= currentUser.username %> 환영합니다.</span>
+              <button type="button" onclick="location.href='/users/logout'">Logout</button>
+          <% } else { %>
+              <div class="login">
+                  <form action="/users/login" method="post">
+                    ID <input type="text" name="username" id="username" value="<%= username %>" placeholder="id">
+                    PASSWORD <input type="password" name="password" id="password" placeholder="password">
+                    <input class="" type="submit" value="Submit">
+                  </form>
+                </div>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">ID/PW 찾기</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/users/signup'">회원가입</button>
+                </div>
+          <% } %>
+      </div>
+          </div>
+          <div class="container">
+              <!-- Start Header Navigation -->
+              <div class="navbar-header">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa fa-bars"></i>
+              </button>
+          </div>
+              <!-- End Header Navigation -->
+              <!--, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="navbar-menu">
+                  <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li> <!--about.html -> /about-->
+                      <li class="dropdown active">
+                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/category">Shoplist</a></li>
+                              <li><a href="/cart">Cart</a></li>
+                              <li><a href="/order_list">Orderlist</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">BOARD</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/notice">Notice</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+              <!-- Start Atribute Navigation -->
+              <div class="attr-nav" style="padding-right: 10px;">
+                <ul>
+                    <% if(isAuthenticated){ %>
+                    <a href="/cart">
+                        <i class="fa fa-shopping-bag">
+                            <% if(session.cart){ %>
+                                <span class="badge">
+                                    <%= session.cart.totalQty %>
+                                </span>
+                                <% } else { %>
+                                    <span class="badge">0</span>
+                                    <% } %>
+                        </i>
+                        My Cart
+                    </a>
+                    <% } else { %>
+                        <a href="#" onclick="alert('로그인을 진행해주세요')">
+                            <i class="fa fa-shopping-bag">
+                                <% if(session.cart){ %>
+                                    <span class="badge">
+                                        <%= session.cart.totalQty %>
+                                    </span>
+                                    <% } else { %>
+                                        <span class="badge">0</span>
+                                        <% } %>
+                            </i>
+                            My Cart
+                        </a>
+                    <% } %>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
 
     <!-- Start Top Search -->
     <div class="top-search">
@@ -35,7 +128,7 @@
                           <% if(errors.recommend) { %>
 
                             <span><%= errors.recommend.message %></span>
-                        <% } %> 
+                        <% } %>
                           배송평가
                           <select class="form-select" name="delivery" aria-label="Default select example">
                             <option value="매우빠름">매우 빠름</option>
@@ -45,7 +138,7 @@
                           <% if(errors.delivery) { %>
 
                             <span><%= errors.delivery.message %></span>
-                        <% } %> 
+                        <% } %>
                           별점
                           <select class="form-select" name="star" aria-label="Default select example">
                             <option value="5">★★★★★</option>
@@ -57,7 +150,7 @@
                           <% if(errors.star) { %>
 
                             <span><%= errors.star.message %></span>
-                        <% } %> 
+                        <% } %>
                         </div>
                         <div class="col-md-12">
                           <div class="media-body">
@@ -69,7 +162,7 @@
                             <% if(errors.body) { %>
 
                               <span><%= errors.body.message %></span>
-                          <% } %> 
+                          <% } %>
                           </div>
                         </div>
                         <input type="hidden" name="orderNum" value="<%= orderNum %>">
